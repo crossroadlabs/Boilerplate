@@ -56,3 +56,14 @@ class OptionalTests: XCTestCase {
         XCTAssertNotNil(noAutoclosure)
     }
 }
+
+#if os(Linux)
+extension OptionalTests : XCTestCaseProvider {
+	var allTests : [(String, () throws -> Void)] {
+		return [
+			("testGetOrElse", testGetOrElse),
+			("testOrElse", testOrElse),
+		]
+	}
+}
+#endif

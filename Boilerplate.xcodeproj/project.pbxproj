@@ -92,7 +92,8 @@
 				65E267171C8B036A00E0DD70 /* NSBridgingTests.swift */,
 				65E267061C8AE09800E0DD70 /* Info.plist */,
 			);
-			path = BoilerplateTests;
+			name = BoilerplateTests;
+			path = Tests/Boilerplate;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -357,7 +358,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = BoilerplateTests/Info.plist;
+				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -368,7 +369,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = BoilerplateTests/Info.plist;
+				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
