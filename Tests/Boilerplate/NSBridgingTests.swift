@@ -18,7 +18,11 @@ class NSBridgingTests: XCTestCase {
     }
     
     func testArrayBridging() {
-        XCTAssertTrue(["element"].ns.dynamicType.isSubclassOfClass(NSArray.self))
+        let array = ["element"]
+        let nsArray:Any = array.ns
+        let swiftArray:Any = array
+        XCTAssertFalse(swiftArray is NSArray)
+        XCTAssertTrue(nsArray is NSArray)
     }
     
     func testDictionaryBridging() {
