@@ -44,3 +44,27 @@ extension Array : NSBridging {
 extension Dictionary : NSBridging {
     public typealias NSBridgeTo = NSDictionary
 }
+
+public func isNoBridge<NSType : NSObject>(any:Any, type:NSType.Type) -> Bool {
+    #if os(Linux)
+        return any is NSType
+    #else
+        let anyType = any.dynamicType
+        switch anyType {
+        case let anyClass as AnyClass: return anyClass.isSubclassOfClass(type)
+        default: return false
+        }
+    #endif
+}
+
+public func asNoBridge<NSType : NSObject>(any:Any, type:NSType.Type) -> NSType? {
+    if isNoBridge(any, type: type) {
+        return (any as? AnyObject).flatMap{$0 as? NSType}
+    } else {
+        return nil
+    }
+}
+
+public func asNoBridge<NSType : NSObject>(any:Any) -> NSType? {
+    return asNoBridge(any, type: NSType.self)
+}
