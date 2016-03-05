@@ -50,7 +50,7 @@ class ContainerTests: XCTestCase {
         let container = CantainerWithParticularError("string", error: MockError.Error1)
         
         do {
-            try container^
+            try container^!
             XCTFail("Must have thrown")
         } catch let e {
             switch e {
@@ -61,10 +61,7 @@ class ContainerTests: XCTestCase {
             }
         }
         
-        //not calling this as it's a bad instruction
-        //let value = container^!
-        
-        XCTAssertNil(container^?)
+        XCTAssertNil(container^)
         
         container^%.analysis(ifSuccess: { value -> Result<String, MockError> in
             XCTFail("Can not be with success")
@@ -79,7 +76,7 @@ class ContainerTests: XCTestCase {
         let container = CantainerWithAnyError("string")
         
         do {
-            try container^
+            try container^!
             XCTFail("Must have thrown")
         } catch let e {
             switch e {
@@ -90,10 +87,7 @@ class ContainerTests: XCTestCase {
             }
         }
         
-        //not calling this as it's a bad instruction
-        //let value = container^!
-        
-        XCTAssertNil(container^?)
+        XCTAssertNil(container^)
         
         container^%.analysis(ifSuccess: { value -> Result<String, AnyError> in
             XCTFail("Can not be with success")

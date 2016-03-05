@@ -23,7 +23,7 @@ postfix operator ^ {
 postfix operator ^! {
 }
 
-postfix operator ^? {
+postfix operator ^!! {
 }
 
 postfix operator ^% {
@@ -35,15 +35,16 @@ public protocol ContainerType {
     func withdraw() throws -> Value
 }
 
-public postfix func ^<A, T : ContainerType where T.Value == A>(container:T) throws -> A {
+public postfix func ^!<A, T : ContainerType where T.Value == A>(container:T) throws -> A {
     return try container.withdraw()
 }
 
-public postfix func ^!<A, T : ContainerType where T.Value == A>(container:T) -> A {
+/// Never use. Pure EVIL ]:->
+public postfix func ^!!<A, T : ContainerType where T.Value == A>(container:T) -> A {
     return try! container.withdraw()
 }
 
-public postfix func ^?<A, T : ContainerType where T.Value == A>(container:T) -> A? {
+public postfix func ^<A, T : ContainerType where T.Value == A>(container:T) -> A? {
     return try? container.withdraw()
 }
 
