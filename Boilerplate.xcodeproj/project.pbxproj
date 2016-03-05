@@ -9,6 +9,13 @@
 /* Begin PBXBuildFile section */
 		65465E551C8B3AC00080BAAE /* AnyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E541C8B3AC00080BAAE /* AnyContainer.swift */; };
 		65465E581C8B42A70080BAAE /* AnyContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E561C8B427C0080BAAE /* AnyContainerTests.swift */; };
+		65465E5A1C8B48820080BAAE /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E591C8B48820080BAAE /* Container.swift */; };
+		65465E5C1C8B559A0080BAAE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65465E5B1C8B559A0080BAAE /* Result.framework */; };
+		65465E5F1C8B55D80080BAAE /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 65465E5B1C8B559A0080BAAE /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65465E611C8B56AF0080BAAE /* AnyError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E601C8B56AF0080BAAE /* AnyError.swift */; };
+		65465E631C8B57B10080BAAE /* Result+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E621C8B57B10080BAAE /* Result+.swift */; };
+		65465E641C8B5BF40080BAAE /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65465E5B1C8B559A0080BAAE /* Result.framework */; };
+		65465E661C8B5DDE0080BAAE /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E651C8B5DDE0080BAAE /* ContainerTests.swift */; };
 		65E267001C8AE09800E0DD70 /* Boilerplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E266F51C8AE09800E0DD70 /* Boilerplate.framework */; };
 		65E267101C8AE0CB00E0DD70 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2670F1C8AE0CB00E0DD70 /* Optional.swift */; };
 		65E267121C8AE4A200E0DD70 /* NSBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267111C8AE4A200E0DD70 /* NSBridging.swift */; };
@@ -27,9 +34,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		65465E5E1C8B55C40080BAAE /* Copy Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				65465E5F1C8B55D80080BAAE /* Result.framework in Copy Frameworks */,
+			);
+			name = "Copy Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		65465E541C8B3AC00080BAAE /* AnyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyContainer.swift; sourceTree = "<group>"; };
 		65465E561C8B427C0080BAAE /* AnyContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyContainerTests.swift; sourceTree = "<group>"; };
+		65465E591C8B48820080BAAE /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
+		65465E5B1C8B559A0080BAAE /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Result.framework; path = Carthage/Build/Mac/Result.framework; sourceTree = "<group>"; };
+		65465E601C8B56AF0080BAAE /* AnyError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyError.swift; sourceTree = "<group>"; };
+		65465E621C8B57B10080BAAE /* Result+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Result+.swift"; sourceTree = "<group>"; };
+		65465E651C8B5DDE0080BAAE /* ContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		65E266F51C8AE09800E0DD70 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E266FA1C8AE09800E0DD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65E266FF1C8AE09800E0DD70 /* BoilerplateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoilerplateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -46,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65465E5C1C8B559A0080BAAE /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +80,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65465E641C8B5BF40080BAAE /* Result.framework in Frameworks */,
 				65E267001C8AE09800E0DD70 /* Boilerplate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -60,12 +88,21 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		65465E5D1C8B55A80080BAAE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				65465E5B1C8B559A0080BAAE /* Result.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		65E266EB1C8AE09800E0DD70 = {
 			isa = PBXGroup;
 			children = (
 				65E266F71C8AE09800E0DD70 /* Boilerplate */,
 				65E267031C8AE09800E0DD70 /* BoilerplateTests */,
 				65E266F61C8AE09800E0DD70 /* Products */,
+				65465E5D1C8B55A80080BAAE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -85,7 +122,10 @@
 				65E2670F1C8AE0CB00E0DD70 /* Optional.swift */,
 				65E267111C8AE4A200E0DD70 /* NSBridging.swift */,
 				65E267131C8AE64F00E0DD70 /* CFBridging.swift */,
+				65465E591C8B48820080BAAE /* Container.swift */,
 				65465E541C8B3AC00080BAAE /* AnyContainer.swift */,
+				65465E601C8B56AF0080BAAE /* AnyError.swift */,
+				65465E621C8B57B10080BAAE /* Result+.swift */,
 			);
 			path = Boilerplate;
 			sourceTree = "<group>";
@@ -95,6 +135,7 @@
 			children = (
 				65E267151C8B00DA00E0DD70 /* OptionalTests.swift */,
 				65E267171C8B036A00E0DD70 /* NSBridgingTests.swift */,
+				65465E651C8B5DDE0080BAAE /* ContainerTests.swift */,
 				65465E561C8B427C0080BAAE /* AnyContainerTests.swift */,
 				65E267061C8AE09800E0DD70 /* Info.plist */,
 			);
@@ -140,6 +181,7 @@
 				65E266FB1C8AE09800E0DD70 /* Sources */,
 				65E266FC1C8AE09800E0DD70 /* Frameworks */,
 				65E266FD1C8AE09800E0DD70 /* Resources */,
+				65465E5E1C8B55C40080BAAE /* Copy Frameworks */,
 			);
 			buildRules = (
 			);
@@ -211,6 +253,9 @@
 			files = (
 				65465E551C8B3AC00080BAAE /* AnyContainer.swift in Sources */,
 				65E267121C8AE4A200E0DD70 /* NSBridging.swift in Sources */,
+				65465E631C8B57B10080BAAE /* Result+.swift in Sources */,
+				65465E5A1C8B48820080BAAE /* Container.swift in Sources */,
+				65465E611C8B56AF0080BAAE /* AnyError.swift in Sources */,
 				65E267101C8AE0CB00E0DD70 /* Optional.swift in Sources */,
 				65E267141C8AE64F00E0DD70 /* CFBridging.swift in Sources */,
 			);
@@ -221,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65E267181C8B036A00E0DD70 /* NSBridgingTests.swift in Sources */,
+				65465E661C8B5DDE0080BAAE /* ContainerTests.swift in Sources */,
 				65465E581C8B42A70080BAAE /* AnyContainerTests.swift in Sources */,
 				65E267161C8B00DA00E0DD70 /* OptionalTests.swift in Sources */,
 			);
@@ -332,6 +378,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -352,6 +402,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				FRAMEWORK_VERSION = A;
 				INFOPLIST_FILE = Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -366,6 +420,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
@@ -377,6 +435,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
+				);
 				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;

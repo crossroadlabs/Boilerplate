@@ -1,4 +1,4 @@
-//===--- Package.swift -----------------------------------------------------===//
+//===--- AnyError.swift ------------------------------------------------------===//
 //Copyright (c) 2016 Daniel Leping (dileping)
 //
 //Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,10 +14,18 @@
 //limitations under the License.
 //===----------------------------------------------------------------------===//
 
-import PackageDescription
+import Foundation
 
-let package = Package(
-    name: "Boilerplate",
-    targets: [Target(name: "Boilerplate")],
-    dependencies: [.Package(url: "https://github.com/crossroadlabs/Result.git", majorVersion: 1)]
-)
+public protocol AnyErrorType : ErrorType {
+    init(_ error:ErrorType)
+    
+    var error:ErrorType {get}
+}
+
+public struct AnyError : AnyErrorType {
+    public let error:ErrorType
+    
+    public init(_ error:ErrorType) {
+        self.error = error
+    }
+}

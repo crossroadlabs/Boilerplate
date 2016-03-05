@@ -5,4 +5,6 @@ import XCTest
 XCTMain([
 	NSBridgingTests(),
 	OptionalTests(),
+	ContainerTests(),
+	AnyContainerTests()
 ])

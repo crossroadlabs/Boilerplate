@@ -16,11 +16,18 @@
 
 import Foundation
 
-public class AnyContainer<T> {
+//useful for C-interoperability when you need to pass non-AnyObject inside C
+public class AnyContainer<T> : ContainerType {
+    public typealias Value = T
+    
     private (set) public var content:T
     
     public init(_ content:T) {
         self.content = content
+    }
+    
+    public func withdraw() throws -> Value {
+        return content
     }
 }
 
@@ -37,19 +44,4 @@ public class MutableAnyContainer<T> : AnyContainer<T> {
     public override init(_ content:T) {
         super.init(content)
     }
-}
-
-postfix operator !! {
-    
-}
-
-public postfix func !!<T>(container:AnyContainer<T>) -> T {
-    return container.content
-}
-
-postfix operator ?! {
-}
-
-public postfix func ?!<T>(container:AnyContainer<T>?) -> T? {
-    return container?.content
 }

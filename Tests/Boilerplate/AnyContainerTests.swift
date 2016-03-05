@@ -8,6 +8,7 @@
 
 import XCTest
 import Foundation
+import Result
 
 @testable import Boilerplate
 
@@ -17,6 +18,35 @@ class AnyContainerTests: XCTestCase {
         let container = AnyContainer("string")
         
         XCTAssertEqual(container.content, "string")
-//        XCTAssertEqual(container!!, "string")
+        do {
+            let string = try container^.substringToIndex("string".startIndex.successor())
+            XCTAssertEqual(string, "s")
+        } catch {
+            XCTFail("Can not throw really")
+        }
+        
+        XCTAssertEqual(container^!.substringFromIndex("string".startIndex.successor()), "tring")
+        
+        XCTAssertNotNil(container^?)
+        
+        XCTAssertEqual(container^?.map{$0.substringToIndex("string".endIndex.predecessor())} ?? "wtf", "strin")
+        
+        container^%.analysis(ifSuccess: { value -> Result<String, AnyError> in
+            XCTAssertEqual("string", value)
+            return Result<String, AnyError>(value: value)
+        }, ifFailure: { error in
+            XCTFail("Can not fail")
+            return Result<String, AnyError>(error: error)
+        })
     }
 }
+
+#if os(Linux)
+    extension AnyContainerTests : XCTestCaseProvider {
+        var allTests : [(String, () throws -> Void)] {
+            return [
+                ("testInitAndGet", testInitAndGet),
+            ]
+        }
+    }
+#endif
