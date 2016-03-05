@@ -21,14 +21,13 @@ public protocol NSBridging {
 }
 
 public extension NSBridging {
+    private func bridge() -> NSBridgeTo {
+        return self as! AnyObject as! NSBridgeTo
+    }
+    
     public var ns:NSBridgeTo {
         get {
-            #if os(Linux)
-                return self.bridge()
-            #else
-                let any:AnyObject = self as! AnyObject
-                return any as! NSBridgeTo
-            #endif
+            return self.bridge()
         }
     }
 }
