@@ -25,3 +25,15 @@ class NSBridgingTests: XCTestCase {
         XCTAssertTrue(["key": "value"].ns.dynamicType.isSubclassOfClass(NSDictionary.self))
     }
 }
+
+#if os(Linux)
+extension NSBridgingTests : XCTestCaseProvider {
+	var allTests : [(String, () throws -> Void)] {
+		return [
+			("testStringBridging", testStringBridging),
+			("testArrayBridging", testArrayBridging),
+			("testDictionaryBridging", testDictionaryBridging),
+		]
+	}
+}
+#endif
