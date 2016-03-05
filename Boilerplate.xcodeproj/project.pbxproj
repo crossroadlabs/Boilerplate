@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65465E551C8B3AC00080BAAE /* AnyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E541C8B3AC00080BAAE /* AnyContainer.swift */; };
+		65465E581C8B42A70080BAAE /* AnyContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E561C8B427C0080BAAE /* AnyContainerTests.swift */; };
 		65E267001C8AE09800E0DD70 /* Boilerplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E266F51C8AE09800E0DD70 /* Boilerplate.framework */; };
 		65E267101C8AE0CB00E0DD70 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2670F1C8AE0CB00E0DD70 /* Optional.swift */; };
 		65E267121C8AE4A200E0DD70 /* NSBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267111C8AE4A200E0DD70 /* NSBridging.swift */; };
@@ -26,6 +28,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65465E541C8B3AC00080BAAE /* AnyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyContainer.swift; sourceTree = "<group>"; };
+		65465E561C8B427C0080BAAE /* AnyContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyContainerTests.swift; sourceTree = "<group>"; };
 		65E266F51C8AE09800E0DD70 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E266FA1C8AE09800E0DD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65E266FF1C8AE09800E0DD70 /* BoilerplateTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BoilerplateTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,6 +85,7 @@
 				65E2670F1C8AE0CB00E0DD70 /* Optional.swift */,
 				65E267111C8AE4A200E0DD70 /* NSBridging.swift */,
 				65E267131C8AE64F00E0DD70 /* CFBridging.swift */,
+				65465E541C8B3AC00080BAAE /* AnyContainer.swift */,
 			);
 			path = Boilerplate;
 			sourceTree = "<group>";
@@ -90,6 +95,7 @@
 			children = (
 				65E267151C8B00DA00E0DD70 /* OptionalTests.swift */,
 				65E267171C8B036A00E0DD70 /* NSBridgingTests.swift */,
+				65465E561C8B427C0080BAAE /* AnyContainerTests.swift */,
 				65E267061C8AE09800E0DD70 /* Info.plist */,
 			);
 			name = BoilerplateTests;
@@ -203,6 +209,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65465E551C8B3AC00080BAAE /* AnyContainer.swift in Sources */,
 				65E267121C8AE4A200E0DD70 /* NSBridging.swift in Sources */,
 				65E267101C8AE0CB00E0DD70 /* Optional.swift in Sources */,
 				65E267141C8AE64F00E0DD70 /* CFBridging.swift in Sources */,
@@ -214,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65E267181C8B036A00E0DD70 /* NSBridgingTests.swift in Sources */,
+				65465E581C8B42A70080BAAE /* AnyContainerTests.swift in Sources */,
 				65E267161C8B00DA00E0DD70 /* OptionalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
