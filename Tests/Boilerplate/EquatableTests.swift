@@ -37,10 +37,12 @@ class EquatableTests: XCTestCase {
         XCTAssertTrue(same1 == same2)
         XCTAssertTrue(same1 != other)
         XCTAssertFalse(same1 != same2)
-        
-        let array1:Array<NonStrictEquatable> = [same1]
-        let array2:Array<NonStrictEquatable> = [same2]
-        let array3:Array<NonStrictEquatable> = [other]
+    }
+    
+    func testNonStrictEquatableArrays() {
+        let array1:Array<NonStrictEquatable> = [NonStrictEquatableMock("same")]
+        let array2:Array<NonStrictEquatable> = [NonStrictEquatableMock("same")]
+        let array3:Array<NonStrictEquatable> = [NonStrictEquatableMock("other")]
         
         XCTAssert(array1 == array2)
         XCTAssert(array1 != array3)
