@@ -1,0 +1,38 @@
+//
+//  CollectionsTests.swift
+//  Boilerplate
+//
+//  Created by Daniel Leping on 3/6/16.
+//  Copyright © 2016 Crossroad Labs, LTD. All rights reserved.
+//
+
+import XCTest
+import Foundation
+import Result
+
+@testable import Boilerplate
+
+class CollectionsTests: XCTestCase {
+    func enumerateSome(callback:(String)->Void) {
+        callback("one")
+        callback("two")
+        callback("three")
+    }
+    
+    func testEnumerator() {
+        let reference = ["one", "two", "three"]
+        let array = Array(enumerator: enumerateSome)
+        
+        XCTAssertEqual(array, reference)
+    }
+}
+
+#if os(Linux)
+    extension CollectionsTests : XCTestCaseProvider {
+        var allTests : [(String, () throws -> Void)] {
+            return [
+                ("testEnumerator", testEnumerator),
+            ]
+        }
+    }
+#endif

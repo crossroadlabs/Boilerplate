@@ -6,5 +6,6 @@ XCTMain([
 	NSBridgingTests(),
 	OptionalTests(),
 	ContainerTests(),
-	AnyContainerTests()
+	AnyContainerTests(),
+	CollectionsTests(),
 ])
