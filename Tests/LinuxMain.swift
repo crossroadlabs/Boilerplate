@@ -8,4 +8,5 @@ XCTMain([
 	ContainerTests(),
 	AnyContainerTests(),
 	CollectionsTests(),
+	EquatableTests(),
 ])
