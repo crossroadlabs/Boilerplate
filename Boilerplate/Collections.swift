@@ -39,25 +39,33 @@ public extension CopyableCollectionType {
     }
 }
 
-public extension SequenceType {
-    public func zip<T : SequenceType>(other:T) -> Array<(Generator.Element, T.Generator.Element)> {
-        var selfGenerator = self.generate()
-        var otherGenerator = other.generate()
-        
-        //TODO: reimplement with autogenerating sequence. Will work for now though
-        var result = Array<(Generator.Element, T.Generator.Element)>()
-        
-        while true {
-            guard let s = selfGenerator.next() else {
-                break
+public class ZippedSequence<A, B where A : GeneratorType, B : GeneratorType> : SequenceType {
+    public typealias Generator = AnyGenerator<(A.Element, B.Element)>
+    
+    var ag:A
+    var bg:B
+    
+    public init(ag:A, bg:B) {
+        self.ag = ag
+        self.bg = bg
+    }
+    
+    public func generate() -> Generator {
+        return anyGenerator {
+            guard let a = self.ag.next() else {
+                return nil
             }
-            guard let o = otherGenerator.next() else {
-                break
+            guard let b = self.bg.next() else {
+                return nil
             }
             
-            result.append((s, o))
+            return (a, b)
         }
-        
-        return result
+    }
+}
+
+public extension SequenceType {
+    public func zip<T : SequenceType>(other:T) -> ZippedSequence<Generator, T.Generator> {
+        return ZippedSequence(ag: self.generate(), bg: other.generate())
     }
 }
