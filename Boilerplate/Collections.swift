@@ -38,3 +38,26 @@ public extension CopyableCollectionType {
         self.init(array)
     }
 }
+
+public extension SequenceType {
+    public func zip<T : SequenceType>(other:T) -> Array<(Generator.Element, T.Generator.Element)> {
+        var selfGenerator = self.generate()
+        var otherGenerator = other.generate()
+        
+        //TODO: reimplement with autogenerating sequence. Will work for now though
+        var result = Array<(Generator.Element, T.Generator.Element)>()
+        
+        while true {
+            guard let s = selfGenerator.next() else {
+                break
+            }
+            guard let o = otherGenerator.next() else {
+                break
+            }
+            
+            result.append((s, o))
+        }
+        
+        return result
+    }
+}
