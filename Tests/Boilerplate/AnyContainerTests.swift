@@ -42,6 +42,20 @@ class AnyContainerTests: XCTestCase {
             return Result<String, AnyError>(error: error)
         })
     }
+    
+    func testContentMutation() {
+        let container = MutableAnyContainer(Array<String>())
+        
+        XCTAssertEqual(container.content.count, 0)
+        
+        container.content.append("new")
+        
+        XCTAssertEqual(container.content.count, 1)
+        
+        container.content.removeAll()
+        
+        XCTAssertEqual(container.content.count, 0)
+    }
 }
 
 #if os(Linux)
@@ -49,6 +63,7 @@ class AnyContainerTests: XCTestCase {
         var allTests : [(String, () throws -> Void)] {
             return [
                 ("testInitAndGet", testInitAndGet),
+                ("testContentMutation", testContentMutation),
             ]
         }
     }
