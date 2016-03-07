@@ -26,6 +26,10 @@ public enum Timeout {
 
 /// NSAdditions
 public extension Timeout {
+    public init(until:NSDate) {
+        self = .In(timeout: until.timeIntervalSinceNow)
+    }
+    
     public var timeInterval:NSTimeInterval {
         get {
             switch self {
