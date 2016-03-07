@@ -1,4 +1,4 @@
-//===--- AnyError.swift ------------------------------------------------------===//
+//===--- Error.swift ------------------------------------------------------===//
 //Copyright (c) 2016 Daniel Leping (dileping)
 //
 //Licensed under the Apache License, Version 2.0 (the "License");
@@ -27,5 +27,16 @@ public struct AnyError : AnyErrorType {
     
     public init(_ error:ErrorType) {
         self.error = error
+    }
+}
+
+public enum CError {
+    case Unknown
+    case Code(code:Int32)
+}
+
+public extension CError {
+    public init(code:Int32) {
+        self = .Code(code: code)
     }
 }
