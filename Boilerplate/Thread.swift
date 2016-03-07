@@ -15,6 +15,7 @@
 //===----------------------------------------------------------------------===//
 
 import Foundation
+import CoreFoundation
 
 private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>) {
     if pointer != nil {
@@ -73,4 +74,12 @@ public class ThreadLocal<T> {
             try! setValue(newValue)
         }
     }
+}
+
+public func isMainThread() -> Bool {
+    #if os(Linux)
+        return CFRunLoopGetMain() === CFRunLoopGetCurrent()
+    #else
+        return NSThread.isMainThread()
+    #endif
 }
