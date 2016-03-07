@@ -15,6 +15,7 @@
 //===----------------------------------------------------------------------===//
 
 import Foundation
+import Result
 
 public protocol AnyErrorType : ErrorType {
     init(_ error:ErrorType)
@@ -30,13 +31,49 @@ public struct AnyError : AnyErrorType {
     }
 }
 
-public enum CError {
+public protocol ErrorWithCodeType : ErrorType {
+    init(code:Int32)
+    
+    static func isError(code:Int32) -> Bool
+}
+
+public enum CError : ErrorType {
     case Unknown
     case Code(code:Int32)
 }
 
-public extension CError {
+extension CError : ErrorWithCodeType {
     public init(code:Int32) {
         self = .Code(code: code)
     }
+    
+    public static func isError(code:Int32) -> Bool {
+        return code != 0
+    }
+}
+
+public func ccall<Error: ErrorWithCodeType>(@noescape fun:()->Int32) -> Error? {
+    let result = fun()
+    return Error.isError(result) ? Error(code: result) : nil
+}
+
+public func ccall<Error: ErrorWithCodeType>(_: Error.Type, @noescape fun:()->Int32) throws {
+    if let error:Error = ccall(fun) {
+        throw error
+    }
+}
+
+public func ccall<Value, Error: ErrorWithCodeType>(@noescape fun:(inout code:Int32)->Value) -> Result<Value, Error> {
+    var code:Int32 = 0
+    let result = fun(code: &code)
+    if Error.isError(code) {
+        return Result(error: Error(code: code))
+    } else {
+        return Result(value: result)
+    }
+}
+
+public func ccall<Value, Error: ErrorWithCodeType>(_: Error.Type, @noescape fun:(inout code:Int32)->Value) throws -> Value {
+    let result:Result<Value, Error> = ccall(fun)
+    return try result.dematerialize()
 }
