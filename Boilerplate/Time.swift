@@ -26,8 +26,19 @@ public enum Timeout {
 
 /// NSAdditions
 public extension Timeout {
+    public init(timeout:Double) {
+        switch timeout {
+        case let timeout where timeout <= 0:
+            self = .Immediate
+        case let timeout where timeout == Double.infinity:
+            self = .Infinity
+        default:
+            self = .In(timeout: timeout)
+        }
+    }
+    
     public init(until:NSDate) {
-        self = .In(timeout: until.timeIntervalSinceNow)
+        self.init(timeout: until.timeIntervalSinceNow)
     }
     
     public var timeInterval:NSTimeInterval {
