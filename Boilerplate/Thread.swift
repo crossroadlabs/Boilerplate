@@ -16,6 +16,9 @@
 
 import Foundation
 import CoreFoundation
+#if os(Linux)
+    import Glibc
+#endif
 
 private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>) {
     if pointer != nil {
@@ -78,7 +81,7 @@ public class ThreadLocal<T> {
 
 public func isMainThread() -> Bool {
     #if os(Linux)
-        return CFRunLoopGetMain() === CFRunLoopGetCurrent()
+        return getpid() == gettid()
     #else
         return NSThread.isMainThread()
     #endif
