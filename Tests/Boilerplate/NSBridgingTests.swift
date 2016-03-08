@@ -13,16 +13,33 @@ import Foundation
 
 class NSBridgingTests: XCTestCase {
     
+    func testIsNoBridge() {
+        XCTAssertFalse(isNoBridge("string", type: NSString.self))
+        XCTAssert(isNoBridge("string".ns, type: NSString.self))
+    }
+    
+    func testAsNoBridge() {
+        let nsStringNil:NSString? = asNoBridge("string")
+        XCTAssertNil(nsStringNil)
+        
+        let nsString:NSString? = asNoBridge("string".ns)
+        XCTAssertNotNil(nsString)
+        
+        XCTAssertNil(asNoBridge("string", type: NSString.self))
+        
+        XCTAssertNotNil(asNoBridge("string".ns, type: NSString.self))
+    }
+    
     func testStringBridging() {
-        XCTAssert("mystring".ns.dynamicType.isSubclassOfClass(NSString.self))
+        XCTAssert(isNoBridge("mystring".ns, type: NSString.self))
     }
     
     func testArrayBridging() {
-        XCTAssertTrue(["element"].ns.dynamicType.isSubclassOfClass(NSArray.self))
+        XCTAssert(isNoBridge(["element"].ns, type: NSArray.self))
     }
     
     func testDictionaryBridging() {
-        XCTAssertTrue(["key": "value"].ns.dynamicType.isSubclassOfClass(NSDictionary.self))
+        XCTAssert(isNoBridge(["key": "value"].ns, type: NSDictionary.self))
     }
 }
 
@@ -30,6 +47,8 @@ class NSBridgingTests: XCTestCase {
 extension NSBridgingTests : XCTestCaseProvider {
 	var allTests : [(String, () throws -> Void)] {
 		return [
+            ("testIsNoBridge", testIsNoBridge),
+            ("testAsNoBridge", testAsNoBridge),
 			("testStringBridging", testStringBridging),
 			("testArrayBridging", testArrayBridging),
 			("testDictionaryBridging", testDictionaryBridging),

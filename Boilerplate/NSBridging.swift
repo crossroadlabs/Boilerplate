@@ -16,18 +16,26 @@
 
 import Foundation
 
-public protocol NSBridging {
-    typealias NSBridgeTo : NSObject
+#if !os(Linux)
+    public protocol Bridgeable {
+    }
+#endif
+
+public protocol NSBridging : Bridgeable {
+    #if os(Linux)
+        typealias NSBridgeTo = BridgeType
+    #else
+        typealias NSBridgeTo : NSObject
+    #endif
 }
 
 public extension NSBridging {
     public var ns:NSBridgeTo {
         get {
             #if os(Linux)
-                return self.bridge()
+                return self.bridge() as! NSBridgeTo
             #else
-                let any:AnyObject = self as! AnyObject
-                return any as! NSBridgeTo
+                return self as! AnyObject as! NSBridgeTo
             #endif
         }
     }
@@ -43,4 +51,29 @@ extension Array : NSBridging {
 
 extension Dictionary : NSBridging {
     public typealias NSBridgeTo = NSDictionary
+}
+
+public func isNoBridge<NSType : NSObject>(any:Any, type:NSType.Type) -> Bool {
+    #if os(Linux)
+        //yes, otherwise we have a compiler crash
+        return (any as? AnyObject).map {$0 is NSType} ?? false
+    #else
+        let anyType = any.dynamicType
+        switch anyType {
+        case let anyClass as AnyClass: return anyClass.isSubclassOfClass(type)
+        default: return false
+        }
+    #endif
+}
+
+public func asNoBridge<NSType : NSObject>(any:Any, type:NSType.Type) -> NSType? {
+    if isNoBridge(any, type: type) {
+        return (any as? AnyObject).flatMap{$0 as? NSType}
+    } else {
+        return nil
+    }
+}
+
+public func asNoBridge<NSType : NSObject>(any:Any) -> NSType? {
+    return asNoBridge(any, type: NSType.self)
 }

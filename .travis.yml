@@ -1,0 +1,54 @@
+env:
+  global:
+    - MODULE_NAME=Boilerplate
+matrix:
+  include:
+    - script:
+        - xctool test -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME
+        #- xctool test -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 6'
+        #- xctool test -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME-tvOS -sdk appletvsimulator -destination 'platform=tvOS Simulator,name=Apple TV 1080p'
+        #- xctool build -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME-watchOS -sdk watchsimulator -destination 'platform=watchOS Simulator,name=Apple Watch - 42mm'
+      os: osx
+      osx_image: xcode7.2
+      language: objective-c
+      before_install:
+        - brew update
+        - brew outdated carthage || brew upgrade carthage
+        - brew outdated xctool || brew upgrade xctool
+      before_script:
+        # bootstrap the dependencies for the project
+        # you can remove if you don't have dependencies
+        - carthage bootstrap
+      before_deploy:
+        - carthage build --no-skip-current
+        - carthage archive $MODULE_NAME
+        #- pod trunk push CrossroadRegex.podspec
+      deploy:
+        provider: releases
+        #api_key:
+        #  secure: WEnu9clOi284PT/KsPgvRiYvK5WDbLsMwE0fj9/hoscCXM41dVLhJ7PWe9DoXThNtfSGjlIOvz6E6vCDniSB0NuErBDv9JT2GGZMA35kIvRnGxrHgfjFrIliQy5xqnQZFruKksnPvKBmwf02psw6wwvQmNh/AcC8tvOJZhhrIWt6S7ZLV0ypPsbYNVWS5dTUnZ5XglwbBaHrXkaps2acaG6kf2VdMccgXxB9/pudfJAvrTVwxf7U7ANS6wWv3k0wqTFwx+vIjtqXcnnoD/ulsQFM9MFueGiQ3o3DtdGyi7Q/L/m2SQkRRce4INnCUHhWXiWjnJgrupS2/+X4eFTuX+aBN0ctffD2rfj8Ql6Sane2Za/hmhohreroZ06YY7yN6mQ4wG4gAYy10HXdokjFHPW8B0/1mgMKPky0VsYMzbjiGsR9U0ePXNCTDVgw/HENEyECBFxbzvFuWq9Ncz0c8T9u8FIjXF8UGysuIaiUQJ/IeLHYkZ2d/id6EtJDwn8GAq85bUi0DomePoCOqzdFKHsecnX0ISaf2w+FWSHzbn7UQSgeoODVEDThvnKujWbJ4seOtfev9rwce/Uh5sh8ciGXQsScecwg7BcJml3c327yT6PZypoPxOAyRaXLgVbXoIA4oLj7tF7maggDynPGRS1IGnWgeJ2KnOhgo+Yudw0=
+        file: $MODULE_NAME.framework.zip
+        skip_cleanup: true
+        on:
+          repo: crossroadlabs/Boilerplate
+          tags: true
+    - script:
+        - ./build test
+      sudo: required
+      dist: trusty
+      language: generic
+      before_install:
+        # install original swift distribution
+        - wget -q -O - https://swift.org/keys/all-keys.asc | gpg --import -
+        - cd ..
+        - export SWIFT_VERSION="swift-DEVELOPMENT-SNAPSHOT-2016-03-01-a"
+        - wget https://swift.org/builds/development/ubuntu1404/$SWIFT_VERSION/$SWIFT_VERSION-ubuntu14.04.tar.gz
+        - tar xzf $SWIFT_VERSION-ubuntu14.04.tar.gz
+        - export PATH="${PWD}/${SWIFT_VERSION}-ubuntu14.04/usr/bin:${PATH}"
+        # get back home
+        - cd $MODULE_NAME
+        # get crossroad build script
+        - wget https://raw.githubusercontent.com/crossroadlabs/utils/master/build
+        - chmod +x build
+notifications:
+  email: false
