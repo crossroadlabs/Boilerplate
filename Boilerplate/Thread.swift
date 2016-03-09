@@ -118,6 +118,14 @@ public class Thread {
         }
     }
     
+    public func join() throws -> UnsafeMutablePointer<Void> {
+        var result = UnsafeMutablePointer<Void>()
+        try ccall(CError.self) {
+            pthread_join(thread, &result)
+        }
+        return result
+    }
+    
     public static func detach(task:SafeTask) throws {
         let _ = try Thread(task: task)
     }
