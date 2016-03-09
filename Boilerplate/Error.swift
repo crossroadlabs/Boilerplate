@@ -17,6 +17,10 @@
 import Foundation
 import Result
 
+public enum CommonError : ErrorType {
+    case NotImplemented(what:String)
+}
+
 public protocol AnyErrorType : ErrorType {
     init(_ error:ErrorType)
     
