@@ -127,7 +127,7 @@ public class Thread {
             #if os(Linux)
                 return CFRunLoopGetMain() === CFRunLoopGetCurrent()
             #else
-                return pthread_self() == pthread_t(COpaquePointer(bitPattern: Int(pthread_main_np())))
+                return NSThread.isMainThread()
             #endif
         }
     }
