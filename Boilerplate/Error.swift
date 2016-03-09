@@ -22,12 +22,8 @@ public protocol RuntimeErrorType : ErrorType, CustomStringConvertible {
 }
 
 public extension RuntimeErrorType {
-    private func selfThrow() throws {
+    func panic() throws {
         throw self
-    }
-    
-    func panic() {
-        try! selfThrow()
     }
     
     var stack:[String] {
