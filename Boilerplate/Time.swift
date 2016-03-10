@@ -26,8 +26,19 @@ public enum Timeout {
 
 /// NSAdditions
 public extension Timeout {
+    public init(timeout:Double) {
+        switch timeout {
+        case let timeout where timeout <= 0:
+            self = .Immediate
+        case let timeout where timeout == Double.infinity:
+            self = .Infinity
+        default:
+            self = .In(timeout: timeout)
+        }
+    }
+    
     public init(until:NSDate) {
-        self = .In(timeout: until.timeIntervalSinceNow)
+        self.init(timeout: until.timeIntervalSinceNow)
     }
     
     public var timeInterval:NSTimeInterval {
@@ -65,3 +76,22 @@ public extension Timeout {
         }
     }
 }
+
+//Dispatch Additions
+#if !os(Linux) || dispatch
+    import Dispatch
+    
+    public extension Timeout {
+        /// Returns the `dispatch_time_t` representation of this interval
+        public var dispatchTime: dispatch_time_t {
+            switch self {
+            case .Immediate:
+                return DISPATCH_TIME_NOW
+            case .Infinity:
+                return DISPATCH_TIME_FOREVER
+            case .In(let interval):
+                return dispatch_time(DISPATCH_TIME_NOW, Int64(interval * Double(NSEC_PER_SEC)))
+            }
+        }
+    }
+#endif

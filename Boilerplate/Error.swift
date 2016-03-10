@@ -17,6 +17,67 @@
 import Foundation
 import Result
 
+public protocol RuntimeErrorType : ErrorType, CustomStringConvertible {
+    var customRepresentation:String {get}
+}
+
+public extension RuntimeErrorType {
+    private func selfThrow() throws {
+        throw self
+    }
+    
+    @noreturn
+    func panic() {
+        try! selfThrow()
+        while true {}
+    }
+    
+    var stack:[String] {
+        get {
+            #if !os(Linux)
+                return NSThread.callStackSymbols()
+            #else
+                return [String]("Runtime error stack trace is not currently supported on Linux")
+            #endif
+        }
+    }
+    
+    var stackTrace:String {
+        get {
+            return "Stack trace: \(stack.description)"
+        }
+    }
+    
+    func formatDescription(custom:Any) -> String {
+        return "\(custom)\n\(stackTrace)"
+    }
+    
+    var customRepresentation:String {
+        get {
+            return "\(self.dynamicType)"
+        }
+    }
+    
+    var description:String {
+        get {
+            return formatDescription(customRepresentation)
+        }
+    }
+}
+
+public enum CommonRuntimeError : RuntimeErrorType {
+    case NotImplemented(what:String)
+    
+    public var customRepresentation:String {
+        get {
+            switch self {
+            case .NotImplemented(let what):
+                return "Not implemented: \(what)"
+            }
+        }
+    }
+}
+
 public protocol AnyErrorType : ErrorType {
     init(_ error:ErrorType)
     

@@ -79,10 +79,73 @@ public class ThreadLocal<T> {
     }
 }
 
-public func isMainThread() -> Bool {
-    #if os(Linux)
-        return getpid() == gettid()
-    #else
-        return NSThread.isMainThread()
-    #endif
+private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void> {
+    let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(COpaquePointer(arg)).takeRetainedValue()
+    task.content()
+    return nil
+}
+
+private func detach_pthread(task:SafeTask) throws {
+    var thread:pthread_t = pthread_t()
+    let unmanaged = Unmanaged.passRetained(AnyContainer(task))
+    let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
+    do {
+        try ccall(CError.self) {
+            pthread_create(&thread, nil, thread_proc, arg)
+        }
+    } catch {
+        unmanaged.release()
+        throw error
+    }
+}
+
+public class Thread {
+    public let thread:pthread_t
+    
+    public init(pthread:pthread_t) {
+        thread = pthread
+    }
+    
+    public init(task:SafeTask) throws {
+        self.thread = pthread_t()
+        
+        let unmanaged = Unmanaged.passRetained(AnyContainer(task))
+        let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
+        do {
+            try ccall(CError.self) {
+                pthread_create(&thread, nil, thread_proc, arg)
+            }
+        } catch {
+            unmanaged.release()
+            throw error
+        }
+    }
+    
+    public func join() throws -> UnsafeMutablePointer<Void> {
+        var result = UnsafeMutablePointer<Void>()
+        try ccall(CError.self) {
+            pthread_join(thread, &result)
+        }
+        return result
+    }
+    
+    public static func detach(task:SafeTask) throws {
+        let _ = try Thread(task: task)
+    }
+    
+    public static var isMain:Bool {
+        get {
+            #if os(Linux)
+                return getpid() == gettid()
+            #else
+                return pthread_main_np() != 0
+            #endif
+        }
+    }
+    
+    public static var current:Thread {
+        get {
+            return Thread(pthread: pthread_self())
+        }
+    }
 }
