@@ -96,7 +96,7 @@ private func detach_pthread(task:SafeTask) throws {
     }
 }
 
-public class Thread {
+public class Thread : Equatable {
     public let thread:pthread_t
     
     public init(pthread:pthread_t) {
@@ -145,4 +145,8 @@ public class Thread {
             return Thread(pthread: pthread_self())
         }
     }
+}
+
+public func ==(lhs:Thread, rhs:Thread) -> Bool {
+    return lhs.thread == rhs.thread
 }
