@@ -120,3 +120,21 @@ public extension Timeout {
         return time_spec(tv_sec:sec, tv_nsec: nsec)
     }
 }
+
+extension Timeout : FloatLiteralConvertible {
+    public init(floatLiteral value: FloatLiteralType) {
+        self.init(timeout: value)
+    }
+}
+
+extension Timeout : NilLiteralConvertible {
+    public init(nilLiteral: ()) {
+        self = .Immediate
+    }
+}
+
+extension Timeout : IntegerLiteralConvertible {
+    public init(integerLiteral value: IntegerLiteralType) {
+        self.init(timeout: Double(value))
+    }
+}
