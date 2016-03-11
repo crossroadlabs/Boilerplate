@@ -152,7 +152,7 @@ public class Thread : Equatable {
         }
     }
     
-    public func sleep(timeout:Timeout) -> Timeout? {
+    public static func sleep(timeout:Timeout) -> Timeout? {
         var time = timeout.timespec
         return try! ccall(CError.self) { code in
             var rem:timespec = timespec()
