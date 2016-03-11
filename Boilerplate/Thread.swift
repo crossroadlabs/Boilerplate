@@ -17,6 +17,12 @@
 import Foundation
 import CoreFoundation
 
+#if os(Linux)
+    import Glibc
+#else
+    import Darwin
+#endif
+
 private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>) {
     if pointer != nil {
         Unmanaged<AnyObject>.fromOpaque(COpaquePointer(pointer)).release()
@@ -143,6 +149,20 @@ public class Thread : Equatable {
     public static var current:Thread {
         get {
             return Thread(pthread: pthread_self())
+        }
+    }
+    
+    public func sleep(timeout:Timeout) -> Timeout? {
+        var time = timeout.timespec
+        return try! ccall(CError.self) { code in
+            var rem:timespec = timespec()
+            let ret = nanosleep(&time, &rem)
+            if ret == CError.INTR {
+                return Timeout(timespec: rem)
+            } else {
+                code = ret
+                return nil
+            }
         }
     }
 }
