@@ -23,9 +23,9 @@ import Foundation
 
 public protocol NSBridging : Bridgeable {
     #if os(Linux)
-        typealias NSBridgeTo = BridgeType
+        associatedtype NSBridgeTo = BridgeType
     #else
-        typealias NSBridgeTo : NSObject
+        associatedtype NSBridgeTo : NSObject
     #endif
 }
 

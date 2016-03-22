@@ -30,7 +30,7 @@ postfix operator ^% {
 }
 
 public protocol ContainerType {
-    typealias Value
+    associatedtype Value
     
     func withdraw() throws -> Value
 }
@@ -55,7 +55,7 @@ public postfix func ^%<A, T : ContainerType where T.Value == A>(container:T) -> 
 }
 
 public protocol ContainerWithErrorType : ContainerType {
-    typealias Error : ErrorType
+    associatedtype Error : ErrorType
     
     func withdrawResult() -> Result<Value, Error>
 }

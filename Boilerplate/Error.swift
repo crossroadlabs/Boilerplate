@@ -98,7 +98,7 @@ public protocol ErrorWithCodeType : ErrorType {
     static func isError(code:Int32) -> Bool
 }
 
-public enum CError : ErrorType {
+public enum CError : RuntimeErrorType {
     case Unknown
     case Code(code:Int32)
 }
@@ -111,6 +111,12 @@ extension CError : ErrorWithCodeType {
     public static func isError(code:Int32) -> Bool {
         return code != 0
     }
+}
+
+public extension CError {
+    public static let FAULT = EFAULT
+    public static let INTR = EINTR
+    public static let INVAL = EINVAL
 }
 
 public func ccall<Error: ErrorWithCodeType>(@noescape fun:()->Int32) -> Error? {

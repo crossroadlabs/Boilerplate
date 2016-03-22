@@ -18,7 +18,7 @@ import Foundation
 import CoreFoundation
 
 public protocol CFBridging : NSBridging {
-    typealias CFBridgeTo
+    associatedtype CFBridgeTo
 }
 
 public extension CFBridging {

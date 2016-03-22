@@ -16,6 +16,14 @@
 
 import Foundation
 
+#if os(Linux)
+    import Glibc
+    public typealias time_spec = Glibc.timespec
+#else
+    import Darwin
+    public typealias time_spec = Darwin.timespec
+#endif
+
 public enum Timeout {
     case Immediate
     case Infinity
@@ -95,3 +103,38 @@ public extension Timeout {
         }
     }
 #endif
+
+public extension Timeout {
+    private static let NSEC_IN_SEC:Double = 1000 * 1000 * 1000
+    
+    public init(timespec:time_spec) {
+        let timeout:Double = Double(timespec.tv_sec) + Double(timespec.tv_nsec) * Timeout.NSEC_IN_SEC
+        self.init(timeout: timeout)
+    }
+    
+    /// Returns the `timespec` representation of this interval
+    public var timespec: time_spec {
+        let interval = self.timeInterval
+        let sec = time_t(interval)
+        let nsec = Int((interval - Double(sec)) * Timeout.NSEC_IN_SEC)
+        return time_spec(tv_sec:sec, tv_nsec: nsec)
+    }
+}
+
+extension Timeout : FloatLiteralConvertible {
+    public init(floatLiteral value: FloatLiteralType) {
+        self.init(timeout: value)
+    }
+}
+
+extension Timeout : NilLiteralConvertible {
+    public init(nilLiteral: ()) {
+        self = .Immediate
+    }
+}
+
+extension Timeout : IntegerLiteralConvertible {
+    public init(integerLiteral value: IntegerLiteralType) {
+        self.init(timeout: Double(value))
+    }
+}

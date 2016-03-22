@@ -16,8 +16,11 @@
 
 import Foundation
 import CoreFoundation
+
 #if os(Linux)
     import Glibc
+#else
+    import Darwin
 #endif
 
 private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>) {
@@ -30,13 +33,16 @@ public class ThreadLocal<T> {
     private let _key:pthread_key_t
     
     public init(value:T? = nil) throws {
-        _key = pthread_key_t()
+        var key = pthread_key_t()
+        
         try ccall(CError.self) {
-            pthread_key_create(&_key, ThreadLocalDestructor)
+            pthread_key_create(&key, ThreadLocalDestructor)
         }
         
+        _key = key
+        
         if let value = value {
-            self.value = value
+            try setValue(value)
         }
     }
     
@@ -85,21 +91,7 @@ private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointe
     return nil
 }
 
-private func detach_pthread(task:SafeTask) throws {
-    var thread:pthread_t = pthread_t()
-    let unmanaged = Unmanaged.passRetained(AnyContainer(task))
-    let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
-    do {
-        try ccall(CError.self) {
-            pthread_create(&thread, nil, thread_proc, arg)
-        }
-    } catch {
-        unmanaged.release()
-        throw error
-    }
-}
-
-public class Thread {
+public class Thread : Equatable {
     public let thread:pthread_t
     
     public init(pthread:pthread_t) {
@@ -107,7 +99,7 @@ public class Thread {
     }
     
     public init(task:SafeTask) throws {
-        self.thread = pthread_t()
+        self.thread = nil
         
         let unmanaged = Unmanaged.passRetained(AnyContainer(task))
         let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
@@ -122,7 +114,7 @@ public class Thread {
     }
     
     public func join() throws -> UnsafeMutablePointer<Void> {
-        var result = UnsafeMutablePointer<Void>()
+        var result:UnsafeMutablePointer<Void> = nil
         try ccall(CError.self) {
             pthread_join(thread, &result)
         }
@@ -148,4 +140,22 @@ public class Thread {
             return Thread(pthread: pthread_self())
         }
     }
+    
+    public static func sleep(timeout:Timeout) -> Timeout? {
+        var time = timeout.timespec
+        return try! ccall(CError.self) { code in
+            var rem:timespec = timespec()
+            let ret = nanosleep(&time, &rem)
+            if ret == CError.INTR {
+                return Timeout(timespec: rem)
+            } else {
+                code = ret
+                return nil
+            }
+        }
+    }
+}
+
+public func ==(lhs:Thread, rhs:Thread) -> Bool {
+    return lhs.thread == rhs.thread
 }
