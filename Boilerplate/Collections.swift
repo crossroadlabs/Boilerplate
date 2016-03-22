@@ -51,7 +51,7 @@ public class ZippedSequence<A, B where A : GeneratorType, B : GeneratorType> : S
     }
     
     public func generate() -> Generator {
-        return anyGenerator {
+        return AnyGenerator {
             guard let a = self.ag.next() else {
                 return nil
             }

@@ -96,7 +96,7 @@ public class Thread : Equatable {
     }
     
     public init(task:SafeTask) throws {
-        self.thread = pthread_t()
+        self.thread = nil
         
         let unmanaged = Unmanaged.passRetained(AnyContainer(task))
         let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
@@ -111,7 +111,7 @@ public class Thread : Equatable {
     }
     
     public func join() throws -> UnsafeMutablePointer<Void> {
-        var result = UnsafeMutablePointer<Void>()
+        var result:UnsafeMutablePointer<Void> = nil
         try ccall(CError.self) {
             pthread_join(thread, &result)
         }
