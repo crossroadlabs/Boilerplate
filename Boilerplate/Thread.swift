@@ -88,20 +88,6 @@ private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointe
     return nil
 }
 
-private func detach_pthread(task:SafeTask) throws {
-    var thread:pthread_t = pthread_t()
-    let unmanaged = Unmanaged.passRetained(AnyContainer(task))
-    let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
-    do {
-        try ccall(CError.self) {
-            pthread_create(&thread, nil, thread_proc, arg)
-        }
-    } catch {
-        unmanaged.release()
-        throw error
-    }
-}
-
 public class Thread : Equatable {
     public let thread:pthread_t
     
