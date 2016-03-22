@@ -33,13 +33,16 @@ public class ThreadLocal<T> {
     private let _key:pthread_key_t
     
     public init(value:T? = nil) throws {
-        _key = pthread_key_t()
+        var key = pthread_key_t()
+        
         try ccall(CError.self) {
-            pthread_key_create(&_key, ThreadLocalDestructor)
+            pthread_key_create(&key, ThreadLocalDestructor)
         }
         
+        _key = key
+        
         if let value = value {
-            self.value = value
+            try setValue(value)
         }
     }
     
