@@ -22,9 +22,19 @@ import Foundation
     public typealias Sequence = SequenceType
     public typealias IteratorProtocol = GeneratorType
     
-    extension Sequence where Generator.Element == String {
+    public extension Sequence where Generator.Element == String {
         public func joined(separator separator: String) -> String {
             return self.joinWithSeparator(separator)
+        }
+    }
+    
+    public extension RandomAccessIndexType {
+        public func advanced(by n: Self.Distance) -> Self {
+            return self.advancedBy(n)
+        }
+        
+        public func advanced(by n: Self.Distance, limit: Self) -> Self {
+            return self.advancedBy(n, limit: limit)
         }
     }
 #endif

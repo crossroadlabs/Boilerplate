@@ -18,4 +18,17 @@ class ShimTests: XCTestCase {
         
         XCTAssertEqual("a|b", joined)
     }
+    
+    func testAdvancedBy() {
+        let array = ["a", "b", "c"]
+        
+        let start = array.startIndex
+        let one = start.advanced(by: 1)
+        let two = start.advanced(by: 2)
+        let twoWithLimit = start.advanced(by:3, limit: 2)
+        
+        XCTAssertEqual(one, 1)
+        XCTAssertEqual(two, 2)
+        XCTAssertEqual(twoWithLimit, two)
+    }
 }
