@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0720"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65E266F41C8AE09800E0DD70"
-               BuildableName = "Boilerplate.framework"
-               BlueprintName = "Boilerplate"
+               BlueprintIdentifier = "65148EE61CA2D7850098D557"
+               BuildableName = "Boilerplate-iOS.framework"
+               BlueprintName = "Boilerplate-iOS"
                ReferencedContainer = "container:Boilerplate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -32,9 +32,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65E266FE1C8AE09800E0DD70"
-               BuildableName = "BoilerplateTests.xctest"
-               BlueprintName = "BoilerplateTests"
+               BlueprintIdentifier = "65148EEF1CA2D7850098D557"
+               BuildableName = "BoilerplateTests-iOS.xctest"
+               BlueprintName = "BoilerplateTests-iOS"
                ReferencedContainer = "container:Boilerplate.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -42,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65E266F41C8AE09800E0DD70"
-            BuildableName = "Boilerplate.framework"
-            BlueprintName = "Boilerplate"
+            BlueprintIdentifier = "65148EE61CA2D7850098D557"
+            BuildableName = "Boilerplate-iOS.framework"
+            BlueprintName = "Boilerplate-iOS"
             ReferencedContainer = "container:Boilerplate.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -64,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65E266F41C8AE09800E0DD70"
-            BuildableName = "Boilerplate.framework"
-            BlueprintName = "Boilerplate"
+            BlueprintIdentifier = "65148EE61CA2D7850098D557"
+            BuildableName = "Boilerplate-iOS.framework"
+            BlueprintName = "Boilerplate-iOS"
             ReferencedContainer = "container:Boilerplate.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -82,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65E266F41C8AE09800E0DD70"
-            BuildableName = "Boilerplate.framework"
-            BlueprintName = "Boilerplate"
+            BlueprintIdentifier = "65148EE61CA2D7850098D557"
+            BuildableName = "Boilerplate-iOS.framework"
+            BlueprintName = "Boilerplate-iOS"
             ReferencedContainer = "container:Boilerplate.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
