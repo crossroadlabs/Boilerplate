@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65147C0F1CA2D50D0085C575 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65147C0E1CA2D50D0085C575 /* String.swift */; };
 		6520A0231C8C511F002E0842 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520A0221C8C511F002E0842 /* Collections.swift */; };
 		6520A0251C8C5771002E0842 /* CollectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520A0241C8C5771002E0842 /* CollectionsTests.swift */; };
 		6520A0271C8C6253002E0842 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520A0261C8C6253002E0842 /* Equatable.swift */; };
@@ -56,6 +57,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		65147C0E1CA2D50D0085C575 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		6520A0221C8C511F002E0842 /* Collections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
 		6520A0241C8C5771002E0842 /* CollectionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsTests.swift; sourceTree = "<group>"; };
 		6520A0261C8C6253002E0842 /* Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatable.swift; sourceTree = "<group>"; };
@@ -145,6 +147,7 @@
 				658C31671C8DAFA8009CCC7A /* Time.swift */,
 				658C316D1C8DD164009CCC7A /* Thread.swift */,
 				653FF6DC1C8EF40900A3BF90 /* Task.swift */,
+				65147C0E1CA2D50D0085C575 /* String.swift */,
 			);
 			path = Boilerplate;
 			sourceTree = "<group>";
@@ -273,6 +276,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				65465E551C8B3AC00080BAAE /* AnyContainer.swift in Sources */,
+				65147C0F1CA2D50D0085C575 /* String.swift in Sources */,
 				65E267121C8AE4A200E0DD70 /* NSBridging.swift in Sources */,
 				658C316E1C8DD164009CCC7A /* Thread.swift in Sources */,
 				658C31681C8DAFA8009CCC7A /* Time.swift in Sources */,

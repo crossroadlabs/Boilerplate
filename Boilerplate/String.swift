@@ -1,4 +1,4 @@
-//===--- CFBridging.swift ------------------------------------------------------===//
+//===--- String.swift ------------------------------------------------------===//
 //Copyright (c) 2016 Daniel Leping (dileping)
 //
 //Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,24 +15,22 @@
 //===----------------------------------------------------------------------===//
 
 import Foundation
-import CoreFoundation
 
-public protocol CFBridging : NSBridging {
-    associatedtype CFBridgeTo
-}
-
-public extension CFBridging {
-    public var cf:CFBridgeTo {
-        get {
-            #if swift(>=3.0)
-                return unsafeBitCast(self.ns, to: CFBridgeTo.self)
-            #else
-                return unsafeBitCast(self.ns, CFBridgeTo.self)
-            #endif
+#if swift(>=3.0)
+    
+    //use using older version compatibility because of Swift 2.2 naming limitations
+    public extension String {
+        public func substringFromIndex(index: Index) -> String {
+            return substring(from: index)
+        }
+        
+        public func substringToIndex(index: Index) -> String {
+            return substring(to: index)
+        }
+        
+        public func substringWithRange(range: Range<String.Index>) -> String {
+            return substring(with: range)
         }
     }
-}
-
-extension String : CFBridging {
-    public typealias CFBridgeTo = CFString
-}
+    
+#endif

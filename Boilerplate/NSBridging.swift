@@ -59,10 +59,18 @@ public func isNoBridge<NSType : NSObject>(any:Any, type:NSType.Type) -> Bool {
         return (any as? AnyObject).map {$0 is NSType} ?? false
     #else
         let anyType = any.dynamicType
-        switch anyType {
-        case let anyClass as AnyClass: return anyClass.isSubclassOfClass(type)
-        default: return false
-        }
+        
+        #if swift(>=3.0)
+            switch anyType {
+            case let anyClass as AnyClass: return anyClass.isSubclass(of: type)
+            default: return false
+            }
+        #else
+            switch anyType {
+            case let anyClass as AnyClass: return anyClass.isSubclassOfClass(type)
+            default: return false
+            }
+        #endif
     #endif
 }
 

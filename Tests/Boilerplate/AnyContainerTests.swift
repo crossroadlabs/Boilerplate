@@ -26,6 +26,8 @@ class AnyContainerTests: XCTestCase {
         }
         
         XCTAssertEqual((container^)!.substringFromIndex("string".startIndex.successor()), "tring")
+        
+        XCTAssertEqual((container^)!.substringFromIndex("string".startIndex.successor()), "tring")
         XCTAssertEqual(container^!!.substringFromIndex("string".startIndex.successor()), "tring")
         
         XCTAssertNotNil(container^)
