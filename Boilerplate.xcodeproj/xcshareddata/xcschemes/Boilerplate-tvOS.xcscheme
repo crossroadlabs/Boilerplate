@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "65148F2C1CA2DA2D0098D557"
-               BuildableName = "Boilerplate.framework"
-               BlueprintName = "Boilerplate-watchOS"
+               BlueprintIdentifier = "65148F471CA2DB310098D557"
+               BuildableName = "Boilerplate-tvOS.framework"
+               BlueprintName = "Boilerplate-tvOS"
                ReferencedContainer = "container:Boilerplate.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "65148F501CA2DB310098D557"
+               BuildableName = "BoilerplateTests-tvOS.xctest"
+               BlueprintName = "BoilerplateTests-tvOS"
+               ReferencedContainer = "container:Boilerplate.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "65148F471CA2DB310098D557"
+            BuildableName = "Boilerplate-tvOS.framework"
+            BlueprintName = "Boilerplate-tvOS"
+            ReferencedContainer = "container:Boilerplate.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -45,9 +64,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65148F2C1CA2DA2D0098D557"
-            BuildableName = "Boilerplate.framework"
-            BlueprintName = "Boilerplate-watchOS"
+            BlueprintIdentifier = "65148F471CA2DB310098D557"
+            BuildableName = "Boilerplate-tvOS.framework"
+            BlueprintName = "Boilerplate-tvOS"
             ReferencedContainer = "container:Boilerplate.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,9 +82,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "65148F2C1CA2DA2D0098D557"
-            BuildableName = "Boilerplate.framework"
-            BlueprintName = "Boilerplate-watchOS"
+            BlueprintIdentifier = "65148F471CA2DB310098D557"
+            BuildableName = "Boilerplate-tvOS.framework"
+            BlueprintName = "Boilerplate-tvOS"
             ReferencedContainer = "container:Boilerplate.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
