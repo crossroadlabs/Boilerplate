@@ -16,8 +16,19 @@
 
 import Foundation
 
-public protocol CopyableCollectionType : CollectionType {
-    init<C : SequenceType where C.Generator.Element == Generator.Element>(_ s:C)
+#if swift(>=3.0)
+#else
+    public typealias Collection = CollectionType
+    public typealias Sequence = SequenceType
+    public typealias IteratorProtocol = GeneratorType
+#endif
+
+public protocol CopyableCollectionType : Collection {
+    #if swift(>=3.0)
+    init<C : Sequence where C.Iterator.Element == Iterator.Element>(_ s:C)
+    #else
+    init<C : Sequence where C.Generator.Element == Generator.Element>(_ s:C)
+    #endif
 }
 
 extension Array : CopyableCollectionType {
@@ -39,8 +50,13 @@ public extension CopyableCollectionType {
     }
 }
 
-public class ZippedSequence<A, B where A : GeneratorType, B : GeneratorType> : SequenceType {
+public class ZippedSequence<A, B where A : IteratorProtocol, B : IteratorProtocol> : Sequence {
+    #if swift(>=3.0)
+    public typealias Iterator = AnyIterator<(A.Element, B.Element)>
+    #else
     public typealias Generator = AnyGenerator<(A.Element, B.Element)>
+    public typealias Iterator = Generator
+    #endif
     
     var ag:A
     var bg:B
@@ -50,8 +66,16 @@ public class ZippedSequence<A, B where A : GeneratorType, B : GeneratorType> : S
         self.bg = bg
     }
     
+    
+    #if swift(>=3.0)
+    #else
     public func generate() -> Generator {
-        return AnyGenerator {
+        return makeIterator()
+    }
+    #endif
+    
+    public func makeIterator() -> Iterator {
+        return Iterator {
             guard let a = self.ag.next() else {
                 return nil
             }
@@ -64,8 +88,16 @@ public class ZippedSequence<A, B where A : GeneratorType, B : GeneratorType> : S
     }
 }
 
-public extension SequenceType {
-    public func zip<T : SequenceType>(other:T) -> ZippedSequence<Generator, T.Generator> {
-        return ZippedSequence(ag: self.generate(), bg: other.generate())
+#if swift(>=3.0)
+    public extension Sequence {
+        public func zip<T : Sequence>(other:T) -> ZippedSequence<Iterator, T.Iterator> {
+            return ZippedSequence(ag: self.makeIterator(), bg: other.makeIterator())
+        }
     }
-}
+#else
+    public extension Sequence {
+        public func zip<T : Sequence>(other:T) -> ZippedSequence<Generator, T.Generator> {
+            return ZippedSequence(ag: self.generate(), bg: other.generate())
+        }
+    }
+#endif

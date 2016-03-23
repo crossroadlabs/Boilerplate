@@ -23,9 +23,20 @@ import CoreFoundation
     import Darwin
 #endif
 
+#if swift(>=3.0)
+#else
+    public typealias OpaquePointer = COpaquePointer
+    
+    public extension OpaquePointer {
+        public init<T>(bitPattern:Unmanaged<T>) {
+            self = bitPattern.toOpaque()
+        }
+    }
+#endif
+
 private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>) {
     if pointer != nil {
-        Unmanaged<AnyObject>.fromOpaque(COpaquePointer(pointer)).release()
+        Unmanaged<AnyObject>.fromOpaque(OpaquePointer(pointer)).release()
     }
 }
 
@@ -58,7 +69,7 @@ public class ThreadLocal<T> {
         
         do {
             let pointer = unmanaged.map { unmanaged in
-                UnsafeMutablePointer<Void>(unmanaged.toOpaque())
+                UnsafeMutablePointer<Void>(OpaquePointer(bitPattern: unmanaged))
                 }.getOrElse(nil)
             try ccall(CError.self) {
                 pthread_setspecific(_key, pointer)
@@ -75,7 +86,7 @@ public class ThreadLocal<T> {
             if pointer == nil {
                 return nil
             }
-            let container:AnyContainer<T> = Unmanaged.fromOpaque(COpaquePointer(pointer)).takeUnretainedValue()
+            let container:AnyContainer<T> = Unmanaged.fromOpaque(OpaquePointer(pointer)).takeUnretainedValue()
             return container.content
         }
         set {
@@ -86,7 +97,7 @@ public class ThreadLocal<T> {
 }
 
 private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void> {
-    let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(COpaquePointer(arg)).takeRetainedValue()
+    let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(OpaquePointer(arg)).takeRetainedValue()
     task.content()
     return nil
 }
@@ -102,7 +113,7 @@ public class Thread : Equatable {
         self.thread = nil
         
         let unmanaged = Unmanaged.passRetained(AnyContainer(task))
-        let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
+        let arg = UnsafeMutablePointer<Void>(OpaquePointer(bitPattern: unmanaged))
         do {
             try ccall(CError.self) {
                 pthread_create(&thread, nil, thread_proc, arg)
