@@ -117,9 +117,7 @@
 		65148F1B1CA2D8B00098D557 /* BD75DA74-40CF-382C-8F35-F52AC85A183A.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BD75DA74-40CF-382C-8F35-F52AC85A183A.bcsymbolmap"; sourceTree = "<group>"; };
 		65148F1C1CA2D8B00098D557 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		65148F1D1CA2D8B00098D557 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Result.framework.dSYM; sourceTree = "<group>"; };
-		65148F1F1CA2D8B00098D557 /* FFAB6BA7-D9BD-3C5D-9EC1-1BEA42B5171C.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "FFAB6BA7-D9BD-3C5D-9EC1-1BEA42B5171C.bcsymbolmap"; sourceTree = "<group>"; };
 		65148F201CA2D8B00098D557 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
-		65148F211CA2D8B00098D557 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Result.framework.dSYM; sourceTree = "<group>"; };
 		65148F2D1CA2DA2D0098D557 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6520A0221C8C511F002E0842 /* Collections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
 		6520A0241C8C5771002E0842 /* CollectionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsTests.swift; sourceTree = "<group>"; };
@@ -231,9 +229,7 @@
 		65148F1E1CA2D8B00098D557 /* watchOS */ = {
 			isa = PBXGroup;
 			children = (
-				65148F1F1CA2D8B00098D557 /* FFAB6BA7-D9BD-3C5D-9EC1-1BEA42B5171C.bcsymbolmap */,
 				65148F201CA2D8B00098D557 /* Result.framework */,
-				65148F211CA2D8B00098D557 /* Result.framework.dSYM */,
 			);
 			path = watchOS;
 			sourceTree = "<group>";
