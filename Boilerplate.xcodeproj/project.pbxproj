@@ -98,12 +98,8 @@
 		65147C0E1CA2D50D0085C575 /* String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		65148EE71CA2D7850098D557 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65148EF01CA2D7850098D557 /* BoilerplateTests-iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BoilerplateTests-iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		65148F131CA2D8B00098D557 /* E0B43604-43EA-3E2B-B8C6-07AB2590D6DC.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "E0B43604-43EA-3E2B-B8C6-07AB2590D6DC.bcsymbolmap"; sourceTree = "<group>"; };
-		65148F141CA2D8B00098D557 /* E366C4B1-8AB2-3D09-9794-E9A434DD1DD4.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "E366C4B1-8AB2-3D09-9794-E9A434DD1DD4.bcsymbolmap"; sourceTree = "<group>"; };
 		65148F151CA2D8B00098D557 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
-		65148F161CA2D8B00098D557 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Result.framework.dSYM; sourceTree = "<group>"; };
 		65148F181CA2D8B00098D557 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
-		65148F191CA2D8B00098D557 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Result.framework.dSYM; sourceTree = "<group>"; };
 		65148F1B1CA2D8B00098D557 /* BD75DA74-40CF-382C-8F35-F52AC85A183A.bcsymbolmap */ = {isa = PBXFileReference; lastKnownFileType = text; path = "BD75DA74-40CF-382C-8F35-F52AC85A183A.bcsymbolmap"; sourceTree = "<group>"; };
 		65148F1C1CA2D8B00098D557 /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		65148F1D1CA2D8B00098D557 /* Result.framework.dSYM */ = {isa = PBXFileReference; lastKnownFileType = wrapper.dsym; path = Result.framework.dSYM; sourceTree = "<group>"; };
@@ -186,10 +182,7 @@
 		65148F121CA2D8B00098D557 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				65148F131CA2D8B00098D557 /* E0B43604-43EA-3E2B-B8C6-07AB2590D6DC.bcsymbolmap */,
-				65148F141CA2D8B00098D557 /* E366C4B1-8AB2-3D09-9794-E9A434DD1DD4.bcsymbolmap */,
 				65148F151CA2D8B00098D557 /* Result.framework */,
-				65148F161CA2D8B00098D557 /* Result.framework.dSYM */,
 			);
 			path = iOS;
 			sourceTree = "<group>";
@@ -198,7 +191,6 @@
 			isa = PBXGroup;
 			children = (
 				65148F181CA2D8B00098D557 /* Result.framework */,
-				65148F191CA2D8B00098D557 /* Result.framework.dSYM */,
 			);
 			path = Mac;
 			sourceTree = "<group>";
@@ -793,6 +785,7 @@
 				65148EFA1CA2D7850098D557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65148EFB1CA2D7850098D557 /* Build configuration list for PBXNativeTarget "BoilerplateTests-iOS" */ = {
 			isa = XCConfigurationList;
@@ -801,6 +794,7 @@
 				65148EFD1CA2D7850098D557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65E266EF1C8AE09800E0DD70 /* Build configuration list for PBXProject "Boilerplate" */ = {
 			isa = XCConfigurationList;
