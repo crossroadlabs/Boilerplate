@@ -88,6 +88,7 @@
 		65E267141C8AE64F00E0DD70 /* CFBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267131C8AE64F00E0DD70 /* CFBridging.swift */; };
 		65E267161C8B00DA00E0DD70 /* OptionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267151C8B00DA00E0DD70 /* OptionalTests.swift */; };
 		65E267181C8B036A00E0DD70 /* NSBridgingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267171C8B036A00E0DD70 /* NSBridgingTests.swift */; };
+		65F444F31CA2DF4100BB7E26 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 65148F181CA2D8B00098D557 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -143,6 +144,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				65F444F31CA2DF4100BB7E26 /* Result.framework in Copy Frameworks */,
 			);
 			name = "Copy Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1176,6 +1178,7 @@
 				65148F341CA2DA2D0098D557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65148F591CA2DB310098D557 /* Build configuration list for PBXNativeTarget "Boilerplate-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1184,6 +1187,7 @@
 				65148F5B1CA2DB310098D557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65148F5C1CA2DB310098D557 /* Build configuration list for PBXNativeTarget "BoilerplateTests-tvOS" */ = {
 			isa = XCConfigurationList;
@@ -1192,6 +1196,7 @@
 				65148F5E1CA2DB310098D557 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		65E266EF1C8AE09800E0DD70 /* Build configuration list for PBXProject "Boilerplate" */ = {
 			isa = XCConfigurationList;
