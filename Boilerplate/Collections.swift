@@ -21,6 +21,12 @@ import Foundation
     public typealias Collection = CollectionType
     public typealias Sequence = SequenceType
     public typealias IteratorProtocol = GeneratorType
+    
+    extension Sequence where Generator.Element == String {
+        public func joined(separator separator: String) -> String {
+            return self.joinWithSeparator(separator)
+        }
+    }
 #endif
 
 public protocol CopyableCollectionType : Collection {
