@@ -44,7 +44,7 @@ class ShimTests: XCTestCase {
         
         XCTAssertEqual(array, ["a", "b", "c", "e"])
         
-        array.insert("d", atIndex: 3)
+        array.insert("d", at: 3)
         
         XCTAssertEqual(array, ["a", "b", "c", "d", "e"])
         

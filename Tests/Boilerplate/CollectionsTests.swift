@@ -25,7 +25,7 @@ class CollectionsTests: XCTestCase {
         
         let ss = reference.startIndex
         
-        ss.advancedBy(1)
+        ss.advanced(by: 1)
         
         XCTAssertEqual(array, reference)
     }

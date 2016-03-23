@@ -17,21 +17,20 @@
 import Foundation
 
 #if swift(>=3.0)
-    //use using older version compatibility because of Swift 2.2 naming limitations
+#else
     public extension String {
-        public func substringFromIndex(index: Index) -> String {
-            return substring(from: index)
+        public func substring(from index: Index) -> String {
+            return substringFromIndex(index)
         }
         
-        public func substringToIndex(index: Index) -> String {
-            return substring(to: index)
+        public func substring(to index: Index) -> String {
+            return substringToIndex(index)
         }
         
-        public func substringWithRange(range: Range<String.Index>) -> String {
-            return substring(with: range)
+        public func substring(with range: Range<String.Index>) -> String {
+            return substringWithRange(range)
         }
     }
-#else
     
     public extension String {
     
