@@ -28,7 +28,7 @@ import Foundation
         }
     }
     
-    public extension RandomAccessIndexType {
+    public extension BidirectionalIndexType {
         public func advanced(by n: Self.Distance) -> Self {
             return self.advancedBy(n)
         }

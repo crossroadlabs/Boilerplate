@@ -30,5 +30,10 @@ class ShimTests: XCTestCase {
         XCTAssertEqual(one, 1)
         XCTAssertEqual(two, 2)
         XCTAssertEqual(twoWithLimit, two)
+        
+        let string = "string"
+        
+        let withLimit = string.startIndex.advanced(by:10, limit: string.endIndex)
+        XCTAssertEqual(withLimit, string.endIndex)
     }
 }
