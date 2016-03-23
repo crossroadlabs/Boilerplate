@@ -17,7 +17,6 @@
 import Foundation
 
 #if swift(>=3.0)
-    
     //use using older version compatibility because of Swift 2.2 naming limitations
     public extension String {
         public func substringFromIndex(index: Index) -> String {
@@ -31,6 +30,25 @@ import Foundation
         public func substringWithRange(range: Range<String.Index>) -> String {
             return substring(with: range)
         }
+    }
+#else
+    
+    public extension String {
+    
+        /// Return `self` converted to lower case.
+        ///
+        /// - Complexity: O(n)
+        public func lowercased() -> String {
+            return lowercaseString
+        }
+    
+        /// Return `self` converted to upper case.
+        ///
+        /// - Complexity: O(n)
+        public func uppercased() -> String {
+            return uppercaseString
+        }
+    
     }
     
 #endif
