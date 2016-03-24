@@ -38,4 +38,11 @@ class TimeTests : XCTestCase {
         XCTAssertEqual(Timeout.In(timeout: 0).timeInterval, Timeout.Immediate.timeInterval)
     }
     
+    func testTimeoutDate() {
+        let to1 = Timeout.Infinity
+        XCTAssertEqual(to1.timeSinceNow(), NSDate.distantFuture())
+        
+        
+    }
+    
 }
