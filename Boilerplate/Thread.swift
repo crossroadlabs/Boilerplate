@@ -23,17 +23,6 @@ import CoreFoundation
     import Darwin
 #endif
 
-#if swift(>=3.0)
-#else
-    public typealias OpaquePointer = COpaquePointer
-    
-    public extension OpaquePointer {
-        public init<T>(bitPattern:Unmanaged<T>) {
-            self = bitPattern.toOpaque()
-        }
-    }
-#endif
-
 private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>) {
     if pointer != nil {
         Unmanaged<AnyObject>.fromOpaque(OpaquePointer(pointer)).release()
