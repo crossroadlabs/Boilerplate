@@ -157,5 +157,5 @@ public class Thread : Equatable {
 }
 
 public func ==(lhs:Thread, rhs:Thread) -> Bool {
-    return lhs.thread == rhs.thread
+    return pthread_equal(lhs.thread, rhs.thread) != 0
 }
