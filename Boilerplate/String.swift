@@ -50,4 +50,47 @@ import Foundation
     
     }
     
+    extension String {
+    
+        /// Create a new `String` by copying the nul-terminated UTF-8 data
+        /// referenced by a `cString`.
+        ///
+        /// If `cString` contains ill-formed UTF-8 code unit sequences, replaces them
+        /// with replacement characters (U+FFFD).
+        ///
+        /// - Precondition: `cString != nil`
+        public init(cString: UnsafePointer<CChar>) {
+            //should crash???
+            self = String.fromCStringRepairingIllFormedUTF8(cString).0 ?? ""
+        }
+    
+        /// Create a new `String` by copying the nul-terminated UTF-8 data
+        /// referenced by a `cString`.
+        ///
+        /// Does not try to repair ill-formed UTF-8 code unit sequences, fails if any
+        /// such sequences are found.
+        ///
+        /// - Precondition: `cString != nil`
+        public init?(validatingUTF8 cString: UnsafePointer<CChar>) {
+            if cString == nil {
+                return nil
+            } else {
+                guard let string = String.fromCString(cString) else {
+                    return nil
+                }
+                self = string
+            }
+        }
+    
+        /// Create a new `String` by copying the nul-terminated data
+        /// referenced by a `cString` using `encoding`.
+        ///
+        /// Returns `nil` if the `cString` is `NULL` or if it contains ill-formed code
+        /// units and no repairing has been requested. Otherwise replaces
+        /// ill-formed code units with replacement characters (U+FFFD).
+        /*public static func decodeCString<Encoding : UnicodeCodec>(cString: UnsafePointer<Encoding.CodeUnit>, as encoding: Encoding.Type, repairingInvalidCodeUnits isRepairing: Bool = false) -> (result: String, repairsMade: Bool)? {
+        //Too much work for now
+        }*/
+    }
+    
 #endif
