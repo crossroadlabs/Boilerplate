@@ -43,7 +43,7 @@ import Foundation
         ///
         /// - Complexity: O(*length of result*).
         public mutating func append<S : Sequence where S.Generator.Element == Element>(contentsOf newElements: S) {
-            return self.appendContentsOf(newElements)
+            self.appendContentsOf(newElements)
         }
         
         /// Append the elements of `newElements` to `self`.
@@ -52,6 +52,10 @@ import Foundation
         //public mutating func append<C : Collection where C.Generator.Element == Element>(contentsOf newElements: C) {
         //    return self.appendContentsOf(newElements)
         //}
+        
+        public mutating func insert<C : Collection where C.Generator.Element == Element>(contentsOf newElements: C, at i: Int) {
+            self.insertContentsOf(newElements, at: i)
+        }
         
         /// Insert `newElement` at index `i`.
         ///
