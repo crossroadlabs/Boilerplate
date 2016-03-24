@@ -101,4 +101,26 @@ class ShimTests: XCTestCase {
         XCTAssertEqual(hello.uppercased(), "HELLO")
         XCTAssertEqual(hello.lowercased(), "hello")
     }
+    
+    func testStringSubstring() {
+        let hello = "Hello, World!"
+        XCTAssertEqual(hello.substring(with:hello.startIndex.advanced(by:3)..<hello.endIndex.advanced(by:-3)), "lo, Wor")
+        XCTAssertEqual(hello.substring(from:hello.startIndex.advanced(by:3)), "lo, World!")
+        XCTAssertEqual(hello.substring(to:hello.endIndex.advanced(by:-3)), "Hello, Wor")
+    }
 }
+
+#if os(Linux)
+extension ShimTests {
+	static var allTests : [(String, ShimTests -> () throws -> Void)] {
+		return [
+			("testSequenseJoin", testSequenseJoin),
+			("testAdvancedBy", testAdvancedBy),
+			("testArrayMutation", testArrayMutation),
+			("testCollectionPrefixes", testCollectionPrefixes),
+			("testStringCase", testStringCase),
+			("testStringSubstring", testStringSubstring),
+		]
+	}
+}
+#endif

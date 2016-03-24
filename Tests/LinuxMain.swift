@@ -1,12 +1,13 @@
 import XCTest
 
-@testable import Boilerplatetest
+@testable import BoilerplateTestSuite
 
 XCTMain([
-	NSBridgingTests(),
-	OptionalTests(),
-	ContainerTests(),
-	AnyContainerTests(),
-	CollectionsTests(),
-	EquatableTests(),
+	testCase(AnyContainerTests.allTests),
+	testCase(CollectionsTests.allTests),
+	testCase(ContainerTests.allTests),
+	testCase(EquatableTests.allTests),
+	testCase(NSBridgingTests.allTests),
+	testCase(OptionalTests.allTests),
+	testCase(ShimTests.allTests),
 ])
