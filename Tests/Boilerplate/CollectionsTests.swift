@@ -23,6 +23,10 @@ class CollectionsTests: XCTestCase {
         let reference = ["one", "two", "three"]
         let array = Array(enumerator: enumerateSome)
         
+        let ss = reference.startIndex
+        
+        ss.advanced(by: 1)
+        
         XCTAssertEqual(array, reference)
     }
 }

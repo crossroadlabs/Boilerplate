@@ -24,7 +24,11 @@ public protocol CFBridging : NSBridging {
 public extension CFBridging {
     public var cf:CFBridgeTo {
         get {
-            return unsafeBitCast(self.ns, CFBridgeTo.self)
+            #if swift(>=3.0)
+                return unsafeBitCast(self.ns, to: CFBridgeTo.self)
+            #else
+                return unsafeBitCast(self.ns, CFBridgeTo.self)
+            #endif
         }
     }
 }

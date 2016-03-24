@@ -16,8 +16,121 @@
 
 import Foundation
 
-public protocol CopyableCollectionType : CollectionType {
-    init<C : SequenceType where C.Generator.Element == Generator.Element>(_ s:C)
+#if swift(>=3.0)
+#else
+    public typealias Collection = CollectionType
+    public typealias Sequence = SequenceType
+    public typealias IteratorProtocol = GeneratorType
+    
+    public extension Sequence where Generator.Element == String {
+        public func joined(separator separator: String) -> String {
+            return self.joinWithSeparator(separator)
+        }
+    }
+    
+    public extension BidirectionalIndexType {
+        public func advanced(by n: Self.Distance) -> Self {
+            return self.advancedBy(n)
+        }
+        
+        public func advanced(by n: Self.Distance, limit: Self) -> Self {
+            return self.advancedBy(n, limit: limit)
+        }
+    }
+    
+    extension Array {
+        /// Append the elements of `newElements` to `self`.
+        ///
+        /// - Complexity: O(*length of result*).
+        public mutating func append<S : Sequence where S.Generator.Element == Element>(contentsOf newElements: S) {
+            return self.appendContentsOf(newElements)
+        }
+        
+        /// Append the elements of `newElements` to `self`.
+        ///
+        /// - Complexity: O(*length of result*).
+        //public mutating func append<C : Collection where C.Generator.Element == Element>(contentsOf newElements: C) {
+        //    return self.appendContentsOf(newElements)
+        //}
+        
+        /// Insert `newElement` at index `i`.
+        ///
+        /// - Precondition: `i <= count`.
+        ///
+        /// - Complexity: O(`self.count`).
+        public mutating func insert(newElement: Element, at i: Int) {
+            return self.insert(newElement, atIndex: i)
+        }
+        
+        /// Remove and return the element at index `i`.
+        ///
+        /// Invalidates all indices with respect to `self`.
+        ///
+        /// - Complexity: O(`self.count`).
+        public mutating func remove(at index: Int) -> Element {
+            return self.removeAtIndex(index)
+        }
+        
+        /// Remove all elements.
+        ///
+        /// - Postcondition: `capacity == 0` iff `keepCapacity` is `false`.
+        ///
+        /// - Complexity: O(`self.count`).
+        public mutating func removeAll(keepingCapacity keepCapacity: Bool) {
+            return self.removeAll(keepCapacity: keepCapacity)
+        }
+    }
+    
+    extension Collection {
+        /// Returns `self[startIndex..<end]`
+        ///
+        /// - Complexity: O(1)
+        public func prefix(upTo end: Self.Index) -> Self.SubSequence {
+            return self.prefixUpTo(end)
+        }
+        
+        /// Returns `self[start..<endIndex]`
+        ///
+        /// - Complexity: O(1)
+        public func suffix(from start: Self.Index) -> Self.SubSequence {
+            return self.suffixFrom(start)
+        }
+        
+        /// Returns `prefix(upTo: position.successor())`
+        ///
+        /// - Complexity: O(1)
+        public func prefix(through position: Self.Index) -> Self.SubSequence {
+            return self.prefixThrough(position)
+        }
+        
+        /// Returns the maximal `SubSequence`s of `self`, in order, that
+        /// don't contain elements satisfying the predicate `isSeparator`.
+        ///
+        /// - Parameter maxSplits: The maximum number of `SubSequence`s to
+        ///   return, minus 1.
+        ///   If `maxSplits + 1` `SubSequence`s are returned, the last one is
+        ///   a suffix of `self` containing *all* the elements of `self` following the
+        ///   last split point.
+        ///   The default value is `Int.max`.
+        ///
+        /// - Parameter omittingEmptySubsequences: If `false`, an empty `SubSequence`
+        ///   is produced in the result for each pair of consecutive elements
+        ///   satisfying `isSeparator`.
+        ///   The default value is `true`.
+        ///
+        /// - Precondition: `maxSplits >= 0`
+        public func split(maxSplits maxSplits: Int = Int.max, omittingEmptySubsequences: Bool, @noescape isSeparator: (Self.Generator.Element) throws -> Bool) rethrows -> [Self.SubSequence] {
+            return try self.split(maxSplits, allowEmptySlices: !omittingEmptySubsequences, isSeparator: isSeparator)
+        }
+    }
+#endif
+
+public protocol CopyableCollectionType : Collection {
+    #if swift(>=3.0)
+    init<C : Sequence where C.Iterator.Element == Iterator.Element>(_ s:C)
+    #else
+    init<C : Sequence where C.Generator.Element == Generator.Element>(_ s:C)
+    #endif
 }
 
 extension Array : CopyableCollectionType {
@@ -39,8 +152,13 @@ public extension CopyableCollectionType {
     }
 }
 
-public class ZippedSequence<A, B where A : GeneratorType, B : GeneratorType> : SequenceType {
+public class ZippedSequence<A, B where A : IteratorProtocol, B : IteratorProtocol> : Sequence {
+    #if swift(>=3.0)
+    public typealias Iterator = AnyIterator<(A.Element, B.Element)>
+    #else
     public typealias Generator = AnyGenerator<(A.Element, B.Element)>
+    public typealias Iterator = Generator
+    #endif
     
     var ag:A
     var bg:B
@@ -50,8 +168,16 @@ public class ZippedSequence<A, B where A : GeneratorType, B : GeneratorType> : S
         self.bg = bg
     }
     
+    
+    #if swift(>=3.0)
+    #else
     public func generate() -> Generator {
-        return AnyGenerator {
+        return makeIterator()
+    }
+    #endif
+    
+    public func makeIterator() -> Iterator {
+        return Iterator {
             guard let a = self.ag.next() else {
                 return nil
             }
@@ -64,8 +190,16 @@ public class ZippedSequence<A, B where A : GeneratorType, B : GeneratorType> : S
     }
 }
 
-public extension SequenceType {
-    public func zip<T : SequenceType>(other:T) -> ZippedSequence<Generator, T.Generator> {
-        return ZippedSequence(ag: self.generate(), bg: other.generate())
+#if swift(>=3.0)
+    public extension Sequence {
+        public func zip<T : Sequence>(other:T) -> ZippedSequence<Iterator, T.Iterator> {
+            return ZippedSequence(ag: self.makeIterator(), bg: other.makeIterator())
+        }
     }
-}
+#else
+    public extension Sequence {
+        public func zip<T : Sequence>(other:T) -> ZippedSequence<Generator, T.Generator> {
+            return ZippedSequence(ag: self.generate(), bg: other.generate())
+        }
+    }
+#endif

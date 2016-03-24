@@ -19,20 +19,22 @@ class AnyContainerTests: XCTestCase {
         
         XCTAssertEqual(container.content, "string")
         do {
-            let string = try container^!.substringToIndex("string".startIndex.successor())
+            let string = try container^!.substring(to: "string".startIndex.successor())
             XCTAssertEqual(string, "s")
         } catch {
             XCTFail("Can not throw really")
         }
         
-        XCTAssertEqual((container^)!.substringFromIndex("string".startIndex.successor()), "tring")
-        XCTAssertEqual(container^!!.substringFromIndex("string".startIndex.successor()), "tring")
+        XCTAssertEqual((container^)!.substring(from: "string".startIndex.successor()), "tring")
+        
+        XCTAssertEqual((container^)!.substring(from: "string".startIndex.successor()), "tring")
+        XCTAssertEqual(container^!!.substring(from: "string".startIndex.successor()), "tring")
         
         XCTAssertNotNil(container^)
         
-        XCTAssertEqual(container^.map{$0.substringToIndex("string".endIndex.predecessor())} ?? "wtf", "strin")
+        XCTAssertEqual(container^.map{$0.substring(to: "string".endIndex.predecessor())} ?? "wtf", "strin")
         
-        XCTAssertEqual((container^)?.substringFromIndex("string".endIndex.predecessor()) ?? "wtf", "g")
+        XCTAssertEqual((container^)?.substring(from: "string".endIndex.predecessor()) ?? "wtf", "g")
         
         container^%.analysis(ifSuccess: { value -> Result<String, AnyError> in
             XCTAssertEqual("string", value)

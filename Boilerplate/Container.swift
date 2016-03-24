@@ -55,7 +55,7 @@ public postfix func ^%<A, T : ContainerType where T.Value == A>(container:T) -> 
 }
 
 public protocol ContainerWithErrorType : ContainerType {
-    associatedtype Error : ErrorType
+    associatedtype Error : ErrorProtocol
     
     func withdrawResult() -> Result<Value, Error>
 }
@@ -66,12 +66,12 @@ public extension ContainerWithErrorType {
     }
 }
 
-public extension ContainerWithErrorType where Error : AnyErrorType {
+public extension ContainerWithErrorType where Error : AnyErrorProtocol {
     func withdraw() throws -> Value {
         return try withdrawResult().dematerializeAny()
     }
 }
 
-public postfix func ^%<A, E : ErrorType, T : ContainerWithErrorType where T.Value == A, T.Error == E>(container:T) -> Result<A, E> {
+public postfix func ^%<A, E : ErrorProtocol, T : ContainerWithErrorType where T.Value == A, T.Error == E>(container:T) -> Result<A, E> {
     return container.withdrawResult()
 }
