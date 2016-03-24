@@ -42,7 +42,13 @@ class TimeTests : XCTestCase {
         let to1 = Timeout.Infinity
         XCTAssertEqual(to1.timeSinceNow(), NSDate.distantFuture())
         
+        let to2 = Timeout.Immediate
+        let tI = to2.timeSinceNow().timeIntervalSinceNow
+        XCTAssert((tI - 0.0001 < 0.0) && (tI + 0.0001 > 0))
         
+        let to3 = Timeout.In(timeout: 10)
+        let tI2 = to3.timeSinceNow().timeIntervalSinceNow
+        XCTAssert((tI2 - 0.0001 < 10.0) && (tI2 + 0.0001 > 10.0))
     }
     
 }
