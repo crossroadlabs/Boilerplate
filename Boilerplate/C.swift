@@ -76,4 +76,35 @@ import Foundation
             self.destroy(count)
         }
     }
+    
+    /// Returns an `UnsafePointer` to the storage used for `object`.  There's
+    /// not much you can do with this other than use it to identify the
+    /// object.
+    public func unsafeAddress(of object: AnyObject) -> UnsafePointer<Swift.Void> {
+        return unsafeAddressOf(object)
+    }
+    
+    /// Returns the bits of `x`, interpreted as having type `U`.
+    ///
+    /// - Warning: Breaks the guarantees of Swift's type system; use
+    ///   with extreme care.  There's almost always a better way to do
+    ///   anything.
+    ///
+    public func unsafeBitCast<T, U>(x: T, to: U.Type) -> U {
+        return unsafeBitCast(x, to)
+    }
+    
+    /// - returns: `x as T`.
+    ///
+    /// - Precondition: `x is T`.  In particular, in -O builds, no test is
+    ///   performed to ensure that `x` actually has dynamic type `T`.
+    ///
+    /// - Warning: Trades safety for performance.  Use `unsafeDowncast`
+    ///   only when `x as T` has proven to be a performance problem and you
+    ///   are confident that, always, `x is T`.  It is better than an
+    ///   `unsafeBitCast` because it's more restrictive, and because
+    ///   checking is still performed in debug builds.
+    public func unsafeDowncast<T : AnyObject>(x: AnyObject, to: T.Type) -> T {
+        return unsafeDowncast(x)
+    }
 #endif
