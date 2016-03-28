@@ -128,7 +128,7 @@ public class Thread : Equatable {
     public static var isMain:Bool {
         get {
             #if os(Linux)
-                return CFRunLoopGetMain() == CFRunLoopGetCurrent()
+                return CFRunLoopGetMain() === CFRunLoopGetCurrent()
             #else
                 return pthread_main_np() != 0
             #endif
