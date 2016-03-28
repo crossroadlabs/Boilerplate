@@ -136,7 +136,7 @@ extension ShimTests {
 			("testCollectionPrefixes", testCollectionPrefixes),
 			("testStringCase", testStringCase),
 			("testStringSubstring", testStringSubstring),
-			("testStringByteArray", testStringByteArray)
+			("testStringByteArray", testStringByteArray),
 		]
 	}
 }

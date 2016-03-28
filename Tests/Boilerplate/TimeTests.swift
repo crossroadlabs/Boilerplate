@@ -52,3 +52,14 @@ class TimeTests : XCTestCase {
     }
     
 }
+
+#if os(Linux)
+extension TimeTests {
+	static var allTests : [(String, TimeTests -> () throws -> Void)] {
+		return [
+			("testTimeoutDouble", testTimeoutDouble),
+			("testTimeoutDate", testTimeoutDate),
+		]
+	}
+}
+#endif

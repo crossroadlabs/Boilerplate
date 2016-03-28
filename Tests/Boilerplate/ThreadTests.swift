@@ -69,3 +69,17 @@ class ThreadTests: XCTestCase {
         XCTAssertNotEqual(Thread.current, t)
     }
 }
+
+#if os(Linux)
+extension ThreadTests {
+	static var allTests : [(String, ThreadTests -> () throws -> Void)] {
+		return [
+			("testThreadRun", testThreadRun),
+			("testJoin", testJoin),
+			("testSleep", testSleep),
+			("testThreadLocal", testThreadLocal),
+			("testIsMain", testIsMain),
+		]
+	}
+}
+#endif

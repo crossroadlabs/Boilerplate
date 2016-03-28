@@ -24,3 +24,13 @@ class CFBridgingTests: XCTestCase {
         XCTAssert(CFStringCompare(cfstr, cfcopy, CFStringCompareFlags(rawValue: 0)) == .CompareEqualTo)
     }
 }
+
+#if os(Linux)
+extension CFBridgingTests {
+	static var allTests : [(String, CFBridgingTests -> () throws -> Void)] {
+		return [
+			("testCFString", testCFString),
+		]
+	}
+}
+#endif
