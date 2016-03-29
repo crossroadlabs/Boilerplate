@@ -69,7 +69,7 @@ public extension Timeout {
         case .Infinity:
             return NSDate.distantFuture()
         case .In(let interval):
-            #if swift(>=3.0)
+            #if swift(>=3.0) && !os(Linux)
                 return NSDate(timeInterval: interval, since: date)
             #else
                 return NSDate(timeInterval: interval, sinceDate: date)

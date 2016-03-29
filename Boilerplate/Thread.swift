@@ -99,7 +99,11 @@ public class Thread : Equatable {
     }
     
     public init(task:SafeTask) throws {
-        self.thread = nil
+        #if os(Linux)
+            self.thread = 0
+        #else
+            self.thread = nil
+        #endif
         
         let unmanaged = Unmanaged.passRetained(AnyContainer(task))
         let arg = UnsafeMutablePointer<Void>(OpaquePointer(bitPattern: unmanaged))
