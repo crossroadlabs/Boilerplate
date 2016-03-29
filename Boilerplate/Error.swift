@@ -42,7 +42,7 @@ public extension RuntimeErrorType {
             #if !os(Linux)
                 return NSThread.callStackSymbols()
             #else
-                return [String]("Runtime error stack trace is not currently supported on Linux")
+                return ["Runtime error stack trace is not currently supported on Linux"]
             #endif
         }
     }
