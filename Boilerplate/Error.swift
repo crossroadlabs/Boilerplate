@@ -72,12 +72,15 @@ public extension RuntimeErrorType {
 
 public enum CommonRuntimeError : RuntimeErrorType {
     case NotImplemented(what:String)
+    case PreconditionFailed(description:String)
     
     public var customRepresentation:String {
         get {
             switch self {
             case .NotImplemented(let what):
                 return "Not implemented: \(what)"
+            case .PreconditionFailed(let description):
+                return "Precondition error: \(description)"
             }
         }
     }

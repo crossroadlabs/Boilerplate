@@ -76,7 +76,7 @@ import Foundation
         /// - Precondition: `cString != nil`
         public init?(validatingUTF8 cString: UnsafePointer<CChar>) {
             if cString == nil {
-                return nil
+                CommonRuntimeError.PreconditionFailed(description: "cString is nil").panic()
             } else {
                 guard let string = String.fromCString(cString) else {
                     return nil

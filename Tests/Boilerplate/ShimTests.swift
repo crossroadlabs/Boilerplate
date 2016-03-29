@@ -121,7 +121,6 @@ class ShimTests: XCTestCase {
         XCTAssertEqual(String(validatingUTF8:ansi), "01234")
         XCTAssertEqual(String(validatingUTF8: badUTF8), nil)
         XCTAssertEqual(String(validatingUTF8: goodUTF8), "012345©")
-        XCTAssertEqual(String(validatingUTF8: nil), nil)
     }
 }
 
