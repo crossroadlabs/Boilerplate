@@ -31,7 +31,10 @@ import Foundation
             return substringWithRange(range)
         }
     }
-    
+#endif
+
+#if swift(>=3.0)
+#else
     public extension String {
     
         /// Return `self` converted to lower case.
