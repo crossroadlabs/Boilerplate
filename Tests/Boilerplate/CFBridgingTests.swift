@@ -14,6 +14,17 @@ import CoreFoundation
 
 class CFBridgingTests: XCTestCase {
     
+    #if os(Linux)
+    func testCFString() {
+        let str = "somestring"
+        let cfstr = str.cf
+        let cfcopy = CFStringCreateWithBytes(nil, str, str.utf8.count, kCFStringEncodingUTF8, false)
+        XCTAssert(CFStringCompare(cfstr, "somestring".cf, 0) == kCFCompareEqualTo)
+        XCTAssert(CFStringCompare(cfstr, "another".cf, 0) != kCFCompareEqualTo)
+        
+        XCTAssert(CFStringCompare(cfstr, cfcopy, 0) == kCFCompareEqualTo)
+    }
+    #else
     func testCFString() {
         let str = "somestring"
         let cfstr = str.cf
@@ -23,6 +34,7 @@ class CFBridgingTests: XCTestCase {
         
         XCTAssert(CFStringCompare(cfstr, cfcopy, CFStringCompareFlags(rawValue: 0)) == .CompareEqualTo)
     }
+    #endif
 }
 
 #if os(Linux)
