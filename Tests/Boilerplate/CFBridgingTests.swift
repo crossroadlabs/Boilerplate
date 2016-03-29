@@ -18,7 +18,7 @@ class CFBridgingTests: XCTestCase {
     func testCFString() {
         let str = "somestring"
         let cfstr = str.cf
-        let cfcopy = CFStringCreateWithBytes(nil, str, str.utf8.count, kCFStringEncodingUTF8, false)
+        let cfcopy = CFStringCreateWithBytes(nil, str, str.utf8.count, UInt32(kCFStringEncodingUTF8), false)
         XCTAssert(CFStringCompare(cfstr, "somestring".cf, 0) == kCFCompareEqualTo)
         XCTAssert(CFStringCompare(cfstr, "another".cf, 0) != kCFCompareEqualTo)
         

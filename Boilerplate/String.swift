@@ -63,8 +63,8 @@ import Foundation
         ///
         /// - Precondition: `cString != nil`
         public init(cString: UnsafePointer<CChar>) {
-            //should crash???
-            self = String.fromCStringRepairingIllFormedUTF8(cString).0 ?? ""
+            // Must crash if cString is nil
+            self = String.fromCStringRepairingIllFormedUTF8(cString).0!
         }
     
         /// Create a new `String` by copying the nul-terminated UTF-8 data
