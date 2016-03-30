@@ -14,6 +14,8 @@ Pod::Spec.new do |s|
   s.watchos.deployment_target = '2.0'
 
   s.source_files = 'Boilerplate/*.swift'
+  
+  s.dependency 'Result', '~> 2.0'
 
   s.requires_arc = true
 end
