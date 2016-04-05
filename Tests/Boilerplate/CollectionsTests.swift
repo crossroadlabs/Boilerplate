@@ -32,11 +32,11 @@ class CollectionsTests: XCTestCase {
 }
 
 #if os(Linux)
-    extension CollectionsTests : XCTestCaseProvider {
-        var allTests : [(String, () throws -> Void)] {
-            return [
-                ("testEnumerator", testEnumerator),
-            ]
-        }
-    }
+extension CollectionsTests {
+	static var allTests : [(String, CollectionsTests -> () throws -> Void)] {
+		return [
+			("testEnumerator", testEnumerator),
+		]
+	}
+}
 #endif

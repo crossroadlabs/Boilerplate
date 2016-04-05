@@ -99,7 +99,11 @@ public class Thread : Equatable {
     }
     
     public init(task:SafeTask) throws {
-        self.thread = nil
+        #if os(Linux)
+            self.thread = 0
+        #else
+            self.thread = nil
+        #endif
         
         let unmanaged = Unmanaged.passRetained(AnyContainer(task))
         let arg = UnsafeMutablePointer<Void>(OpaquePointer(bitPattern: unmanaged))
@@ -157,5 +161,5 @@ public class Thread : Equatable {
 }
 
 public func ==(lhs:Thread, rhs:Thread) -> Bool {
-    return lhs.thread == rhs.thread
+    return pthread_equal(lhs.thread, rhs.thread) != 0
 }

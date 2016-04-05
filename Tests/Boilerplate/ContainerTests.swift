@@ -105,12 +105,12 @@ class ContainerTests: XCTestCase {
 }
 
 #if os(Linux)
-    extension ContainerTests : XCTestCaseProvider {
-        var allTests : [(String, () throws -> Void)] {
-            return [
-                ("testParticularError", testParticularError),
-                ("testAnyError", testAnyError),
-            ]
-        }
-    }
+extension ContainerTests {
+	static var allTests : [(String, ContainerTests -> () throws -> Void)] {
+		return [
+			("testParticularError", testParticularError),
+			("testAnyError", testAnyError),
+		]
+	}
+}
 #endif

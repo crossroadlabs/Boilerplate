@@ -101,4 +101,41 @@ class ShimTests: XCTestCase {
         XCTAssertEqual(hello.uppercased(), "HELLO")
         XCTAssertEqual(hello.lowercased(), "hello")
     }
+    
+    func testStringSubstring() {
+        let hello = "Hello, World!"
+        XCTAssertEqual(hello.substring(with:hello.startIndex.advanced(by:3)..<hello.endIndex.advanced(by:-3)), "lo, Wor")
+        XCTAssertEqual(hello.substring(from:hello.startIndex.advanced(by:3)), "lo, World!")
+        XCTAssertEqual(hello.substring(to:hello.endIndex.advanced(by:-3)), "Hello, Wor")
+    }
+    
+    func testStringByteArray() {
+        let ansi:[Int8] = [0x30, 0x31, 0x32, 0x33, 0x34, 0]
+        let badUTF8:[Int8] = [0x30, 0x31, 0x32, 0x33, 0x34, Int8(bitPattern:254), Int8(bitPattern:0x80), 0x35, 0]
+        let goodUTF8:[Int8] = [0x30, 0x31, 0x32, 0x33, 0x34, 0x35, Int8(bitPattern:0xc2), Int8(bitPattern:0xa9), 0]
+        
+        XCTAssertEqual(String(cString: ansi), "01234")
+        XCTAssertEqual(String(cString: badUTF8), "01234\u{FFFD}\u{FFFD}5")
+        XCTAssertEqual(String(cString: goodUTF8), "012345©")
+        
+        XCTAssertEqual(String(validatingUTF8:ansi), "01234")
+        XCTAssertEqual(String(validatingUTF8: badUTF8), nil)
+        XCTAssertEqual(String(validatingUTF8: goodUTF8), "012345©")
+    }
 }
+
+#if os(Linux)
+extension ShimTests {
+	static var allTests : [(String, ShimTests -> () throws -> Void)] {
+		return [
+			("testSequenseJoin", testSequenseJoin),
+			("testAdvancedBy", testAdvancedBy),
+			("testArrayMutation", testArrayMutation),
+			("testCollectionPrefixes", testCollectionPrefixes),
+			("testStringCase", testStringCase),
+			("testStringSubstring", testStringSubstring),
+			("testStringByteArray", testStringByteArray),
+		]
+	}
+}
+#endif

@@ -16,7 +16,7 @@
 
 import Foundation
 
-#if swift(>=3.0)
+#if swift(>=3.0) && !os(Linux)
 #else
     public extension String {
         public func substring(from index: Index) -> String {
@@ -31,7 +31,10 @@ import Foundation
             return substringWithRange(range)
         }
     }
-    
+#endif
+
+#if swift(>=3.0)
+#else
     public extension String {
     
         /// Return `self` converted to lower case.
@@ -60,8 +63,8 @@ import Foundation
         ///
         /// - Precondition: `cString != nil`
         public init(cString: UnsafePointer<CChar>) {
-            //should crash???
-            self = String.fromCStringRepairingIllFormedUTF8(cString).0 ?? ""
+            // Must crash if cString is nil
+            self = String.fromCStringRepairingIllFormedUTF8(cString).0!
         }
     
         /// Create a new `String` by copying the nul-terminated UTF-8 data
@@ -73,7 +76,7 @@ import Foundation
         /// - Precondition: `cString != nil`
         public init?(validatingUTF8 cString: UnsafePointer<CChar>) {
             if cString == nil {
-                return nil
+                CommonRuntimeError.PreconditionFailed(description: "cString is nil").panic()
             } else {
                 guard let string = String.fromCString(cString) else {
                     return nil

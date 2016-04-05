@@ -58,8 +58,8 @@ class OptionalTests: XCTestCase {
 }
 
 #if os(Linux)
-extension OptionalTests : XCTestCaseProvider {
-	var allTests : [(String, () throws -> Void)] {
+extension OptionalTests {
+	static var allTests : [(String, OptionalTests -> () throws -> Void)] {
 		return [
 			("testGetOrElse", testGetOrElse),
 			("testOrElse", testOrElse),
