@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name = 'CrossroadBoilerplate'
+  s.name = 'Boilerplate'
   s.version = '0.1.0'
   s.license = { :type => 'Apache 2.0', :file => 'LICENSE' }
   s.summary = 'Swift boilerplate code library with tons of useful stuff, including Linux compatibility layers'
