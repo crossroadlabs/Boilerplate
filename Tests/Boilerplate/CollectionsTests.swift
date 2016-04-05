@@ -23,16 +23,20 @@ class CollectionsTests: XCTestCase {
         let reference = ["one", "two", "three"]
         let array = Array(enumerator: enumerateSome)
         
+        let ss = reference.startIndex
+        
+        ss.advanced(by: 1)
+        
         XCTAssertEqual(array, reference)
     }
 }
 
 #if os(Linux)
-    extension CollectionsTests : XCTestCaseProvider {
-        var allTests : [(String, () throws -> Void)] {
-            return [
-                ("testEnumerator", testEnumerator),
-            ]
-        }
-    }
+extension CollectionsTests {
+	static var allTests : [(String, CollectionsTests -> () throws -> Void)] {
+		return [
+			("testEnumerator", testEnumerator),
+		]
+	}
+}
 #endif

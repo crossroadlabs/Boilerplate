@@ -12,12 +12,12 @@ import Result
 
 @testable import Boilerplate
 
-enum MockError : ErrorType {
+enum MockError : ErrorProtocol {
     case Error1
     case Error2
 }
 
-class CantainerWithParticularError<V, E: ErrorType> : ContainerWithErrorType {
+class CantainerWithParticularError<V, E: ErrorProtocol> : ContainerWithErrorType {
     typealias Value = V
     typealias Error = E
     
@@ -105,12 +105,12 @@ class ContainerTests: XCTestCase {
 }
 
 #if os(Linux)
-    extension ContainerTests : XCTestCaseProvider {
-        var allTests : [(String, () throws -> Void)] {
-            return [
-                ("testParticularError", testParticularError),
-                ("testAnyError", testAnyError),
-            ]
-        }
-    }
+extension ContainerTests {
+	static var allTests : [(String, ContainerTests -> () throws -> Void)] {
+		return [
+			("testParticularError", testParticularError),
+			("testAnyError", testAnyError),
+		]
+	}
+}
 #endif

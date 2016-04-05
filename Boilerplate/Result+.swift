@@ -31,8 +31,8 @@ public func materializeAny<T>(@autoclosure f: () throws -> T) -> Result<T, AnyEr
     }
 }
 
-public extension Result where Error : AnyErrorType {
-    public init(error: ErrorType) {
+public extension Result where Error : AnyErrorProtocol {
+    public init(error: ErrorProtocol) {
         self.init(error: Error(error))
     }
     

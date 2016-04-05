@@ -18,13 +18,17 @@ import Foundation
 import CoreFoundation
 
 public protocol CFBridging : NSBridging {
-    typealias CFBridgeTo
+    associatedtype CFBridgeTo
 }
 
 public extension CFBridging {
     public var cf:CFBridgeTo {
         get {
-            return unsafeBitCast(self.ns, CFBridgeTo.self)
+            #if swift(>=3.0)
+                return unsafeBitCast(self.ns, to: CFBridgeTo.self)
+            #else
+                return unsafeBitCast(self.ns, CFBridgeTo.self)
+            #endif
         }
     }
 }

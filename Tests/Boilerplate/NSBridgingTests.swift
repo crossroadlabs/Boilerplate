@@ -44,11 +44,11 @@ class NSBridgingTests: XCTestCase {
 }
 
 #if os(Linux)
-extension NSBridgingTests : XCTestCaseProvider {
-	var allTests : [(String, () throws -> Void)] {
+extension NSBridgingTests {
+	static var allTests : [(String, NSBridgingTests -> () throws -> Void)] {
 		return [
-            ("testIsNoBridge", testIsNoBridge),
-            ("testAsNoBridge", testAsNoBridge),
+			("testIsNoBridge", testIsNoBridge),
+			("testAsNoBridge", testAsNoBridge),
 			("testStringBridging", testStringBridging),
 			("testArrayBridging", testArrayBridging),
 			("testDictionaryBridging", testDictionaryBridging),

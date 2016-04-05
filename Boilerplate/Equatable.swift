@@ -47,37 +47,78 @@ extension NonStrictEquatableCollection {
     func ==<T : CollectionType where T.Generator.Element : NonStrictEquatable>(lhs: T, rhs: T) -> Bool
 }*/
 
-@warn_unused_result
-public func ==<T : CollectionType where T.Generator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
-    if lhs.count != rhs.count {
-        return false
-    }
+#if swift(>=3.0)
     
-    let zip = lhs.zip(rhs)
-    
-    for (lhsv, rhsv) in zip {
-        if !lhsv.isEqualTo(rhsv) {
+    @warn_unused_result
+    public func ==<T : Collection where T.Iterator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
+        if lhs.count != rhs.count {
             return false
         }
-    }
-    
-    return true
-}
-
-/// rewritten because can return early
-@warn_unused_result
-public func !=<T : CollectionType where T.Generator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
-    if lhs.count != rhs.count {
+        
+        let zip = lhs.zip(rhs)
+        
+        for (lhsv, rhsv) in zip {
+            if !lhsv.isEqualTo(rhsv) {
+                return false
+            }
+        }
+        
         return true
     }
     
-    let zip = lhs.zip(rhs)
-    
-    for (lhsv, rhsv) in zip {
-        if lhsv.isEqualTo(rhsv) {
-            return false
+    /// rewritten because can return early
+    @warn_unused_result
+    public func !=<T : Collection where T.Iterator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
+        if lhs.count != rhs.count {
+            return true
         }
+        
+        let zip = lhs.zip(rhs)
+        
+        for (lhsv, rhsv) in zip {
+            if lhsv.isEqualTo(rhsv) {
+                return false
+            }
+        }
+        
+        return true
     }
     
-    return true
-}
+#else
+    
+    @warn_unused_result
+    public func ==<T : Collection where T.Generator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
+        if lhs.count != rhs.count {
+            return false
+        }
+    
+        let zip = lhs.zip(rhs)
+    
+        for (lhsv, rhsv) in zip {
+            if !lhsv.isEqualTo(rhsv) {
+                return false
+            }
+        }
+    
+        return true
+    }
+    
+    /// rewritten because can return early
+    @warn_unused_result
+    public func !=<T : Collection where T.Generator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
+        if lhs.count != rhs.count {
+            return true
+        }
+    
+        let zip = lhs.zip(rhs)
+    
+        for (lhsv, rhsv) in zip {
+            if lhsv.isEqualTo(rhsv) {
+                return false
+            }
+        }
+    
+        return true
+    }
+
+#endif

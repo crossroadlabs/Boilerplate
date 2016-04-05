@@ -17,7 +17,12 @@
 import Foundation
 import Result
 
-public protocol RuntimeErrorType : ErrorType, CustomStringConvertible {
+#if swift(>=3.0)
+#else
+    public typealias ErrorProtocol = ErrorType
+#endif
+
+public protocol RuntimeErrorType : ErrorProtocol, CustomStringConvertible {
     var customRepresentation:String {get}
 }
 
@@ -37,7 +42,7 @@ public extension RuntimeErrorType {
             #if !os(Linux)
                 return NSThread.callStackSymbols()
             #else
-                return [String]("Runtime error stack trace is not currently supported on Linux")
+                return ["Runtime error stack trace is not currently supported on Linux"]
             #endif
         }
     }
@@ -67,32 +72,35 @@ public extension RuntimeErrorType {
 
 public enum CommonRuntimeError : RuntimeErrorType {
     case NotImplemented(what:String)
+    case PreconditionFailed(description:String)
     
     public var customRepresentation:String {
         get {
             switch self {
             case .NotImplemented(let what):
                 return "Not implemented: \(what)"
+            case .PreconditionFailed(let description):
+                return "Precondition error: \(description)"
             }
         }
     }
 }
 
-public protocol AnyErrorType : ErrorType {
-    init(_ error:ErrorType)
+public protocol AnyErrorProtocol : ErrorProtocol {
+    init(_ error:ErrorProtocol)
     
-    var error:ErrorType {get}
+    var error:ErrorProtocol {get}
 }
 
-public struct AnyError : AnyErrorType {
-    public let error:ErrorType
+public struct AnyError : AnyErrorProtocol {
+    public let error:ErrorProtocol
     
-    public init(_ error:ErrorType) {
+    public init(_ error:ErrorProtocol) {
         self.error = error
     }
 }
 
-public protocol ErrorWithCodeType : ErrorType {
+public protocol ErrorWithCodeType : ErrorProtocol {
     init(code:Int32)
     
     static func isError(code:Int32) -> Bool
