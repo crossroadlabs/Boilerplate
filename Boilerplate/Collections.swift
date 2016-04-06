@@ -127,6 +127,14 @@ import Foundation
             return try self.split(maxSplits, allowEmptySlices: !omittingEmptySubsequences, isSeparator: isSeparator)
         }
     }
+    
+    public extension Sequence {
+        public typealias Iterator = Generator
+        
+        public func makeIterator() -> Iterator {
+            return generate()
+        }
+    }
 #endif
 
 public protocol CopyableCollectionType : Collection {
