@@ -106,4 +106,14 @@ import Foundation
         }
     }
     
+    public typealias UnicodeCodec = UnicodeCodecType
+    
+    public extension UnicodeCodec {
+        /// Encode a `UnicodeScalar` as a series of `CodeUnit`s by
+        /// calling `output` on each `CodeUnit`.
+        public static func encode(input: UnicodeScalar, sendingOutputTo processCodeUnit: (CodeUnit) -> Swift.Void) {
+            self.encode(input, output: processCodeUnit)
+        }
+    }
+    
 #endif
