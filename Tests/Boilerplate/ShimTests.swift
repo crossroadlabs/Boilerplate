@@ -37,6 +37,12 @@ class ShimTests: XCTestCase {
         XCTAssertEqual(withLimit, string.endIndex)
     }
     
+    func testDistanceTo() {
+        let array = ["a", "b", "c"]
+        
+        XCTAssertEqual(array.startIndex.distance(to: array.endIndex), 3)
+    }
+    
     func testArrayMutation() {
         var array = ["a", "b", "c"]
         

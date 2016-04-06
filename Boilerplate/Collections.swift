@@ -36,6 +36,10 @@ import Foundation
         public func advanced(by n: Self.Distance, limit: Self) -> Self {
             return self.advancedBy(n, limit: limit)
         }
+    
+        public func distance(to other: Self) -> Distance {
+            return self.distanceTo(other)
+        }
     }
     
     extension Array {
