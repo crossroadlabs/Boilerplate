@@ -106,6 +106,46 @@ import Foundation
         }
     }
     
+    extension String {
+        /// Insert `newElement` at position `i`.
+        ///
+        /// Invalidates all indices with respect to `self`.
+        ///
+        /// - Complexity: O(`self.count`).
+        public mutating func insert(newElement: Character, at i: Index) {
+            self.insert(newElement, atIndex: i)
+        }
+        
+        /// Insert `newElements` at position `i`.
+        ///
+        /// Invalidates all indices with respect to `self`.
+        ///
+        /// - Complexity: O(`self.count + newElements.count`).
+        public mutating func insert<S : Collection where S.Generator.Element == Character>(contentsOf newElements: S, at i: Index) {
+            self.insertContentsOf(newElements, at: i)
+        }
+        
+        /// Remove and return the `Character` at position `i`.
+        ///
+        /// Invalidates all indices with respect to `self`.
+        ///
+        /// - Complexity: O(`self.count`).
+        public mutating func remove(at i: Index) -> Character {
+            return self.removeAtIndex(i)
+        }
+        
+        /// Replace `self` with the empty string.
+        ///
+        /// Invalidates all indices with respect to `self`.
+        ///
+        /// - parameter keepCapacity: If `true`, prevents the release of
+        ///   allocated storage, which can be a useful optimization
+        ///   when `self` is going to be grown again.
+        public mutating func removeAll(keepingCapacity keepCapacity: Bool = true) {
+            self.removeAll(keepCapacity: keepCapacity)
+        }
+    }
+    
     public typealias UnicodeCodec = UnicodeCodecType
     
     public extension UnicodeCodec {
