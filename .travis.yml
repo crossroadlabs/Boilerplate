@@ -21,16 +21,9 @@ matrix:
         # bootstrap the dependencies for the project
         # you can remove if you don't have dependencies
         - carthage bootstrap
-      before_deploy:
-        - pod trunk push $MODULE_NAME.podspec
-        - carthage build --no-skip-current
-        - carthage archive $MODULE_NAME
       deploy:
-        provider: releases
-        #api_key:
-        #  secure: WEnu9clOi284PT/KsPgvRiYvK5WDbLsMwE0fj9/hoscCXM41dVLhJ7PWe9DoXThNtfSGjlIOvz6E6vCDniSB0NuErBDv9JT2GGZMA35kIvRnGxrHgfjFrIliQy5xqnQZFruKksnPvKBmwf02psw6wwvQmNh/AcC8tvOJZhhrIWt6S7ZLV0ypPsbYNVWS5dTUnZ5XglwbBaHrXkaps2acaG6kf2VdMccgXxB9/pudfJAvrTVwxf7U7ANS6wWv3k0wqTFwx+vIjtqXcnnoD/ulsQFM9MFueGiQ3o3DtdGyi7Q/L/m2SQkRRce4INnCUHhWXiWjnJgrupS2/+X4eFTuX+aBN0ctffD2rfj8Ql6Sane2Za/hmhohreroZ06YY7yN6mQ4wG4gAYy10HXdokjFHPW8B0/1mgMKPky0VsYMzbjiGsR9U0ePXNCTDVgw/HENEyECBFxbzvFuWq9Ncz0c8T9u8FIjXF8UGysuIaiUQJ/IeLHYkZ2d/id6EtJDwn8GAq85bUi0DomePoCOqzdFKHsecnX0ISaf2w+FWSHzbn7UQSgeoODVEDThvnKujWbJ4seOtfev9rwce/Uh5sh8ciGXQsScecwg7BcJml3c327yT6PZypoPxOAyRaXLgVbXoIA4oLj7tF7maggDynPGRS1IGnWgeJ2KnOhgo+Yudw0=
-        file: $MODULE_NAME.framework.zip
-        skip_cleanup: true
+        provider: script
+        script: pod trunk push $MODULE_NAME.podspec
         on:
           repo: crossroadlabs/Boilerplate
           tags: true
