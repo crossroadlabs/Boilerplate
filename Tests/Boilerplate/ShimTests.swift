@@ -132,7 +132,7 @@ class ShimTests: XCTestCase {
         
         XCTAssertEqual("beginmid", string)
         
-        string.append(contentsOf: end)
+        string.append(end)
         
         XCTAssertEqual("beginmidend", string)
     }

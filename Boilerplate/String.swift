@@ -101,7 +101,7 @@ import Foundation
             self.appendContentsOf(newElements)
         }
         
-        public mutating func append(contentsOf string: String) {
+        public mutating func append(string: String) {
             self.appendContentsOf(string)
         }
     }
