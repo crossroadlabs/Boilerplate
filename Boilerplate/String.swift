@@ -100,6 +100,10 @@ import Foundation
         public mutating func append<S : Sequence where S.Generator.Element == Character>(contentsOf newElements: S) {
             self.appendContentsOf(newElements)
         }
+        
+        public mutating func append(contentsOf string: String) {
+            self.appendContentsOf(string)
+        }
     }
     
 #endif

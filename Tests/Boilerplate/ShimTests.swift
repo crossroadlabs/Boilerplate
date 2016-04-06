@@ -122,6 +122,20 @@ class ShimTests: XCTestCase {
         XCTAssertEqual(String(validatingUTF8: badUTF8), nil)
         XCTAssertEqual(String(validatingUTF8: goodUTF8), "012345©")
     }
+    
+    func testStringAppend() {
+        var string = "begin"
+        let end = "end"
+        let mid:[Character] = ["m", "i", "d"]
+        
+        string.append(contentsOf: mid)
+        
+        XCTAssertEqual("beginmid", string)
+        
+        string.append(contentsOf: end)
+        
+        XCTAssertEqual("beginmidend", string)
+    }
 }
 
 #if os(Linux)
