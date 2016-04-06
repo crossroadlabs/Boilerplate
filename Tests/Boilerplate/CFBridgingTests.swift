@@ -25,15 +25,27 @@ class CFBridgingTests: XCTestCase {
         XCTAssert(CFStringCompare(cfstr, cfcopy, 0) == kCFCompareEqualTo)
     }
     #else
-    func testCFString() {
-        let str = "somestring"
-        let cfstr = str.cf
-        let cfcopy = CFStringCreateWithBytes(nil, str, str.utf8.count, CFStringBuiltInEncodings.UTF8.rawValue, false)
-        XCTAssert(CFStringCompare(cfstr, "somestring".cf, CFStringCompareFlags(rawValue: 0)) == .CompareEqualTo)
-        XCTAssert(CFStringCompare(cfstr, "another".cf, CFStringCompareFlags(rawValue: 0)) != .CompareEqualTo)
+    #if swift(>=3.0)
+        func testCFString() {
+            let str = "somestring"
+            let cfstr = str.cf
+            let cfcopy = CFStringCreateWithBytes(nil, str, str.utf8.count, CFStringBuiltInEncodings.UTF8.rawValue, false)
+            XCTAssert(CFStringCompare(cfstr, "somestring".cf, CFStringCompareFlags(rawValue: 0)) == .compareEqualTo)
+            XCTAssert(CFStringCompare(cfstr, "another".cf, CFStringCompareFlags(rawValue: 0)) != .compareEqualTo)
         
-        XCTAssert(CFStringCompare(cfstr, cfcopy, CFStringCompareFlags(rawValue: 0)) == .CompareEqualTo)
-    }
+            XCTAssert(CFStringCompare(cfstr, cfcopy, CFStringCompareFlags(rawValue: 0)) == .compareEqualTo)
+        }
+    #else
+        func testCFString() {
+            let str = "somestring"
+            let cfstr = str.cf
+            let cfcopy = CFStringCreateWithBytes(nil, str, str.utf8.count, CFStringBuiltInEncodings.UTF8.rawValue, false)
+            XCTAssert(CFStringCompare(cfstr, "somestring".cf, CFStringCompareFlags(rawValue: 0)) == .CompareEqualTo)
+            XCTAssert(CFStringCompare(cfstr, "another".cf, CFStringCompareFlags(rawValue: 0)) != .CompareEqualTo)
+        
+            XCTAssert(CFStringCompare(cfstr, cfcopy, CFStringCompareFlags(rawValue: 0)) == .CompareEqualTo)
+        }
+    #endif
     #endif
 }
 

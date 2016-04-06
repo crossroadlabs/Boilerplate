@@ -45,7 +45,7 @@ class ThreadTests: XCTestCase {
         Thread.sleep(2)
         let after = time(nil)
         print(after - before)
-        XCTAssert((after - before) > 1 && (after - before) < 3)
+        XCTAssert((after - before) > 1 && (after - before) < 4)
     }
     
     func testThreadLocal() {
