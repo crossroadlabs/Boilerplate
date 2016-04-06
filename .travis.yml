@@ -24,6 +24,7 @@ matrix:
       deploy:
         provider: script
         script: pod trunk push $MODULE_NAME.podspec
+        skip_cleanup: true
         on:
           repo: crossroadlabs/Boilerplate
           tags: true
