@@ -144,7 +144,7 @@ class ShimTests: XCTestCase {
     }
     
     func testStringEncoding() {
-        #if swift(>=3.0)
+        #if swift(>=3.0) && !os(Linux)
             let expectation = self.expectation(withDescription: "desc")
         #else
             let expectation = self.expectationWithDescription("desc")
@@ -156,7 +156,7 @@ class ShimTests: XCTestCase {
             expectation.fulfill()
         })
         
-        #if swift(>=3.0)
+        #if swift(>=3.0) && !os(Linux)
             self.waitForExpectations(withTimeout: 0, handler: nil)
         #else
             self.waitForExpectationsWithTimeout(0, handler: nil)
@@ -175,8 +175,8 @@ extension ShimTests {
 			("testStringCase", testStringCase),
 			("testStringSubstring", testStringSubstring),
 			("testStringByteArray", testStringByteArray),
-			("testStringByteArray", testStringAppend),
-			("testStringByteArray", testStringEncoding),
+			("testStringAppend", testStringAppend),
+			("testStringEncoding", testStringEncoding),
 		]
 	}
 }
