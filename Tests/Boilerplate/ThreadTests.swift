@@ -18,15 +18,15 @@ class ThreadTests: XCTestCase {
     func testThreadRun() {
         var state = 0
         let _ = try! Thread {
-            Thread.sleep(0.01)
+            Thread.sleep(0.1)
             state = 1
             Thread.sleep(1)
             state = 2
         }
         XCTAssertEqual(state, 0)
-        Thread.sleep(0.05)
+        Thread.sleep(1)
         XCTAssertEqual(state, 1)
-        Thread.sleep(1.5)
+        Thread.sleep(2)
         XCTAssertEqual(state, 2)
     }
     
@@ -42,10 +42,12 @@ class ThreadTests: XCTestCase {
     
     func testSleep() {
         let before = time(nil)
-        Thread.sleep(2)
+        Thread.sleep(1)
         let after = time(nil)
-        print(after - before)
-        XCTAssert((after - before) > 1 && (after - before) < 4)
+        let diff = after - before
+        print("Sleep time: \(diff)")
+        XCTAssertLessThan(diff, 3)
+        XCTAssertGreaterThan(diff, 0)
     }
     
     func testThreadLocal() {
