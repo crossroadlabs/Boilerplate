@@ -11,6 +11,8 @@ matrix:
       os: osx
       osx_image: xcode7.3
       language: objective-c
+      env:
+        - secure: hsSJ4btmCIbNjAPyAOZvCAUUbupx9Obo0YIXkrQ/iteC4oWRv0g4TMh9Ie/zg9Cdn8P6QOlV2waoG4ZdCymW08/MASK5+Z+uRqAuAExF2l0NllbVTymEDKHkzGdId9EN4thj10TXrsq8kfTWg8O1As3r2Nl/H2lBmDK49DHZVU2cNl9EbgmALYS7CoZ2LwM/TnJgSvUB4l0yzPyz4veDNAgRvQ9iMXN1/gHsemZdcxrd9q3ce53+PRap2z9NUGQrpAefXCLjN8M8aKHExgr90aUxGz4DoHm+pRppMqFo9hIjEi0WQc+ikD3ExchxQH6LCCdTF20L5L0Sxj3AzhUsojDtB5zG9Rc8O/1UjzbcuHbdr0PC+0mSFuQzYsG009Zg1i6moeattmQOC/F/QYp/cXdlHT9K9T4dqh62Wp9lU/CeigJ6orKR9NgBuxEDOsObzNVoiRsqBn4fEOE2b+24XB7D8u4Twc7koRB1gG96JUFNWm5pSmM1WDzTJIlHTcxiU4iHMV/19mWnzJhYTLSXhXOhG1lO2FddeRlkKCuklWqcKvWWr6FnFA2uFxp17hM6YfVsvhDQiJ3Xd/byuNIVgkDuL80Jo/v7dkM8tElYeJsRGiRkZLtkOlIiRnWYTeFclNNSzJ14Ub/MT5W6wfEm/nqeY2G0w50Peu362XL2rFs=
       before_install:
         - brew update
         - brew outdated carthage || brew upgrade carthage
@@ -19,15 +21,9 @@ matrix:
         # bootstrap the dependencies for the project
         # you can remove if you don't have dependencies
         - carthage bootstrap
-      before_deploy:
-        - carthage build --no-skip-current
-        - carthage archive $MODULE_NAME
-        #- pod trunk push CrossroadRegex.podspec
       deploy:
-        provider: releases
-        #api_key:
-        #  secure: WEnu9clOi284PT/KsPgvRiYvK5WDbLsMwE0fj9/hoscCXM41dVLhJ7PWe9DoXThNtfSGjlIOvz6E6vCDniSB0NuErBDv9JT2GGZMA35kIvRnGxrHgfjFrIliQy5xqnQZFruKksnPvKBmwf02psw6wwvQmNh/AcC8tvOJZhhrIWt6S7ZLV0ypPsbYNVWS5dTUnZ5XglwbBaHrXkaps2acaG6kf2VdMccgXxB9/pudfJAvrTVwxf7U7ANS6wWv3k0wqTFwx+vIjtqXcnnoD/ulsQFM9MFueGiQ3o3DtdGyi7Q/L/m2SQkRRce4INnCUHhWXiWjnJgrupS2/+X4eFTuX+aBN0ctffD2rfj8Ql6Sane2Za/hmhohreroZ06YY7yN6mQ4wG4gAYy10HXdokjFHPW8B0/1mgMKPky0VsYMzbjiGsR9U0ePXNCTDVgw/HENEyECBFxbzvFuWq9Ncz0c8T9u8FIjXF8UGysuIaiUQJ/IeLHYkZ2d/id6EtJDwn8GAq85bUi0DomePoCOqzdFKHsecnX0ISaf2w+FWSHzbn7UQSgeoODVEDThvnKujWbJ4seOtfev9rwce/Uh5sh8ciGXQsScecwg7BcJml3c327yT6PZypoPxOAyRaXLgVbXoIA4oLj7tF7maggDynPGRS1IGnWgeJ2KnOhgo+Yudw0=
-        file: $MODULE_NAME.framework.zip
+        provider: script
+        script: pod trunk push $MODULE_NAME.podspec
         skip_cleanup: true
         on:
           repo: crossroadlabs/Boilerplate

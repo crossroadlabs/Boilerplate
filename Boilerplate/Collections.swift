@@ -36,6 +36,10 @@ import Foundation
         public func advanced(by n: Self.Distance, limit: Self) -> Self {
             return self.advancedBy(n, limit: limit)
         }
+    
+        public func distance(to other: Self) -> Distance {
+            return self.distanceTo(other)
+        }
     }
     
     extension Array {
@@ -125,6 +129,14 @@ import Foundation
         /// - Precondition: `maxSplits >= 0`
         public func split(maxSplits maxSplits: Int = Int.max, omittingEmptySubsequences: Bool, @noescape isSeparator: (Self.Generator.Element) throws -> Bool) rethrows -> [Self.SubSequence] {
             return try self.split(maxSplits, allowEmptySlices: !omittingEmptySubsequences, isSeparator: isSeparator)
+        }
+    }
+    
+    public extension Sequence {
+        public typealias Iterator = Generator
+        
+        public func makeIterator() -> Iterator {
+            return generate()
         }
     }
 #endif

@@ -37,6 +37,12 @@ class ShimTests: XCTestCase {
         XCTAssertEqual(withLimit, string.endIndex)
     }
     
+    func testDistanceTo() {
+        let array = ["a", "b", "c"]
+        
+        XCTAssertEqual(array.startIndex.distance(to: array.endIndex), 3)
+    }
+    
     func testArrayMutation() {
         var array = ["a", "b", "c"]
         
@@ -122,6 +128,40 @@ class ShimTests: XCTestCase {
         XCTAssertEqual(String(validatingUTF8: badUTF8), nil)
         XCTAssertEqual(String(validatingUTF8: goodUTF8), "012345©")
     }
+    
+    func testStringAppend() {
+        var string = "begin"
+        let end = "end"
+        let mid:[Character] = ["m", "i", "d"]
+        
+        string.append(contentsOf: mid)
+        
+        XCTAssertEqual("beginmid", string)
+        
+        string.append(end)
+        
+        XCTAssertEqual("beginmidend", string)
+    }
+    
+    func testStringEncoding() {
+        #if swift(>=3.0)
+            let expectation = self.expectation(withDescription: "desc")
+        #else
+            let expectation = self.expectationWithDescription("desc")
+        #endif
+        
+
+        UTF8.encode("A", sendingOutputTo: { unit in
+            XCTAssertEqual(unit, 65)
+            expectation.fulfill()
+        })
+        
+        #if swift(>=3.0)
+            self.waitForExpectations(withTimeout: 0, handler: nil)
+        #else
+            self.waitForExpectationsWithTimeout(0, handler: nil)
+        #endif
+    }
 }
 
 #if os(Linux)
@@ -135,6 +175,8 @@ extension ShimTests {
 			("testStringCase", testStringCase),
 			("testStringSubstring", testStringSubstring),
 			("testStringByteArray", testStringByteArray),
+			("testStringByteArray", testStringAppend),
+			("testStringByteArray", testStringEncoding),
 		]
 	}
 }
