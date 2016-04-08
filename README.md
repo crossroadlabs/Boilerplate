@@ -3,7 +3,7 @@
 # Boilerplate
 
 ![🐧 linux: ready](https://img.shields.io/badge/%F0%9F%90%A7%20linux-ready-red.svg)
-![🐤 3.0: ready](https://img.shields.io/badge/🐤3.0-ready-red.svg)
+![🐤 3.0: ready](https://img.shields.io/badge/🐤 3.0-ready-red.svg)
 [![Build Status](https://travis-ci.org/crossroadlabs/Boilerplate.svg?branch=master)](https://travis-ci.org/crossroadlabs/Boilerplate)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Platform OS X | iOS | tvOS | watchOS | Linux](https://img.shields.io/badge/platform-OS X | iOS | tvOS | watchOS | Linux-orange.svg)
