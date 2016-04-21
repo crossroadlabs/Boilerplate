@@ -37,9 +37,6 @@ import Foundation
             get {
                 return self.memory
             }
-            nonmutating set {
-                self.memory = newValue
-            }
         }
     }
     
