@@ -26,6 +26,20 @@ import Foundation
         }
     }
     
+    public extension UnsafePointer {
+        public typealias Pointee = Memory
+        
+        /// Access the `Pointee` instance referenced by `self`.
+        ///
+        /// - Precondition: the pointee has been initialized with an instance of
+        ///   type `Pointee`.
+        public var pointee: Pointee {
+            get {
+                return self.memory
+            }
+        }
+    }
+    
     public extension UnsafeMutablePointer {
         public typealias Pointee = Memory
     
