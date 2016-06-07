@@ -219,3 +219,34 @@ public class ZippedSequence<A, B where A : IteratorProtocol, B : IteratorProtoco
         }
     }
 #endif
+
+postfix operator ^ {}
+
+#if swift(>=3.0)
+    public func toMap<K : Hashable, V, S : Sequence where S.Iterator.Element == (K, V)>(seq:S) -> Dictionary<K, V> {
+        var dict = Dictionary<K, V>()
+        for (k, v) in seq {
+            dict[k] = v
+        }
+        return dict
+    }
+    
+    //Frankly, I would prefer to avoid operator syntax here and implement it as an extension, but can not find a solution. If somebody has - feel free to submit, please.
+    public postfix func ^<K : Hashable, V, S : Sequence where S.Iterator.Element == (K, V)>(seq:S) -> Dictionary<K, V> {
+        return toMap(seq)
+    }
+#else
+    public func toMap<K : Hashable, V, S : Sequence where S.Generator.Element == (K, V)>(seq:S) -> Dictionary<K, V> {
+        var dict = Dictionary<K, V>()
+        for (k, v) in seq {
+            dict[k] = v
+        }
+        return dict
+    }
+    
+    //Frankly, I would prefer to avoid operator syntax here and implement it as an extension, but can not find a solution. If somebody has - feel free to submit, please.
+    public postfix func ^<K : Hashable, V, S : Sequence where S.Generator.Element == (K, V)>(seq:S) -> Dictionary<K, V> {
+        return toMap(seq)
+    }
+#endif
+

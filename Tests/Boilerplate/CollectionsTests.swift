@@ -29,6 +29,20 @@ class CollectionsTests: XCTestCase {
         
         XCTAssertEqual(array, reference)
     }
+    
+    func testToMap() {
+        let tuples = [("one", 1), ("two", 2), ("three", 3)]
+        let reference1 = ["one": 1, "two": 4, "three": 9]
+        let reference2 = ["one": 1, "two": 2, "three": 3]
+        
+        let map1 = tuples^.map { (k, v) in
+            return (k, v*v)
+        }^
+        let map2 = toMap(tuples)
+        
+        XCTAssertEqual(map1, reference1)
+        XCTAssertEqual(map2, reference2)
+    }
 }
 
 #if os(Linux)
