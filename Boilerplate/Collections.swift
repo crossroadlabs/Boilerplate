@@ -21,6 +21,7 @@ import Foundation
     public typealias Collection = CollectionType
     public typealias Sequence = SequenceType
     public typealias IteratorProtocol = GeneratorType
+    public typealias OptionSet = OptionSetType
     
     public extension Sequence where Generator.Element == String {
         public func joined(separator separator: String) -> String {
