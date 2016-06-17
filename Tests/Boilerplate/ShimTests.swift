@@ -138,7 +138,7 @@ class ShimTests: XCTestCase {
     }
     
     func testStringEncoding() {
-        #if swift(>=3.0) && !os(Linux)
+        #if swift(>=3.0)
             let expectation = self.expectation(withDescription: "desc")
         #else
             let expectation = self.expectationWithDescription("desc")
@@ -150,7 +150,7 @@ class ShimTests: XCTestCase {
             expectation.fulfill()
         })
         
-        #if swift(>=3.0) && !os(Linux)
+        #if swift(>=3.0)
             self.waitForExpectations(withTimeout: 0, handler: nil)
         #else
             self.waitForExpectationsWithTimeout(0, handler: nil)
