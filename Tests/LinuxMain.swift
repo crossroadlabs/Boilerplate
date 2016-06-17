@@ -13,4 +13,5 @@ XCTMain([
 	testCase(ShimTests.allTests),
 	testCase(ThreadTests.allTests),
 	testCase(TimeTests.allTests),
+	testCase(NullTests.allTests),
 ])

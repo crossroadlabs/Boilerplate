@@ -25,13 +25,13 @@ import CoreFoundation
 
 #if os(Linux)
     private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>?) {
-        if !(pointer?.isNil ?? false) {
+        if pointer != .null {
             Unmanaged<AnyObject>.fromOpaque(OpaquePointer(pointer!)).release()
         }
     }
 #else
     private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>) {
-        if !pointer.isNil {
+        if pointer != .null {
             Unmanaged<AnyObject>.fromOpaque(OpaquePointer(pointer)).release()
         }
     }
@@ -80,15 +80,12 @@ public class ThreadLocal<T> {
     public var value:T? {
         get {
             let pointer = pthread_getspecific(_key)
+            if pointer == .null {
+                return nil
+            }
             #if os(Linux)
-		        if pointer?.isNil ?? false {
-                    return nil
-                }
 		        let container:AnyContainer<T> = Unmanaged.fromOpaque(OpaquePointer(pointer!)).takeUnretainedValue()
             #else
-	            if pointer.isNil {
-                    return nil
-                }
                 let container:AnyContainer<T> = Unmanaged.fromOpaque(OpaquePointer(pointer)).takeUnretainedValue()
             #endif
 	return container.content

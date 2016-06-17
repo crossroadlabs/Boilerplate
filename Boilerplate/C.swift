@@ -16,37 +16,27 @@
 
 import Foundation
 
+extension UnsafeMutablePointer : NullEquatable {
+}
+
+extension UnsafePointer : NullEquatable {
+}
+
 #if swift(>=3.0)
-    public extension UnsafeMutablePointer {
-        public var isNil:Bool {
-            get {
-                return Int(bitPattern: self) == 0
-            }
-        }
+    public func==<T>(lhs:UnsafeMutablePointer<T>, rhs:Null) -> Bool {
+        return Int(bitPattern: lhs) == 0
     }
     
-    public extension UnsafePointer {
-        public var isNil:Bool {
-            get {
-                return Int(bitPattern: self) == 0
-            }
-        }
+    public func==<T>(lhs:UnsafePointer<T>, rhs:Null) -> Bool {
+        return Int(bitPattern: lhs) == 0
     }
 #else
-    public extension UnsafeMutablePointer {
-        public var isNil:Bool {
-            get {
-                return self == nil
-            }
-        }
+    public func==<T>(lhs:UnsafeMutablePointer<T>, rhs:Null) -> Bool {
+        return lhs == UnsafeMutablePointer(nil)
     }
     
-    public extension UnsafePointer {
-        public var isNil:Bool {
-            get {
-                return self == nil
-            }
-        }
+    public func==<T>(lhs:UnsafePointer<T>, rhs:Null) -> Bool {
+        return lhs == UnsafePointer(nil)
     }
 #endif
 
