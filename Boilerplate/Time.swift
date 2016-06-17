@@ -32,7 +32,7 @@ public enum Timeout {
     case In(timeout:Double)
 }
 
-#if swift(>=3.0)
+#if swift(>=3.0) && !os(Linux)
 #else
     public typealias TimeInterval = NSTimeInterval
     public typealias Date = NSDate
@@ -88,7 +88,7 @@ public extension Timeout {
         case .Immediate:
             return Date()
         case .Infinity:
-            #if swift(>=3.0)
+            #if swift(>=3.0) && !os(Linux)
                 return Date.distantFuture
             #else
                 return Date.distantFuture()
