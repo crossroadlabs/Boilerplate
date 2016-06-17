@@ -32,11 +32,11 @@ extension UnsafePointer : NullEquatable {
     }
 #else
     public func==<T>(lhs:UnsafeMutablePointer<T>, rhs:Null) -> Bool {
-        return lhs == nil
+        return lhs == UnsafeMutablePointer(nil)
     }
     
     public func==<T>(lhs:UnsafePointer<T>, rhs:Null) -> Bool {
-        return lhs == nil
+        return lhs == UnsafePointer(nil)
     }
 #endif
 
