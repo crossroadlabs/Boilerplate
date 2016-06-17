@@ -69,6 +69,13 @@
 		65148F721CA2DBB80098D557 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65148F1C1CA2D8B00098D557 /* Result.framework */; };
 		65148F731CA2DBBD0098D557 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65148F1C1CA2D8B00098D557 /* Result.framework */; };
 		65148F751CA2DC140098D557 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 65148F1C1CA2D8B00098D557 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		651643D81D148B7100C5E389 /* Null.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643D71D148B7100C5E389 /* Null.swift */; };
+		651643D91D148B7100C5E389 /* Null.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643D71D148B7100C5E389 /* Null.swift */; };
+		651643DA1D148B7100C5E389 /* Null.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643D71D148B7100C5E389 /* Null.swift */; };
+		651643DD1D148EBE00C5E389 /* NullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643DC1D148EBE00C5E389 /* NullTests.swift */; };
+		651643DE1D148EBE00C5E389 /* NullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643DC1D148EBE00C5E389 /* NullTests.swift */; };
+		651643DF1D148EBE00C5E389 /* NullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643DC1D148EBE00C5E389 /* NullTests.swift */; };
+		651643E01D148EC500C5E389 /* Null.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643D71D148B7100C5E389 /* Null.swift */; };
 		6520A0231C8C511F002E0842 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520A0221C8C511F002E0842 /* Collections.swift */; };
 		6520A0251C8C5771002E0842 /* CollectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520A0241C8C5771002E0842 /* CollectionsTests.swift */; };
 		6520A0271C8C6253002E0842 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520A0261C8C6253002E0842 /* Equatable.swift */; };
@@ -182,6 +189,8 @@
 		65148F2D1CA2DA2D0098D557 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65148F481CA2DB310098D557 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65148F511CA2DB310098D557 /* BoilerplateTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BoilerplateTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		651643D71D148B7100C5E389 /* Null.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Null.swift; sourceTree = "<group>"; };
+		651643DC1D148EBE00C5E389 /* NullTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullTests.swift; sourceTree = "<group>"; };
 		6520A0221C8C511F002E0842 /* Collections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
 		6520A0241C8C5771002E0842 /* CollectionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsTests.swift; sourceTree = "<group>"; };
 		6520A0261C8C6253002E0842 /* Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatable.swift; sourceTree = "<group>"; };
@@ -361,6 +370,7 @@
 				65147C0E1CA2D50D0085C575 /* String.swift */,
 				653291631D00699B00C0A8A2 /* InvalidationToken.swift */,
 				65A973D41CA41A53000EDB75 /* C.swift */,
+				651643D71D148B7100C5E389 /* Null.swift */,
 			);
 			path = Boilerplate;
 			sourceTree = "<group>";
@@ -379,6 +389,7 @@
 				921CB4751CA4477E00D6B223 /* TimeTests.swift */,
 				65A99BF01CA308B400477B40 /* ShimTests.swift */,
 				65E267061C8AE09800E0DD70 /* Info.plist */,
+				651643DC1D148EBE00C5E389 /* NullTests.swift */,
 			);
 			name = BoilerplateTests;
 			path = Tests/Boilerplate;
@@ -660,6 +671,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651643D91D148B7100C5E389 /* Null.swift in Sources */,
 				65148F051CA2D7E70098D557 /* NSBridging.swift in Sources */,
 				65148F101CA2D7E70098D557 /* String.swift in Sources */,
 				65148F071CA2D7E70098D557 /* Container.swift in Sources */,
@@ -685,6 +697,7 @@
 				65148F011CA2D7DE0098D557 /* AnyContainerTests.swift in Sources */,
 				65148F001CA2D7DE0098D557 /* ContainerTests.swift in Sources */,
 				65148F031CA2D7DE0098D557 /* EquatableTests.swift in Sources */,
+				651643DE1D148EBE00C5E389 /* NullTests.swift in Sources */,
 				921CB4771CA4477E00D6B223 /* TimeTests.swift in Sources */,
 				921CB47B1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				65148F021CA2D7DE0098D557 /* CollectionsTests.swift in Sources */,
@@ -699,6 +712,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651643DA1D148B7100C5E389 /* Null.swift in Sources */,
 				65148F371CA2DA9A0098D557 /* NSBridging.swift in Sources */,
 				65148F421CA2DA9A0098D557 /* String.swift in Sources */,
 				65148F391CA2DA9A0098D557 /* Container.swift in Sources */,
@@ -721,6 +735,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651643E01D148EC500C5E389 /* Null.swift in Sources */,
 				65148F601CA2DB6E0098D557 /* NSBridging.swift in Sources */,
 				65148F6B1CA2DB6E0098D557 /* String.swift in Sources */,
 				65148F621CA2DB6E0098D557 /* Container.swift in Sources */,
@@ -743,6 +758,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651643DF1D148EBE00C5E389 /* NullTests.swift in Sources */,
 				65148F6F1CA2DB760098D557 /* AnyContainerTests.swift in Sources */,
 				65148F6E1CA2DB760098D557 /* ContainerTests.swift in Sources */,
 				65148F711CA2DB760098D557 /* EquatableTests.swift in Sources */,
@@ -760,6 +776,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651643D81D148B7100C5E389 /* Null.swift in Sources */,
 				65465E551C8B3AC00080BAAE /* AnyContainer.swift in Sources */,
 				65147C0F1CA2D50D0085C575 /* String.swift in Sources */,
 				65E267121C8AE4A200E0DD70 /* NSBridging.swift in Sources */,
@@ -785,6 +802,7 @@
 				6520A02A1C8C6422002E0842 /* EquatableTests.swift in Sources */,
 				65E267181C8B036A00E0DD70 /* NSBridgingTests.swift in Sources */,
 				65465E661C8B5DDE0080BAAE /* ContainerTests.swift in Sources */,
+				651643DD1D148EBE00C5E389 /* NullTests.swift in Sources */,
 				921CB4761CA4477E00D6B223 /* TimeTests.swift in Sources */,
 				921CB47A1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				6520A0251C8C5771002E0842 /* CollectionsTests.swift in Sources */,
