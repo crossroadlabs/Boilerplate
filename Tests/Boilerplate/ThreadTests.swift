@@ -18,22 +18,22 @@ class ThreadTests: XCTestCase {
     func testThreadRun() {
         var state = 0
         let _ = try! Thread {
-            Thread.sleep(0.1)
+            let _ = Thread.sleep(timeout: 0.1)
             state = 1
-            Thread.sleep(1)
+            let _ = Thread.sleep(timeout: 1)
             state = 2
         }
         XCTAssertEqual(state, 0)
-        Thread.sleep(1)
+        Thread.sleep(timeout: 1)
         XCTAssertEqual(state, 1)
-        Thread.sleep(2)
+        Thread.sleep(timeout: 2)
         XCTAssertEqual(state, 2)
     }
     
     func testJoin() {
         var state = 0
         let t = try! Thread {
-            Thread.sleep(1)
+            let _ = Thread.sleep(timeout: 1)
             state = 1
         }
         try! t.join()
@@ -42,7 +42,7 @@ class ThreadTests: XCTestCase {
     
     func testSleep() {
         let before = time(nil)
-        Thread.sleep(1)
+        Thread.sleep(timeout: 1)
         let after = time(nil)
         let diff = after - before
         print("Sleep time: \(diff)")
@@ -59,7 +59,7 @@ class ThreadTests: XCTestCase {
         let _ = try! Thread {
             local.value = 3
         }
-        Thread.sleep(0.5)
+        Thread.sleep(timeout: 0.5)
         XCTAssertEqual(local.value, 1)
     }
     

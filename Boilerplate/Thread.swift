@@ -24,7 +24,7 @@ import CoreFoundation
 #endif
 
 private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>) {
-    if pointer != nil {
+    if !pointer.isNil {
         Unmanaged<AnyObject>.fromOpaque(OpaquePointer(pointer)).release()
     }
 }
@@ -53,13 +53,13 @@ public class ThreadLocal<T> {
         }
     }
     
-    private func setValue(value:T?) throws {
+    private func setValue(_ value:T?) throws {
         let unmanaged = value.map { Unmanaged.passRetained(AnyContainer($0)) }
         
         do {
             let pointer = unmanaged.map { unmanaged in
                 UnsafeMutablePointer<Void>(OpaquePointer(bitPattern: unmanaged))
-                }.getOrElse(nil)
+            }.getOr(else: nil)
             try ccall(CError.self) {
                 pthread_setspecific(_key, pointer)
             }
@@ -72,7 +72,7 @@ public class ThreadLocal<T> {
     public var value:T? {
         get {
             let pointer = pthread_getspecific(_key)
-            if pointer == nil {
+            if pointer.isNil {
                 return nil
             }
             let container:AnyContainer<T> = Unmanaged.fromOpaque(OpaquePointer(pointer)).takeUnretainedValue()
@@ -85,31 +85,49 @@ public class ThreadLocal<T> {
     }
 }
 
-private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void> {
-    let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(OpaquePointer(arg)).takeRetainedValue()
-    task.content()
-    return nil
-}
+#if swift(>=3.0)
+    private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void>! {
+        let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(OpaquePointer(arg)).takeRetainedValue()
+        task.content()
+        return nil
+    }
+#else
+    private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void> {
+        let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(OpaquePointer(arg)).takeRetainedValue()
+        task.content()
+        return nil
+    }
+#endif
 
 public class Thread : Equatable {
-    public let thread:pthread_t
+    public let thread:pthread_t!
     
     public init(pthread:pthread_t) {
         thread = pthread
     }
     
     public init(task:SafeTask) throws {
-        #if os(Linux)
-            self.thread = 0
-        #else
-            self.thread = nil
-        #endif
-        
         let unmanaged = Unmanaged.passRetained(AnyContainer(task))
-        let arg = UnsafeMutablePointer<Void>(OpaquePointer(bitPattern: unmanaged))
+        #if swift(>=3.0)
+            let arg = UnsafeMutablePointer<Void>(OpaquePointer.init(bitPattern: unmanaged))
+        #else
+            let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
+        #endif
         do {
-            try ccall(CError.self) {
-                pthread_create(&thread, nil, thread_proc, arg)
+            self.thread = try ccall(CError.self) { code in
+                #if swift(>=3.0)
+                    var thread:pthread_t?
+                #else
+                    var thread:pthread_t
+                #endif
+                
+                #if os(Linux)
+                    thread = 0
+                #else
+                    thread = nil
+                #endif
+                code = pthread_create(&thread, nil, thread_proc, arg)
+                return thread
             }
         } catch {
             unmanaged.release()
@@ -117,13 +135,27 @@ public class Thread : Equatable {
         }
     }
     
-    public func join() throws -> UnsafeMutablePointer<Void> {
-        var result:UnsafeMutablePointer<Void> = nil
+    private func _join() throws -> UnsafeMutablePointer<Void>! {
+        #if swift(>=3.0)
+            var result:UnsafeMutablePointer<Void>? = nil
+        #else
+            var result:UnsafeMutablePointer<Void> = nil
+        #endif
         try ccall(CError.self) {
             pthread_join(thread, &result)
         }
         return result
     }
+    
+    #if swift(>=3.0)
+        @discardableResult public func join() throws -> UnsafeMutablePointer<Void>! {
+            return try _join()
+        }
+    #else
+        public func join() throws -> UnsafeMutablePointer<Void>! {
+            return try _join()
+        }
+    #endif
     
     public static func detach(task:SafeTask) throws {
         let _ = try Thread(task: task)
@@ -145,7 +177,7 @@ public class Thread : Equatable {
         }
     }
     
-    public static func sleep(timeout:Timeout) -> Timeout? {
+    private static func _sleep(timeout:Timeout) -> Timeout? {
         var time = timeout.timespec
         return try! ccall(CError.self) { code in
             var rem:timespec = timespec()
@@ -158,6 +190,16 @@ public class Thread : Equatable {
             }
         }
     }
+    
+    #if swift(>=3.0)
+        @discardableResult public static func sleep(timeout:Timeout) -> Timeout? {
+            return _sleep(timeout: timeout)
+        }
+    #else
+        public static func sleep(timeout timeout:Timeout) -> Timeout? {
+            return _sleep(timeout)
+        }
+    #endif
 }
 
 public func ==(lhs:Thread, rhs:Thread) -> Bool {

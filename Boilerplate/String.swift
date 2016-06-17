@@ -156,4 +156,33 @@ import Foundation
         }
     }
     
+    public extension String {
+        /// A type used to represent the number of steps between two `String.Index`
+        /// values, where one value is reachable from the other.
+        ///
+        /// In Swift, *reachability* refers to the ability to produce one value from
+        /// the other through zero or more applications of `index(after:)`.
+        public typealias IndexDistance = Int
+        
+        public func index(after i: Index) -> Index {
+            return i.successor()
+        }
+        
+        public func index(before i: Index) -> Index {
+            return i.predecessor()
+        }
+        
+        public func index(i: Index, offsetBy n: IndexDistance) -> Index {
+            return i.advanced(by: n)
+        }
+        
+        public func index(i: Index, offsetBy n: IndexDistance, limitedBy limit: Index) -> Index? {
+            return i.advancedBy(n, limit: limit)
+        }
+        
+        public func distance(from start: Index, to end: Index) -> IndexDistance {
+            return start.distance(to: end)
+        }
+    }
+    
 #endif

@@ -17,6 +17,40 @@
 import Foundation
 
 #if swift(>=3.0)
+    public extension UnsafeMutablePointer {
+        public var isNil:Bool {
+            get {
+                return Int(bitPattern: self) == 0
+            }
+        }
+    }
+    
+    public extension UnsafePointer {
+        public var isNil:Bool {
+            get {
+                return Int(bitPattern: self) == 0
+            }
+        }
+    }
+#else
+    public extension UnsafeMutablePointer {
+        public var isNil:Bool {
+            get {
+                return self == nil
+            }
+        }
+    }
+    
+    public extension UnsafePointer {
+        public var isNil:Bool {
+            get {
+                return self == nil
+            }
+        }
+    }
+#endif
+
+#if swift(>=3.0)
 #else
     public typealias OpaquePointer = COpaquePointer
     

@@ -19,7 +19,7 @@ private struct NonStrictEquatableMock : NonStrictEquatable, Equatable {
         self.val = val
     }
     
-    func isEqualTo(other: NonStrictEquatable) -> Bool {
+    func isEqual(to other: NonStrictEquatable) -> Bool {
         return (other as? NonStrictEquatableMock)?.val == self.val
     }
 }

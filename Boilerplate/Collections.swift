@@ -209,13 +209,13 @@ public class ZippedSequence<A, B where A : IteratorProtocol, B : IteratorProtoco
 
 #if swift(>=3.0)
     public extension Sequence {
-        public func zip<T : Sequence>(other:T) -> ZippedSequence<Iterator, T.Iterator> {
+        public func zip<T : Sequence>(_ other:T) -> ZippedSequence<Iterator, T.Iterator> {
             return ZippedSequence(ag: self.makeIterator(), bg: other.makeIterator())
         }
     }
 #else
     public extension Sequence {
-        public func zip<T : Sequence>(other:T) -> ZippedSequence<Generator, T.Generator> {
+        public func zip<T : Sequence>(_ other:T) -> ZippedSequence<Generator, T.Generator> {
             return ZippedSequence(ag: self.generate(), bg: other.generate())
         }
     }
@@ -224,7 +224,7 @@ public class ZippedSequence<A, B where A : IteratorProtocol, B : IteratorProtoco
 postfix operator ^ {}
 
 #if swift(>=3.0)
-    public func toMap<K : Hashable, V, S : Sequence where S.Iterator.Element == (K, V)>(seq:S) -> Dictionary<K, V> {
+    public func toMap<K : Hashable, V, S : Sequence where S.Iterator.Element == (K, V)>(_ seq:S) -> Dictionary<K, V> {
         var dict = Dictionary<K, V>()
         for (k, v) in seq {
             dict[k] = v

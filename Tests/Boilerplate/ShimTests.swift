@@ -25,16 +25,9 @@ class ShimTests: XCTestCase {
         let start = array.startIndex
         let one = start.advanced(by: 1)
         let two = start.advanced(by: 2)
-        let twoWithLimit = start.advanced(by:3, limit: 2)
         
         XCTAssertEqual(one, 1)
         XCTAssertEqual(two, 2)
-        XCTAssertEqual(twoWithLimit, two)
-        
-        let string = "string"
-        
-        let withLimit = string.startIndex.advanced(by:10, limit: string.endIndex)
-        XCTAssertEqual(withLimit, string.endIndex)
     }
     
     func testDistanceTo() {
@@ -110,9 +103,10 @@ class ShimTests: XCTestCase {
     
     func testStringSubstring() {
         let hello = "Hello, World!"
-        XCTAssertEqual(hello.substring(with:hello.startIndex.advanced(by:3)..<hello.endIndex.advanced(by:-3)), "lo, Wor")
-        XCTAssertEqual(hello.substring(from:hello.startIndex.advanced(by:3)), "lo, World!")
-        XCTAssertEqual(hello.substring(to:hello.endIndex.advanced(by:-3)), "Hello, Wor")
+        
+        XCTAssertEqual(hello.substring(with:hello.index(hello.startIndex, offsetBy: 3)..<hello.index(hello.endIndex, offsetBy: -3)), "lo, Wor")
+        XCTAssertEqual(hello.substring(from:hello.index(hello.startIndex, offsetBy: 3)), "lo, World!")
+        XCTAssertEqual(hello.substring(to:hello.index(hello.endIndex, offsetBy: -3)), "Hello, Wor")
     }
     
     func testStringByteArray() {
