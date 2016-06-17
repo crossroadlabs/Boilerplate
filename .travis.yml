@@ -29,7 +29,7 @@ matrix:
           repo: crossroadlabs/Boilerplate
           tags: true
     - script:
-        - ./build test
+        - swift build && swift test
       sudo: required
       dist: trusty
       language: generic
