@@ -16,7 +16,7 @@
 
 import Foundation
 
-#if swift(>=3.0) && !os(Linux)
+#if swift(>=3.0)
 #else
     public extension String {
         public func substring(from index: Index) -> String {
