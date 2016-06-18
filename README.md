@@ -94,6 +94,8 @@ Contributions are welcome. Let's get rid of boilerplate code in Swift together.
 
 ## Changelog
 
+* v0.2.1
+	* Range shims for Swift 3.0
 * v0.2.0
 	* Swift 3.0 preview 1 support
 	* Null pointers workarounds (Swift 3.0/2.x related)
