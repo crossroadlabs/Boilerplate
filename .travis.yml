@@ -23,7 +23,7 @@ matrix:
         - carthage bootstrap
       deploy:
         provider: script
-        script: pod trunk push $MODULE_NAME.podspec
+        script: pod trunk push $MODULE_NAME.podspec --allow-warnings
         skip_cleanup: true
         on:
           repo: crossroadlabs/Boilerplate
