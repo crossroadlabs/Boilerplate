@@ -140,6 +140,131 @@ import Foundation
             return generate()
         }
     }
+    
+    public extension Range {
+        public typealias Bound = Element
+        
+        /// Creates an instance with the given bounds.
+        ///
+        /// Because this initializer does not perform any checks, it should be used
+        /// as an optimization only when you are absolutely certain that `lower` is
+        /// less than or equal to `upper`. Using the half-open range operator
+        /// (`..<`) to form `Range` instances is preferred.
+        ///
+        /// - Parameter bounds: A tuple of the lower and upper bounds of the range.
+        public init(uncheckedBounds bounds: (lower: Bound, upper: Bound)) {
+            self = bounds.lower..<bounds.upper
+        }
+        
+        /// The range's lower bound.
+        ///
+        /// In an empty range, `lowerBound` is equal to `upperBound`.
+        public var lowerBound: Bound {
+            get {
+                return startIndex
+            }
+        }
+        
+        /// The range's upper bound.
+        ///
+        /// In an empty range, `upperBound` is equal to `lowerBound`. A `Range`
+        /// instance does not contain its upper bound.
+        public var upperBound: Bound {
+            get {
+                return endIndex
+            }
+        }
+        
+        /// Returns a Boolean value indicating whether the given element is contained
+        /// within the range.
+        ///
+        /// Because `Range` represents a half-open range, a `Range` instance does not
+        /// contain its upper bound. `element` is contained in the range if it is
+        /// greater than or equal to the lower bound and less than the upper bound.
+        ///
+        /// - Parameter element: The element to check for containment.
+        /// - Returns: `true` if `element` is contained in the range; otherwise,
+        ///   `false`.
+        public func contains(element: Bound) -> Bool {
+            return self.contains({$0 == element})
+        }
+        
+        /// A Boolean value indicating whether the range contains no elements.
+        ///
+        /// An empty `Range` instance has equal lower and upper bounds.
+        ///
+        ///     let empty: Range = 10..<10
+        ///     print(empty.isEmpty)
+        ///     // Prints "true"
+        /*already exists public var isEmpty: Bool {
+            get {
+                return self.isEmpty
+            }
+        }*/
+        
+        /// Creates an instance equivalent to the given range.
+        ///
+        /// - Parameter other: A range to convert to a `Range` instance.
+        //already exists public init(_ other: Range<Bound>)
+    }
+    
+    public extension Range where Element : Comparable {
+        /// Returns a Boolean value indicating whether this range and the given range
+        /// contain an element in common.
+        ///
+        /// For example:
+        ///
+        ///     let x: Range = 0..<20
+        ///     print(x.overlaps(10..<1000 as Range))
+        ///     // Prints "true"
+        ///
+        /// - Parameter other: A range to check for elements in common.
+        /// - Returns: `true` if this range and `other` have at least one element in
+        ///   common; otherwise, `false`.
+        public func overlaps(other: Range<Bound>) -> Bool {
+            return self.lowerBound < other.upperBound || self.upperBound > other.lowerBound
+        }
+        
+        /// Returns a Boolean value indicating whether this range and the given range
+        /// contain an element in common.
+        ///
+        /// For example:
+        ///
+        ///     let x: Range = 0..<20
+        ///     print(x.overlaps(10...1000 as ClosedRange))
+        ///     // Prints "true"
+        ///
+        /// - Parameter other: A range to check for elements in common.
+        /// - Returns: `true` if this range and `other` have at least one element in
+        ///   common; otherwise, `false`.
+        /*unapplicable public func overlaps(other: ClosedRange<Bound>) -> Bool {
+            
+        }*/
+        
+        /// Returns a copy of this range clamped to the given limiting range.
+        ///
+        /// The bounds of the result are always limited to the bounds of `limits`.
+        /// For example:
+        ///
+        ///     let x: Range = 0..<20
+        ///     print(x.clamped(to: 10..<1000))
+        ///     // Prints "10..<20"
+        ///
+        /// If the two ranges do not overlap, the result is an empty range within the
+        /// bounds of `limits`.
+        ///
+        ///     let y: Range = 0..<5
+        ///     print(y.clamped(to: 10..<1000))
+        ///     // Prints "10..<10"
+        ///
+        /// - Parameter limits: The range to clamp the bounds of this range.
+        /// - Returns: A new range clamped to the bounds of `limits`.
+        public func clamped(to limits: Range<Bound>) -> Range<Bound> {
+            let lower = min(max(lowerBound, limits.lowerBound), limits.upperBound)
+            let upper = max(min(upperBound, limits.upperBound), limits.lowerBound)
+            return Range(uncheckedBounds: (lower: lower, upper: upper))
+        }
+    }
 #endif
 
 public protocol CopyableCollectionType : Collection {
