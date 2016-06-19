@@ -44,6 +44,11 @@ import Foundation
     }
     
     extension Array {
+        /// Construct a Array of `count` elements, each initialized to
+        /// `repeating` value.
+        public init(repeating repeatedValue: Element, count: Int) {
+            self.init(count: count, repeatedValue: repeatedValue)
+        }
         /// Append the elements of `newElements` to `self`.
         ///
         /// - Complexity: O(*length of result*).
