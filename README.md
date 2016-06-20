@@ -94,6 +94,8 @@ Contributions are welcome. Let's get rid of boilerplate code in Swift together.
 
 ## Changelog
 
+* v0.2.2
+	* Minor Swift 3.0 Array fixes
 * v0.2.1
 	* Range shims for Swift 3.0
 * v0.2.0
