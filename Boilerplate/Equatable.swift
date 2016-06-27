@@ -55,7 +55,7 @@ extension NonStrictEquatableCollection {
             return false
         }
         
-        let zip = lhs.zip(rhs)
+        let zip = lhs.zipWith(other: rhs)
         
         for (lhsv, rhsv) in zip {
             if !lhsv.isEqual(to: rhsv) {
@@ -73,7 +73,7 @@ extension NonStrictEquatableCollection {
             return true
         }
         
-        let zip = lhs.zip(rhs)
+        let zip = lhs.zipWith(other: rhs)
         
         for (lhsv, rhsv) in zip {
             if lhsv.isEqual(to: rhsv) {
@@ -92,7 +92,7 @@ extension NonStrictEquatableCollection {
             return false
         }
     
-        let zip = lhs.zip(rhs)
+        let zip = lhs.zipWith(other: rhs)
     
         for (lhsv, rhsv) in zip {
             if !lhsv.isEqual(to: rhsv) {
@@ -110,7 +110,7 @@ extension NonStrictEquatableCollection {
             return true
         }
     
-        let zip = lhs.zip(rhs)
+        let zip = lhs.zipWith(other: rhs)
     
         for (lhsv, rhsv) in zip {
             if lhsv.isEqual(to: rhsv) {

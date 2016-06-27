@@ -339,14 +339,14 @@ public class ZippedSequence<A, B where A : IteratorProtocol, B : IteratorProtoco
 
 #if swift(>=3.0)
     public extension Sequence {
-        public func zip<T : Sequence>(_ other:T) -> ZippedSequence<Iterator, T.Iterator> {
-            return ZippedSequence(ag: self.makeIterator(), bg: other.makeIterator())
+        public func zipWith<T : Sequence>(other seq:T) -> ZippedSequence<Iterator, T.Iterator> {
+            return ZippedSequence(ag: self.makeIterator(), bg: seq.makeIterator())
         }
     }
 #else
     public extension Sequence {
-        public func zip<T : Sequence>(_ other:T) -> ZippedSequence<Generator, T.Generator> {
-            return ZippedSequence(ag: self.generate(), bg: other.generate())
+        public func zipWith<T : Sequence>(other seq:T) -> ZippedSequence<Generator, T.Generator> {
+            return ZippedSequence(ag: self.generate(), bg: seq.generate())
         }
     }
 #endif
