@@ -12,6 +12,36 @@ import Result
 
 @testable import Boilerplate
 
+/*
+ * Test coming from issue https://github.com/crossroadlabs/Boilerplate/issues/7
+ * Is here to make sure that Bolerplate zip does not collide with builtin zip function
+ */
+extension Dictionary {
+    #if swift(>=3.0)
+        init<S: Sequence where S.Iterator.Element == Element> (_ seq: S) {
+            self.init()
+            for (k, v) in seq {
+                self[k] = v
+            }
+        }
+    #else
+        init<S: SequenceType where S.Generator.Element == Element> (_ seq: S) {
+            self.init()
+            for (k, v) in seq {
+                self[k] = v
+            }
+        }
+    #endif
+    
+    func mapValues<T>(transform: (Value)->T) -> Dictionary<Key,T> {
+        #if swift(>=3.0)
+            return zip(self.keys, self.values.map(transform))^
+        #else
+            return Dictionary<Key,T>(zip(self.keys, self.values.map(transform)))
+        #endif
+    }
+}
+
 class CollectionsTests: XCTestCase {
     func enumerateSome(callback:(String)->Void) {
         callback("one")

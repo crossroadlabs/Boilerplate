@@ -19,6 +19,7 @@ import Foundation
 #if swift(>=3.0)
 #else
     public typealias Collection = CollectionType
+    public typealias RangeReplaceableCollection = RangeReplaceableCollectionType
     public typealias Sequence = SequenceType
     public typealias IteratorProtocol = GeneratorType
     public typealias OptionSet = OptionSetType
@@ -43,7 +44,7 @@ import Foundation
         }
     }
     
-    extension Array {
+    public extension Array {
         /// Construct a Array of `count` elements, each initialized to
         /// `repeating` value.
         public init(repeating repeatedValue: Element, count: Int) {
@@ -95,7 +96,7 @@ import Foundation
         }
     }
     
-    extension Collection {
+    public extension Collection {
         /// Returns `self[startIndex..<end]`
         ///
         /// - Complexity: O(1)
@@ -135,6 +136,70 @@ import Foundation
         /// - Precondition: `maxSplits >= 0`
         public func split(maxSplits maxSplits: Int = Int.max, omittingEmptySubsequences: Bool, @noescape isSeparator: (Self.Generator.Element) throws -> Bool) rethrows -> [Self.SubSequence] {
             return try self.split(maxSplits, allowEmptySlices: !omittingEmptySubsequences, isSeparator: isSeparator)
+        }
+    }
+    
+    public extension RangeReplaceableCollection {
+        /// Replaces the specified subrange of elements with the given collection.
+        ///
+        /// This method has the effect of removing the specified range of elements
+        /// from the collection and inserting the new elements at the same location.
+        /// The number of new elements need not match the number of elements being
+        /// removed.
+        ///
+        /// In this example, three elements in the middle of an array of integers are
+        /// replaced by the five elements of a `Repeated<Int>` instance.
+        ///
+        ///      var nums = [10, 20, 30, 40, 50]
+        ///      nums.replaceSubrange(1...3, with: repeatElement(1, count: 5))
+        ///      print(nums)
+        ///      // Prints "[10, 1, 1, 1, 1, 1, 50]"
+        ///
+        /// If you pass a zero-length range as the `subrange` parameter, this method
+        /// inserts the elements of `newElements` at `subrange.startIndex`. Calling
+        /// the `insert(contentsOf:at:)` method instead is preferred.
+        ///
+        /// Likewise, if you pass a zero-length collection as the `newElements`
+        /// parameter, this method removes the elements in the given subrange
+        /// without replacement. Calling the `removeSubrange(_:)` method instead is
+        /// preferred.
+        ///
+        /// Calling this method may invalidate any existing indices for use with this
+        /// collection.
+        ///
+        /// - Parameters:
+        ///   - subrange: The subrange of the collection to replace. The bounds of
+        ///     the range must be valid indices of the collection.
+        ///   - newElements: The new elements to add to the collection.
+        ///
+        /// - Complexity: O(*m*), where *m* is the combined length of the collection
+        ///   and `newElements`. If the call to `replaceSubrange` simply appends the
+        ///   contents of `newElements` to the collection, the complexity is O(*n*),
+        ///   where *n* is the length of `newElements`.
+        public mutating func replaceSubrange<C : Collection where C.Generator.Element == Generator.Element>(subrange: Range<Self.Index>, with newElements: C) {
+            self.replaceRange(subrange, with: newElements)
+        }
+        
+        /// Removes the elements in the specified subrange from the collection.
+        ///
+        /// All the elements following the specified position are moved to close the
+        /// gap. This example removes two elements from the middle of an array of
+        /// measurements.
+        ///
+        ///     var measurements = [1.2, 1.5, 2.9, 1.2, 1.5]
+        ///     measurements.removeSubrange(1..<3)
+        ///     print(measurements)
+        ///     // Prints "[1.2, 1.5]"
+        ///
+        /// Calling this method may invalidate any existing indices for use with this
+        /// collection.
+        ///
+        /// - Parameter bounds: The range of the collection to be removed. The
+        ///   bounds of the range must be valid indices of the collection.
+        ///
+        /// - Complexity: O(*n*), where *n* is the length of the collection.
+        public mutating func removeSubrange(bounds: Range<Self.Index>) {
+            self.removeRange(bounds)
         }
     }
     
@@ -339,14 +404,14 @@ public class ZippedSequence<A, B where A : IteratorProtocol, B : IteratorProtoco
 
 #if swift(>=3.0)
     public extension Sequence {
-        public func zip<T : Sequence>(_ other:T) -> ZippedSequence<Iterator, T.Iterator> {
-            return ZippedSequence(ag: self.makeIterator(), bg: other.makeIterator())
+        public func zipWith<T : Sequence>(other seq:T) -> ZippedSequence<Iterator, T.Iterator> {
+            return ZippedSequence(ag: self.makeIterator(), bg: seq.makeIterator())
         }
     }
 #else
     public extension Sequence {
-        public func zip<T : Sequence>(_ other:T) -> ZippedSequence<Generator, T.Generator> {
-            return ZippedSequence(ag: self.generate(), bg: other.generate())
+        public func zipWith<T : Sequence>(other seq:T) -> ZippedSequence<Generator, T.Generator> {
+            return ZippedSequence(ag: self.generate(), bg: seq.generate())
         }
     }
 #endif
