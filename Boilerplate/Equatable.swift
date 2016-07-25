@@ -28,12 +28,10 @@ public func !=<A : NonStrictEquatable, B : NonStrictEquatable>(lhs:A, rhs:B) -> 
     return !lhs.isEqual(to: rhs)
 }
 
-@warn_unused_result
 public func ==<T : protocol<Equatable, NonStrictEquatable>>(lhs: T, rhs: T) -> Bool {
     return lhs.isEqual(to: rhs)
 }
 
-@warn_unused_result
 public func !=<T : protocol<Equatable, NonStrictEquatable>>(lhs: T, rhs: T) -> Bool {
     return !lhs.isEqual(to: rhs)
 }
@@ -49,7 +47,6 @@ extension NonStrictEquatableCollection {
 
 #if swift(>=3.0)
     
-    @warn_unused_result
     public func ==<T : Collection where T.Iterator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
         if lhs.count != rhs.count {
             return false
@@ -67,7 +64,6 @@ extension NonStrictEquatableCollection {
     }
     
     /// rewritten because can return early
-    @warn_unused_result
     public func !=<T : Collection where T.Iterator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
         if lhs.count != rhs.count {
             return true

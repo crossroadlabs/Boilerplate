@@ -41,7 +41,7 @@ public extension RuntimeErrorType {
         get {
             #if !os(Linux)
                 #if swift(>=3.0)
-                    return Foundation.Thread.callStackSymbols()
+                    return Foundation.Thread.callStackSymbols
                 #else
                     return NSThread.callStackSymbols()
                 #endif
@@ -131,18 +131,18 @@ public extension CError {
     public static let INVAL = EINVAL
 }
 
-public func ccall<Error: ErrorWithCodeType>(@noescape _ fun:()->Int32) -> Error? {
+public func ccall<Error: ErrorWithCodeType>(_ fun:@noescape ()->Int32) -> Error? {
     let result = fun()
     return Error.isError(result) ? Error(code: result) : nil
 }
 
-public func ccall<Error: ErrorWithCodeType>(_: Error.Type = Error.self, @noescape fun:()->Int32) throws {
+public func ccall<Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:@noescape ()->Int32) throws {
     if let error:Error = ccall(fun) {
         throw error
     }
 }
 
-public func ccall<Value, Error: ErrorWithCodeType>(@noescape _ fun:(inout code:Int32)->Value) -> Result<Value, Error> {
+public func ccall<Value, Error: ErrorWithCodeType>(_ fun:@noescape (inout code:Int32)->Value) -> Result<Value, Error> {
     var code:Int32 = 0
     let result = fun(code: &code)
     if Error.isError(code) {
@@ -152,7 +152,7 @@ public func ccall<Value, Error: ErrorWithCodeType>(@noescape _ fun:(inout code:I
     }
 }
 
-public func ccall<Value, Error: ErrorWithCodeType>(_: Error.Type = Error.self, @noescape fun:(inout code:Int32)->Value) throws -> Value {
+public func ccall<Value, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:@noescape (inout code:Int32)->Value) throws -> Value {
     let result:Result<Value, Error> = ccall(fun)
     return try result.dematerialize()
 }

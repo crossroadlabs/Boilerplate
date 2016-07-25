@@ -17,7 +17,7 @@ import Foundation
 class ThreadTests: XCTestCase {
     func testThreadRun() {
         var state = 0
-        let _ = try! Thread {
+        let _ = try! Boilerplate.Thread {
             let _ = Thread.sleep(timeout: 0.1)
             state = 1
             let _ = Thread.sleep(timeout: 1)
@@ -32,7 +32,7 @@ class ThreadTests: XCTestCase {
     
     func testJoin() {
         var state = 0
-        let t = try! Thread {
+        let t = try! Boilerplate.Thread {
             let _ = Thread.sleep(timeout: 1)
             state = 1
         }
@@ -53,10 +53,10 @@ class ThreadTests: XCTestCase {
     func testThreadLocal() {
         let local = try! ThreadLocal<Int8>()
         local.value = 1
-        let _ = try! Thread {
+        let _ = try! Boilerplate.Thread {
             local.value = 2
         }
-        let _ = try! Thread {
+        let _ = try! Boilerplate.Thread {
             local.value = 3
         }
         Thread.sleep(timeout: 0.5)
@@ -65,8 +65,8 @@ class ThreadTests: XCTestCase {
     
     func testIsMain() {
         XCTAssert(Thread.isMain)
-        let t = try! Thread {
-            XCTAssert(!Thread.isMain)
+        let t = try! Boilerplate.Thread {
+            XCTAssert(!Boilerplate.Thread.isMain)
         }
         XCTAssertNotEqual(Thread.current, t)
     }

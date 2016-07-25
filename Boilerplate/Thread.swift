@@ -32,7 +32,7 @@ import CoreFoundation
 #else
     private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>) {
         if pointer != .null {
-            Unmanaged<AnyObject>.fromOpaque(OpaquePointer(pointer)).release()
+            Unmanaged<AnyObject>.fromOpaque(pointer).release()
         }
     }
 #endif
@@ -66,7 +66,7 @@ public class ThreadLocal<T> {
         
         do {
             let pointer = unmanaged.map { unmanaged in
-                UnsafeMutablePointer<Void>(OpaquePointer(bitPattern: unmanaged))
+                UnsafeMutablePointer<Void>(unmanaged.toOpaque())
             }.getOr(else: nil)
             try ccall(CError.self) {
                 pthread_setspecific(_key, pointer)
@@ -83,12 +83,8 @@ public class ThreadLocal<T> {
             if pointer == .null {
                 return nil
             }
-            #if os(Linux)
-		        let container:AnyContainer<T> = Unmanaged.fromOpaque(OpaquePointer(pointer!)).takeUnretainedValue()
-            #else
-                let container:AnyContainer<T> = Unmanaged.fromOpaque(OpaquePointer(pointer)).takeUnretainedValue()
-            #endif
-	return container.content
+            let container:AnyContainer<T> = Unmanaged.fromOpaque(pointer!).takeUnretainedValue()
+            return container.content
         }
         set {
             // Yes, let it crash. Runtime error
@@ -99,14 +95,14 @@ public class ThreadLocal<T> {
 
 #if swift(>=3.0)
 	#if os(Linux)
-		private func thread_proc(arg: UnsafeMutablePointer<Void>?) -> UnsafeMutablePointer<Void>? {
-            let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(OpaquePointer(arg!)).takeRetainedValue()
+		private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void>? {
+            let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(arg!).takeRetainedValue()
             task.content()
             return nil
         }
 	#else
-        private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void>! {
-            let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(OpaquePointer(arg)).takeRetainedValue()
+        private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void>? {
+            let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(arg).takeRetainedValue()
             task.content()
             return nil
         }
@@ -128,11 +124,7 @@ public class Thread : Equatable {
     
     public init(task:SafeTask) throws {
         let unmanaged = Unmanaged.passRetained(AnyContainer(task))
-        #if swift(>=3.0)
-            let arg = UnsafeMutablePointer<Void>(OpaquePointer.init(bitPattern: unmanaged))
-        #else
-            let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
-        #endif
+        let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
         do {
             self.thread = try ccall(CError.self) { code in
                 #if swift(>=3.0) && !os(Linux)
