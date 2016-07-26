@@ -138,23 +138,14 @@ class ShimTests: XCTestCase {
     }
     
     func testStringEncoding() {
-        #if swift(>=3.0)
-            let expectation = self.expectation(withDescription: "desc")
-        #else
-            let expectation = self.expectationWithDescription("desc")
-        #endif
-        
+        let expectation = self.expectation(description: "desc")
 
         UTF8.encode("A", sendingOutputTo: { unit in
             XCTAssertEqual(unit, 65)
             expectation.fulfill()
         })
         
-        #if swift(>=3.0)
-            self.waitForExpectations(withTimeout: 0, handler: nil)
-        #else
-            self.waitForExpectationsWithTimeout(0, handler: nil)
-        #endif
+        self.waitForExpectations(timeout: 0, handler: nil)
     }
 }
 

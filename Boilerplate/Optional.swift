@@ -17,7 +17,7 @@
 import Foundation
 
 public extension Optional {
-    func getOr(@autoclosure else el:() throws -> Wrapped) rethrows -> Wrapped {
+    func getOr(else el:@autoclosure () throws -> Wrapped) rethrows -> Wrapped {
         return try self ?? el()
     }
     
@@ -25,7 +25,7 @@ public extension Optional {
         return try self ?? el()
     }
     
-    func or(@autoclosure else el:() throws -> Wrapped?) rethrows -> Wrapped? {
+    func or(else el:@autoclosure () throws -> Wrapped?) rethrows -> Wrapped? {
         return try self ?? el()
     }
     
