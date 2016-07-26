@@ -32,8 +32,7 @@ public enum Timeout {
     case In(timeout:Double)
 }
 
-#if swift(>=3.0) && !os(Linux)
-#else
+#if os(Linux)
     public typealias TimeInterval = NSTimeInterval
     public typealias Date = NSDate
 #endif
@@ -51,7 +50,7 @@ public extension Timeout {
         }
     }
     
-    public init(until:NSDate) {
+    public init(until:Date) {
         self.init(timeout: until.timeIntervalSinceNow)
     }
     
@@ -73,12 +72,16 @@ public extension Timeout {
         case .Immediate:
             return date
         case .Infinity:
-            return NSDate.distantFuture
-        case .In(let interval):
-            #if swift(>=3.0) && !os(Linux)
-                return Date(timeInterval: interval, since: date)
+            #if os(Linux)
+                return Date.distantFuture()
             #else
+                return Date.distantFuture
+            #endif
+        case .In(let interval):
+            #if os(Linux)
                 return Date(timeInterval: interval, sinceDate: date)
+            #else
+                return Date(timeInterval: interval, since: date)
             #endif
         }
     }
@@ -88,10 +91,10 @@ public extension Timeout {
         case .Immediate:
             return Date()
         case .Infinity:
-            #if swift(>=3.0) && !os(Linux)
-                return Date.distantFuture
-            #else
+            #if os(Linux)
                 return Date.distantFuture()
+            #else
+                return Date.distantFuture
             #endif
         case .In(let interval):
             return Date(timeIntervalSinceNow: interval)

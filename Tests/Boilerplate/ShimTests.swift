@@ -138,23 +138,32 @@ class ShimTests: XCTestCase {
     }
     
     func testStringEncoding() {
-        let expectation = self.expectation(description: "desc")
+        #if os(Linux)
+            let expectation = self.expectation(withDescription: "desc")
+        #else
+            let expectation = self.expectation(description: "desc")
+        #endif
 
         UTF8.encode("A", sendingOutputTo: { unit in
             XCTAssertEqual(unit, 65)
             expectation.fulfill()
         })
-        
-        self.waitForExpectations(timeout: 0, handler: nil)
+
+        #if os(Linux)
+            self.waitForExpectations(withTimeout: 0, handler: nil)
+        #else
+            self.waitForExpectations(timeout: 0, handler: nil)
+        #endif
     }
 }
 
 #if os(Linux)
 extension ShimTests {
-	static var allTests : [(String, ShimTests -> () throws -> Void)] {
+	static var allTests : [(String, (ShimTests) -> () throws -> Void)] {
 		return [
 			("testSequenseJoin", testSequenseJoin),
 			("testAdvancedBy", testAdvancedBy),
+			("testDistanceTo", testDistanceTo),
 			("testArrayMutation", testArrayMutation),
 			("testCollectionPrefixes", testCollectionPrefixes),
 			("testStringCase", testStringCase),

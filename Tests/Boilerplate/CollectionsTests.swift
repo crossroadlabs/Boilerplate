@@ -73,9 +73,10 @@ class CollectionsTests: XCTestCase {
 
 #if os(Linux)
 extension CollectionsTests {
-	static var allTests : [(String, CollectionsTests -> () throws -> Void)] {
+	static var allTests : [(String, (CollectionsTests) -> () throws -> Void)] {
 		return [
 			("testEnumerator", testEnumerator),
+			("testToMap", testToMap),
 		]
 	}
 }

@@ -78,14 +78,14 @@ class NullTests: XCTestCase {
 }
 
 #if os(Linux)
-    extension NullTests {
-        static var allTests : [(String, NullTests -> () throws -> Void)] {
-            return [
-                ("testNull", testNull),
-                ("testNotNull", testNotNull),
-                ("testOptionalNull", testOptionalNull),
-                ("testOptionalNotNull", testOptionalNotNull)
-            ]
-        }
-    }
+extension NullTests {
+	static var allTests : [(String, (NullTests) -> () throws -> Void)] {
+		return [
+			("testNull", testNull),
+			("testNotNull", testNotNull),
+			("testOptionalNull", testOptionalNull),
+			("testOptionalNotNull", testOptionalNotNull),
+		]
+	}
+}
 #endif

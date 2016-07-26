@@ -45,7 +45,7 @@ class NSBridgingTests: XCTestCase {
 
 #if os(Linux)
 extension NSBridgingTests {
-	static var allTests : [(String, NSBridgingTests -> () throws -> Void)] {
+	static var allTests : [(String, (NSBridgingTests) -> () throws -> Void)] {
 		return [
 			("testIsNoBridge", testIsNoBridge),
 			("testAsNoBridge", testAsNoBridge),
