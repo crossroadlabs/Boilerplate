@@ -92,6 +92,31 @@ Contributions are welcome. Let's get rid of boilerplate code in Swift together.
 
 ### Keep your code clean ;)
 
+## Changelog
+
+* v0.2.3
+	* Renamed zip to zipWith(other:) not to collide with built in zip
+* v0.2.2
+	* Minor Swift 3.0 Array fixes
+* v0.2.1
+	* Range shims for Swift 3.0
+* v0.2.0
+	* Swift 3.0 preview 1 support
+	* Null pointers workarounds (Swift 3.0/2.x related)
+* v0.1.x:
+	* Obj-C Bridging utils
+	* Fatal errors
+	* C error handling
+	* AnyError
+	* ZippedSequence
+	* NonStrictEquatable
+	* Timeout (and conversion to different formats)
+	* tiny ThreadLocal and Thread
+	* Tasks
+	* Invalidation tokens
+	* Swift 3.0 shimming
+	* Linux/Mac incompatibilities fixes
+
 ## Contributing
 
 To get started, <a href="https://www.clahub.com/agreements/crossroadlabs/Boilerplate">sign the Contributor License Agreement</a>.

@@ -19,8 +19,10 @@ import Foundation
 #if swift(>=3.0)
 #else
     public typealias Collection = CollectionType
+    public typealias RangeReplaceableCollection = RangeReplaceableCollectionType
     public typealias Sequence = SequenceType
     public typealias IteratorProtocol = GeneratorType
+    public typealias OptionSet = OptionSetType
     
     public extension Sequence where Generator.Element == String {
         public func joined(separator separator: String) -> String {
@@ -42,7 +44,12 @@ import Foundation
         }
     }
     
-    extension Array {
+    public extension Array {
+        /// Construct a Array of `count` elements, each initialized to
+        /// `repeating` value.
+        public init(repeating repeatedValue: Element, count: Int) {
+            self.init(count: count, repeatedValue: repeatedValue)
+        }
         /// Append the elements of `newElements` to `self`.
         ///
         /// - Complexity: O(*length of result*).
@@ -89,7 +96,7 @@ import Foundation
         }
     }
     
-    extension Collection {
+    public extension Collection {
         /// Returns `self[startIndex..<end]`
         ///
         /// - Complexity: O(1)
@@ -132,11 +139,200 @@ import Foundation
         }
     }
     
+    public extension RangeReplaceableCollection {
+        /// Replaces the specified subrange of elements with the given collection.
+        ///
+        /// This method has the effect of removing the specified range of elements
+        /// from the collection and inserting the new elements at the same location.
+        /// The number of new elements need not match the number of elements being
+        /// removed.
+        ///
+        /// In this example, three elements in the middle of an array of integers are
+        /// replaced by the five elements of a `Repeated<Int>` instance.
+        ///
+        ///      var nums = [10, 20, 30, 40, 50]
+        ///      nums.replaceSubrange(1...3, with: repeatElement(1, count: 5))
+        ///      print(nums)
+        ///      // Prints "[10, 1, 1, 1, 1, 1, 50]"
+        ///
+        /// If you pass a zero-length range as the `subrange` parameter, this method
+        /// inserts the elements of `newElements` at `subrange.startIndex`. Calling
+        /// the `insert(contentsOf:at:)` method instead is preferred.
+        ///
+        /// Likewise, if you pass a zero-length collection as the `newElements`
+        /// parameter, this method removes the elements in the given subrange
+        /// without replacement. Calling the `removeSubrange(_:)` method instead is
+        /// preferred.
+        ///
+        /// Calling this method may invalidate any existing indices for use with this
+        /// collection.
+        ///
+        /// - Parameters:
+        ///   - subrange: The subrange of the collection to replace. The bounds of
+        ///     the range must be valid indices of the collection.
+        ///   - newElements: The new elements to add to the collection.
+        ///
+        /// - Complexity: O(*m*), where *m* is the combined length of the collection
+        ///   and `newElements`. If the call to `replaceSubrange` simply appends the
+        ///   contents of `newElements` to the collection, the complexity is O(*n*),
+        ///   where *n* is the length of `newElements`.
+        public mutating func replaceSubrange<C : Collection where C.Generator.Element == Generator.Element>(subrange: Range<Self.Index>, with newElements: C) {
+            self.replaceRange(subrange, with: newElements)
+        }
+        
+        /// Removes the elements in the specified subrange from the collection.
+        ///
+        /// All the elements following the specified position are moved to close the
+        /// gap. This example removes two elements from the middle of an array of
+        /// measurements.
+        ///
+        ///     var measurements = [1.2, 1.5, 2.9, 1.2, 1.5]
+        ///     measurements.removeSubrange(1..<3)
+        ///     print(measurements)
+        ///     // Prints "[1.2, 1.5]"
+        ///
+        /// Calling this method may invalidate any existing indices for use with this
+        /// collection.
+        ///
+        /// - Parameter bounds: The range of the collection to be removed. The
+        ///   bounds of the range must be valid indices of the collection.
+        ///
+        /// - Complexity: O(*n*), where *n* is the length of the collection.
+        public mutating func removeSubrange(bounds: Range<Self.Index>) {
+            self.removeRange(bounds)
+        }
+    }
+    
     public extension Sequence {
         public typealias Iterator = Generator
         
         public func makeIterator() -> Iterator {
             return generate()
+        }
+    }
+    
+    public extension Range {
+        public typealias Bound = Element
+        
+        /// Creates an instance with the given bounds.
+        ///
+        /// Because this initializer does not perform any checks, it should be used
+        /// as an optimization only when you are absolutely certain that `lower` is
+        /// less than or equal to `upper`. Using the half-open range operator
+        /// (`..<`) to form `Range` instances is preferred.
+        ///
+        /// - Parameter bounds: A tuple of the lower and upper bounds of the range.
+        public init(uncheckedBounds bounds: (lower: Bound, upper: Bound)) {
+            self = bounds.lower..<bounds.upper
+        }
+        
+        /// The range's lower bound.
+        ///
+        /// In an empty range, `lowerBound` is equal to `upperBound`.
+        public var lowerBound: Bound {
+            get {
+                return startIndex
+            }
+        }
+        
+        /// The range's upper bound.
+        ///
+        /// In an empty range, `upperBound` is equal to `lowerBound`. A `Range`
+        /// instance does not contain its upper bound.
+        public var upperBound: Bound {
+            get {
+                return endIndex
+            }
+        }
+        
+        /// Returns a Boolean value indicating whether the given element is contained
+        /// within the range.
+        ///
+        /// Because `Range` represents a half-open range, a `Range` instance does not
+        /// contain its upper bound. `element` is contained in the range if it is
+        /// greater than or equal to the lower bound and less than the upper bound.
+        ///
+        /// - Parameter element: The element to check for containment.
+        /// - Returns: `true` if `element` is contained in the range; otherwise,
+        ///   `false`.
+        public func contains(element: Bound) -> Bool {
+            return self.contains({$0 == element})
+        }
+        
+        /// A Boolean value indicating whether the range contains no elements.
+        ///
+        /// An empty `Range` instance has equal lower and upper bounds.
+        ///
+        ///     let empty: Range = 10..<10
+        ///     print(empty.isEmpty)
+        ///     // Prints "true"
+        /*already exists public var isEmpty: Bool {
+            get {
+                return self.isEmpty
+            }
+        }*/
+        
+        /// Creates an instance equivalent to the given range.
+        ///
+        /// - Parameter other: A range to convert to a `Range` instance.
+        //already exists public init(_ other: Range<Bound>)
+    }
+    
+    public extension Range where Element : Comparable {
+        /// Returns a Boolean value indicating whether this range and the given range
+        /// contain an element in common.
+        ///
+        /// For example:
+        ///
+        ///     let x: Range = 0..<20
+        ///     print(x.overlaps(10..<1000 as Range))
+        ///     // Prints "true"
+        ///
+        /// - Parameter other: A range to check for elements in common.
+        /// - Returns: `true` if this range and `other` have at least one element in
+        ///   common; otherwise, `false`.
+        public func overlaps(other: Range<Bound>) -> Bool {
+            return self.lowerBound < other.upperBound || self.upperBound > other.lowerBound
+        }
+        
+        /// Returns a Boolean value indicating whether this range and the given range
+        /// contain an element in common.
+        ///
+        /// For example:
+        ///
+        ///     let x: Range = 0..<20
+        ///     print(x.overlaps(10...1000 as ClosedRange))
+        ///     // Prints "true"
+        ///
+        /// - Parameter other: A range to check for elements in common.
+        /// - Returns: `true` if this range and `other` have at least one element in
+        ///   common; otherwise, `false`.
+        /*unapplicable public func overlaps(other: ClosedRange<Bound>) -> Bool {
+            
+        }*/
+        
+        /// Returns a copy of this range clamped to the given limiting range.
+        ///
+        /// The bounds of the result are always limited to the bounds of `limits`.
+        /// For example:
+        ///
+        ///     let x: Range = 0..<20
+        ///     print(x.clamped(to: 10..<1000))
+        ///     // Prints "10..<20"
+        ///
+        /// If the two ranges do not overlap, the result is an empty range within the
+        /// bounds of `limits`.
+        ///
+        ///     let y: Range = 0..<5
+        ///     print(y.clamped(to: 10..<1000))
+        ///     // Prints "10..<10"
+        ///
+        /// - Parameter limits: The range to clamp the bounds of this range.
+        /// - Returns: A new range clamped to the bounds of `limits`.
+        public func clamped(to limits: Range<Bound>) -> Range<Bound> {
+            let lower = min(max(lowerBound, limits.lowerBound), limits.upperBound)
+            let upper = max(min(upperBound, limits.upperBound), limits.lowerBound)
+            return Range(uncheckedBounds: (lower: lower, upper: upper))
         }
     }
 #endif
@@ -208,14 +404,45 @@ public class ZippedSequence<A, B where A : IteratorProtocol, B : IteratorProtoco
 
 #if swift(>=3.0)
     public extension Sequence {
-        public func zip<T : Sequence>(other:T) -> ZippedSequence<Iterator, T.Iterator> {
-            return ZippedSequence(ag: self.makeIterator(), bg: other.makeIterator())
+        public func zipWith<T : Sequence>(other seq:T) -> ZippedSequence<Iterator, T.Iterator> {
+            return ZippedSequence(ag: self.makeIterator(), bg: seq.makeIterator())
         }
     }
 #else
     public extension Sequence {
-        public func zip<T : Sequence>(other:T) -> ZippedSequence<Generator, T.Generator> {
-            return ZippedSequence(ag: self.generate(), bg: other.generate())
+        public func zipWith<T : Sequence>(other seq:T) -> ZippedSequence<Generator, T.Generator> {
+            return ZippedSequence(ag: self.generate(), bg: seq.generate())
         }
     }
 #endif
+
+postfix operator ^ {}
+
+#if swift(>=3.0)
+    public func toMap<K : Hashable, V, S : Sequence where S.Iterator.Element == (K, V)>(_ seq:S) -> Dictionary<K, V> {
+        var dict = Dictionary<K, V>()
+        for (k, v) in seq {
+            dict[k] = v
+        }
+        return dict
+    }
+    
+    //Frankly, I would prefer to avoid operator syntax here and implement it as an extension, but can not find a solution. If somebody has - feel free to submit, please.
+    public postfix func ^<K : Hashable, V, S : Sequence where S.Iterator.Element == (K, V)>(seq:S) -> Dictionary<K, V> {
+        return toMap(seq)
+    }
+#else
+    public func toMap<K : Hashable, V, S : Sequence where S.Generator.Element == (K, V)>(seq:S) -> Dictionary<K, V> {
+        var dict = Dictionary<K, V>()
+        for (k, v) in seq {
+            dict[k] = v
+        }
+        return dict
+    }
+    
+    //Frankly, I would prefer to avoid operator syntax here and implement it as an extension, but can not find a solution. If somebody has - feel free to submit, please.
+    public postfix func ^<K : Hashable, V, S : Sequence where S.Generator.Element == (K, V)>(seq:S) -> Dictionary<K, V> {
+        return toMap(seq)
+    }
+#endif
+
