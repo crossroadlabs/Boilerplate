@@ -54,7 +54,7 @@ class EquatableTests: XCTestCase {
 
 #if os(Linux)
 extension EquatableTests {
-	static var allTests : [(String, EquatableTests -> () throws -> Void)] {
+	static var allTests : [(String, (EquatableTests) -> () throws -> Void)] {
 		return [
 			("testNonStrictEquatable", testNonStrictEquatable),
 			("testNonStrictEquatableArrays", testNonStrictEquatableArrays),

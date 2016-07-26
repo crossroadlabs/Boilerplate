@@ -74,7 +74,7 @@ class ThreadTests: XCTestCase {
 
 #if os(Linux)
 extension ThreadTests {
-	static var allTests : [(String, ThreadTests -> () throws -> Void)] {
+	static var allTests : [(String, (ThreadTests) -> () throws -> Void)] {
 		return [
 			("testThreadRun", testThreadRun),
 			("testJoin", testJoin),

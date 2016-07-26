@@ -26,7 +26,7 @@ import CoreFoundation
 #if os(Linux)
     private func ThreadLocalDestructor(pointer:UnsafeMutablePointer<Void>?) {
         if pointer != .null {
-            Unmanaged<AnyObject>.fromOpaque(OpaquePointer(pointer!)).release()
+            Unmanaged<AnyObject>.fromOpaque(pointer!).release()
         }
     }
 #else
@@ -93,23 +93,16 @@ public class ThreadLocal<T> {
     }
 }
 
-#if swift(>=3.0)
-	#if os(Linux)
-		private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void>? {
-            let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(arg!).takeRetainedValue()
-            task.content()
-            return nil
-        }
-	#else
-        private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void>? {
-            let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(arg).takeRetainedValue()
-            task.content()
-            return nil
-        }
-	#endif
+
+#if os(Linux)
+    private func thread_proc(arg: UnsafeMutablePointer<Void>?) -> UnsafeMutablePointer<Void>? {
+        let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(arg!).takeRetainedValue()
+        task.content()
+        return nil
+    }
 #else
-    private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void> {
-        let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(OpaquePointer(arg)).takeRetainedValue()
+    private func thread_proc(arg: UnsafeMutablePointer<Void>) -> UnsafeMutablePointer<Void>? {
+        let task = Unmanaged<AnyContainer<SafeTask>>.fromOpaque(arg).takeRetainedValue()
         task.content()
         return nil
     }
@@ -127,16 +120,10 @@ public class Thread : Equatable {
         let arg = UnsafeMutablePointer<Void>(unmanaged.toOpaque())
         do {
             self.thread = try ccall(CError.self) { code in
-                #if swift(>=3.0) && !os(Linux)
-                    var thread:pthread_t?
-                #else
-                    var thread:pthread_t
-                #endif
-                
                 #if os(Linux)
-                    thread = 0
+                    var thread:pthread_t = 0
                 #else
-                    thread = nil
+                    var thread:pthread_t? = nil
                 #endif
                 code = pthread_create(&thread, nil, thread_proc, arg)
                 return thread

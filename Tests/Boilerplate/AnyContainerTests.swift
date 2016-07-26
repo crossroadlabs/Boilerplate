@@ -64,7 +64,7 @@ class AnyContainerTests: XCTestCase {
 
 #if os(Linux)
 extension AnyContainerTests {
-	static var allTests : [(String, AnyContainerTests -> () throws -> Void)] {
+	static var allTests : [(String, (AnyContainerTests) -> () throws -> Void)] {
 		return [
 			("testInitAndGet", testInitAndGet),
 			("testContentMutation", testContentMutation),
