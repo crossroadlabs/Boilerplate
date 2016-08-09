@@ -41,11 +41,7 @@ class TimeTests : XCTestCase {
     func testTimeoutDate() {
         let to1 = Timeout.Infinity
 
-        #if os(Linux)
-            XCTAssertEqual(to1.timeSinceNow(), Date.distantFuture())
-        #else
-            XCTAssertEqual(to1.timeSinceNow(), Date.distantFuture)
-        #endif
+        XCTAssertEqual(to1.timeSinceNow(), Date.distantFuture)
         
         let to2 = Timeout.Immediate
         let tI = to2.timeSinceNow().timeIntervalSinceNow

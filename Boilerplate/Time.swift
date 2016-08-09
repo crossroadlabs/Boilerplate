@@ -32,10 +32,6 @@ public enum Timeout {
     case In(timeout:Double)
 }
 
-#if os(Linux)
-    public typealias TimeInterval = NSTimeInterval
-    public typealias Date = NSDate
-#endif
 
 /// NSAdditions
 public extension Timeout {
@@ -72,17 +68,9 @@ public extension Timeout {
         case .Immediate:
             return date
         case .Infinity:
-            #if os(Linux)
-                return Date.distantFuture()
-            #else
-                return Date.distantFuture
-            #endif
+            return Date.distantFuture
         case .In(let interval):
-            #if os(Linux)
-                return Date(timeInterval: interval, sinceDate: date)
-            #else
-                return Date(timeInterval: interval, since: date)
-            #endif
+            return Date(timeInterval: interval, since: date)
         }
     }
     
@@ -91,11 +79,7 @@ public extension Timeout {
         case .Immediate:
             return Date()
         case .Infinity:
-            #if os(Linux)
-                return Date.distantFuture()
-            #else
-                return Date.distantFuture
-            #endif
+            return Date.distantFuture
         case .In(let interval):
             return Date(timeIntervalSinceNow: interval)
         }
@@ -157,19 +141,19 @@ public extension Timeout {
     }
 }
 
-extension Timeout : FloatLiteralConvertible {
+extension Timeout : ExpressibleByFloatLiteral {
     public init(floatLiteral value: FloatLiteralType) {
         self.init(timeout: value)
     }
 }
 
-extension Timeout : NilLiteralConvertible {
+extension Timeout : ExpressibleByNilLiteral {
     public init(nilLiteral: ()) {
         self = .Immediate
     }
 }
 
-extension Timeout : IntegerLiteralConvertible {
+extension Timeout : ExpressibleByIntegerLiteral {
     public init(integerLiteral value: IntegerLiteralType) {
         self.init(timeout: Double(value))
     }

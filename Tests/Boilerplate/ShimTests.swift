@@ -138,22 +138,15 @@ class ShimTests: XCTestCase {
     }
     
     func testStringEncoding() {
-        #if os(Linux)
-            let expectation = self.expectation(withDescription: "desc")
-        #else
-            let expectation = self.expectation(description: "desc")
-        #endif
 
-        UTF8.encode("A", sendingOutputTo: { unit in
+        let expectation = self.expectation(description: "desc")
+
+        UTF8.encode("A", into: { unit in
             XCTAssertEqual(unit, 65)
             expectation.fulfill()
         })
 
-        #if os(Linux)
-            self.waitForExpectations(withTimeout: 0, handler: nil)
-        #else
-            self.waitForExpectations(timeout: 0, handler: nil)
-        #endif
+        self.waitForExpectations(timeout: 0, handler: nil)
     }
 }
 
