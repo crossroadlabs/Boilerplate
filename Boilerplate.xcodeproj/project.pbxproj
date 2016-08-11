@@ -331,8 +331,8 @@
 			isa = PBXGroup;
 			children = (
 				65148F111CA2D8B00098D557 /* Frameworks */,
-				65E266F71C8AE09800E0DD70 /* Boilerplate */,
-				65E267031C8AE09800E0DD70 /* BoilerplateTests */,
+				65E266F71C8AE09800E0DD70 /* Sources */,
+				65E267031C8AE09800E0DD70 /* Tests */,
 				65E266F61C8AE09800E0DD70 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		65E266F71C8AE09800E0DD70 /* Boilerplate */ = {
+		65E266F71C8AE09800E0DD70 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				65E266FA1C8AE09800E0DD70 /* Info.plist */,
@@ -372,10 +372,10 @@
 				65A973D41CA41A53000EDB75 /* C.swift */,
 				651643D71D148B7100C5E389 /* Null.swift */,
 			);
-			path = Boilerplate;
+			path = Sources;
 			sourceTree = "<group>";
 		};
-		65E267031C8AE09800E0DD70 /* BoilerplateTests */ = {
+		65E267031C8AE09800E0DD70 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
 				65E267151C8B00DA00E0DD70 /* OptionalTests.swift */,
@@ -391,7 +391,7 @@
 				65E267061C8AE09800E0DD70 /* Info.plist */,
 				651643DC1D148EBE00C5E389 /* NullTests.swift */,
 			);
-			name = BoilerplateTests;
+			name = Tests;
 			path = Tests/Boilerplate;
 			sourceTree = "<group>";
 		};
@@ -880,7 +880,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -905,7 +905,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -967,7 +967,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -992,7 +992,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -1018,7 +1018,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -1042,7 +1042,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -1196,7 +1196,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -1221,7 +1221,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
