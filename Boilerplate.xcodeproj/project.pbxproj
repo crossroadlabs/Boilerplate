@@ -330,9 +330,9 @@
 		65E266EB1C8AE09800E0DD70 = {
 			isa = PBXGroup;
 			children = (
+				92F15AD91D5C9DE800CDF148 /* Sources */,
+				92F15ADA1D5C9E0F00CDF148 /* Tests */,
 				65148F111CA2D8B00098D557 /* Frameworks */,
-				65E266F71C8AE09800E0DD70 /* Sources */,
-				65E267031C8AE09800E0DD70 /* Tests */,
 				65E266F61C8AE09800E0DD70 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -351,7 +351,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		65E266F71C8AE09800E0DD70 /* Sources */ = {
+		65E266F71C8AE09800E0DD70 /* Boilerplate */ = {
 			isa = PBXGroup;
 			children = (
 				65E266FA1C8AE09800E0DD70 /* Info.plist */,
@@ -372,10 +372,10 @@
 				65A973D41CA41A53000EDB75 /* C.swift */,
 				651643D71D148B7100C5E389 /* Null.swift */,
 			);
-			path = Sources;
+			path = Boilerplate;
 			sourceTree = "<group>";
 		};
-		65E267031C8AE09800E0DD70 /* Tests */ = {
+		65E267031C8AE09800E0DD70 /* BoilerplateTestSuite */ = {
 			isa = PBXGroup;
 			children = (
 				65E267151C8B00DA00E0DD70 /* OptionalTests.swift */,
@@ -391,8 +391,24 @@
 				65E267061C8AE09800E0DD70 /* Info.plist */,
 				651643DC1D148EBE00C5E389 /* NullTests.swift */,
 			);
-			name = Tests;
-			path = Tests/Boilerplate;
+			name = BoilerplateTestSuite;
+			path = Boilerplate;
+			sourceTree = "<group>";
+		};
+		92F15AD91D5C9DE800CDF148 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				65E266F71C8AE09800E0DD70 /* Boilerplate */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		92F15ADA1D5C9E0F00CDF148 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				65E267031C8AE09800E0DD70 /* BoilerplateTestSuite */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -880,7 +896,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -905,7 +921,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -967,7 +983,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -992,7 +1008,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -1018,7 +1034,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -1042,7 +1058,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -1196,7 +1212,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -1221,7 +1237,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Sources/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
