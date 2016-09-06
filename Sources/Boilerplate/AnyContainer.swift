@@ -20,7 +20,7 @@ import Foundation
 public class AnyContainer<T> : ContainerType {
     public typealias Value = T
     
-    private (set) public var content:T
+    internal (set) public var content:T
     
     public init(_ content:T) {
         self.content = content

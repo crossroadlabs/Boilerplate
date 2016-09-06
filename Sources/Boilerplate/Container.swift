@@ -17,17 +17,10 @@
 import Foundation
 import Result
 
-postfix operator ^ {
-}
-
-postfix operator ^! {
-}
-
-postfix operator ^!! {
-}
-
-postfix operator ^% {
-}
+postfix operator ^
+postfix operator ^!
+postfix operator ^!!
+postfix operator ^%
 
 public protocol ContainerType {
     associatedtype Value
@@ -35,20 +28,20 @@ public protocol ContainerType {
     func withdraw() throws -> Value
 }
 
-public postfix func ^!<A, T : ContainerType where T.Value == A>(container:T) throws -> A {
+public postfix func ^!<A, T : ContainerType>(container:T) throws -> A where T.Value == A {
     return try container.withdraw()
 }
 
 /// Never use. Pure EVIL ]:->
-public postfix func ^!!<A, T : ContainerType where T.Value == A>(container:T) -> A {
+public postfix func ^!!<A, T : ContainerType>(container:T) -> A where T.Value == A {
     return try! container.withdraw()
 }
 
-public postfix func ^<A, T : ContainerType where T.Value == A>(container:T) -> A? {
+public postfix func ^<A, T : ContainerType>(container:T) -> A? where T.Value == A {
     return try? container.withdraw()
 }
 
-public postfix func ^%<A, T : ContainerType where T.Value == A>(container:T) -> Result<A, AnyError> {
+public postfix func ^%<A, T : ContainerType>(container:T) -> Result<A, AnyError> where T.Value == A {
     return materializeAny {
         try container.withdraw()
     }
@@ -72,6 +65,6 @@ public extension ContainerWithErrorType where Error : AnyErrorProtocol {
     }
 }
 
-public postfix func ^%<A, E : Error, T : ContainerWithErrorType where T.Value == A, T.Error == E>(container:T) -> Result<A, E> {
+public postfix func ^%<A, E : Error, T : ContainerWithErrorType>(container:T) -> Result<A, E> where T.Value == A, T.Error == E {
     return container.withdrawResult()
 }

@@ -26,8 +26,7 @@ public extension RuntimeErrorType {
         throw self
     }
     
-    @noreturn
-    func panic() {
+    func panic() -> Never  {
         try! selfThrow()
         while true {}
     }
@@ -58,7 +57,7 @@ public extension RuntimeErrorType {
     
     var customRepresentation:String {
         get {
-            return "\(self.dynamicType)"
+            return "\(type(of: self))"
         }
     }
     
@@ -126,20 +125,20 @@ public extension CError {
     public static let INVAL = EINVAL
 }
 
-public func ccall<Error: ErrorWithCodeType>(_ fun:@noescape ()->Int32) -> Error? {
+public func ccall<Error: ErrorWithCodeType>(_ fun:()->Int32) -> Error? {
     let result = fun()
     return Error.isError(result) ? Error(code: result) : nil
 }
 
-public func ccall<Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:@noescape ()->Int32) throws {
+public func ccall<Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:()->Int32) throws {
     if let error:Error = ccall(fun) {
         throw error
     }
 }
 
-public func ccall<Value, Error: ErrorWithCodeType>(_ fun:@noescape (code:inout Int32)->Value) -> Result<Value, Error> {
+public func ccall<Value, Error: ErrorWithCodeType>(_ fun:(inout Int32)->Value) -> Result<Value, Error> {
     var code:Int32 = 0
-    let result = fun(code: &code)
+    let result = fun(&code)
     if Error.isError(code) {
         return Result(error: Error(code: code))
     } else {
@@ -147,7 +146,7 @@ public func ccall<Value, Error: ErrorWithCodeType>(_ fun:@noescape (code:inout I
     }
 }
 
-public func ccall<Value, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:@noescape (code:inout Int32)->Value) throws -> Value {
+public func ccall<Value, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:(inout Int32)->Value) throws -> Value {
     let result:Result<Value, Error> = ccall(fun)
     return try result.dematerialize()
 }

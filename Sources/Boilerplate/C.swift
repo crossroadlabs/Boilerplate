@@ -22,6 +22,20 @@ extension UnsafeMutablePointer : NullEquatable {
 extension UnsafePointer : NullEquatable {
 }
 
+extension UnsafeMutableRawPointer : NullEquatable {
+}
+
+extension UnsafeRawPointer : NullEquatable {
+}
+
+public func==(lhs:UnsafeMutableRawPointer, rhs:Null) -> Bool {
+    return Int(bitPattern: lhs) == 0
+}
+
+public func==(lhs:UnsafeRawPointer, rhs:Null) -> Bool {
+    return Int(bitPattern: lhs) == 0
+}
+
 #if swift(>=3.0)
     public func==<T>(lhs:UnsafeMutablePointer<T>, rhs:Null) -> Bool {
         return Int(bitPattern: lhs) == 0

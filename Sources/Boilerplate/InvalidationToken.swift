@@ -33,7 +33,7 @@ public class InvalidationToken {
 }
 
 public extension InvalidationToken {
-    public func closure(f:()->Void) -> ()->Void {
+    public func closure(f:@escaping ()->Void) -> ()->Void {
         return {
             if self.valid {
                 f()
@@ -41,7 +41,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A>(f:(A)->Void) -> (A)->Void {
+    public func closure<A>(f:@escaping (A)->Void) -> (A)->Void {
         return { a in
             if self.valid {
                 f(a)
@@ -49,7 +49,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A, B>(f:(A, B)->Void) -> (A, B)->Void {
+    public func closure<A, B>(f:@escaping (A, B)->Void) -> (A, B)->Void {
         return { a, b in
             if self.valid {
                 f(a, b)
@@ -57,7 +57,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A, B, C>(f:(A, B, C)->Void) -> (A, B, C)->Void {
+    public func closure<A, B, C>(f:@escaping (A, B, C)->Void) -> (A, B, C)->Void {
         return { a, b, c in
             if self.valid {
                 f(a, b, c)
@@ -65,7 +65,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A, B, C, D>(f:(A, B, C, D)->Void) -> (A, B, C, D)->Void {
+    public func closure<A, B, C, D>(f:@escaping (A, B, C, D)->Void) -> (A, B, C, D)->Void {
         return { a, b, c, d in
             if self.valid {
                 f(a, b, c, d)
@@ -73,7 +73,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A, B, C, D, E>(f:(A, B, C, D, E)->Void) -> (A, B, C, D, E)->Void {
+    public func closure<A, B, C, D, E>(f:@escaping (A, B, C, D, E)->Void) -> (A, B, C, D, E)->Void {
         return { a, b, c, d, e in
             if self.valid {
                 f(a, b, c, d, e)
@@ -81,7 +81,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A, B, C, D, E, F>(fun:(A, B, C, D, E, F)->Void) -> (A, B, C, D, E, F)->Void {
+    public func closure<A, B, C, D, E, F>(fun:@escaping (A, B, C, D, E, F)->Void) -> (A, B, C, D, E, F)->Void {
         return { a, b, c, d, e, f in
             if self.valid {
                 fun(a, b, c, d, e, f)
@@ -89,7 +89,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A, B, C, D, E, F, G>(fun:(A, B, C, D, E, F, G)->Void) -> (A, B, C, D, E, F, G)->Void {
+    public func closure<A, B, C, D, E, F, G>(fun:@escaping (A, B, C, D, E, F, G)->Void) -> (A, B, C, D, E, F, G)->Void {
         return { a, b, c, d, e, f, g in
             if self.valid {
                 fun(a, b, c, d, e, f, g)
@@ -97,7 +97,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A, B, C, D, E, F, G, H>(fun:(A, B, C, D, E, F, G, H)->Void) -> (A, B, C, D, E, F, G, H)->Void {
+    public func closure<A, B, C, D, E, F, G, H>(fun:@escaping (A, B, C, D, E, F, G, H)->Void) -> (A, B, C, D, E, F, G, H)->Void {
         return { a, b, c, d, e, f, g, h in
             if self.valid {
                 fun(a, b, c, d, e, f, g, h)
@@ -105,7 +105,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A, B, C, D, E, F, G, H, I>(fun:(A, B, C, D, E, F, G, H, I)->Void) -> (A, B, C, D, E, F, G, H, I)->Void {
+    public func closure<A, B, C, D, E, F, G, H, I>(fun:@escaping (A, B, C, D, E, F, G, H, I)->Void) -> (A, B, C, D, E, F, G, H, I)->Void {
         return { a, b, c, d, e, f, g, h, i in
             if self.valid {
                 fun(a, b, c, d, e, f, g, h, i)
@@ -113,7 +113,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A, B, C, D, E, F, G, H, I, J>(fun:(A, B, C, D, E, F, G, H, I, J)->Void) -> (A, B, C, D, E, F, G, H, I, J)->Void {
+    public func closure<A, B, C, D, E, F, G, H, I, J>(fun:@escaping (A, B, C, D, E, F, G, H, I, J)->Void) -> (A, B, C, D, E, F, G, H, I, J)->Void {
         return { a, b, c, d, e, f, g, h, i, j in
             if self.valid {
                 fun(a, b, c, d, e, f, g, h, i, j)
@@ -121,7 +121,7 @@ public extension InvalidationToken {
         }
     }
     
-    public func closure<A, B, C, D, E, F, G, H, I, J, K>(fun:(A, B, C, D, E, F, G, H, I, J, K)->Void) -> (A, B, C, D, E, F, G, H, I, J, K)->Void {
+    public func closure<A, B, C, D, E, F, G, H, I, J, K>(fun:@escaping (A, B, C, D, E, F, G, H, I, J, K)->Void) -> (A, B, C, D, E, F, G, H, I, J, K)->Void {
         return { a, b, c, d, e, f, g, h, i, j, k in
             if self.valid {
                 fun(a, b, c, d, e, f, g, h, i, j, k)

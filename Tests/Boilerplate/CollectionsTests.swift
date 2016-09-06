@@ -18,7 +18,7 @@ import Result
  */
 extension Dictionary {
     #if swift(>=3.0)
-        init<S: Sequence where S.Iterator.Element == Element> (_ seq: S) {
+        init<S: Sequence> (_ seq: S) where S.Iterator.Element == Element {
             self.init()
             for (k, v) in seq {
                 self[k] = v

@@ -17,7 +17,7 @@
 import Foundation
 import Result
 
-public func materializeAny<T>(_ f:@noescape () throws -> T) -> Result<T, AnyError> {
+public func materializeAny<T>(_ f:() throws -> T) -> Result<T, AnyError> {
     return materializeAny(try f())
 }
 
