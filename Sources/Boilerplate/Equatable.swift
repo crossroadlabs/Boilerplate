@@ -28,11 +28,11 @@ public func !=<A : NonStrictEquatable, B : NonStrictEquatable>(lhs:A, rhs:B) -> 
     return !lhs.isEqual(to: rhs)
 }
 
-public func ==<T : protocol<Equatable, NonStrictEquatable>>(lhs: T, rhs: T) -> Bool {
+public func ==<T : Equatable & NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
     return lhs.isEqual(to: rhs)
 }
 
-public func !=<T : protocol<Equatable, NonStrictEquatable>>(lhs: T, rhs: T) -> Bool {
+public func !=<T : Equatable & NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
     return !lhs.isEqual(to: rhs)
 }
 

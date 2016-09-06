@@ -17,12 +17,7 @@
 import Foundation
 import Result
 
-#if swift(>=3.0)
-#else
-    public typealias ErrorProtocol = ErrorType
-#endif
-
-public protocol RuntimeErrorType : ErrorProtocol, CustomStringConvertible {
+public protocol RuntimeErrorType : Error, CustomStringConvertible {
     var customRepresentation:String {get}
 }
 
@@ -90,21 +85,21 @@ public enum CommonRuntimeError : RuntimeErrorType {
     }
 }
 
-public protocol AnyErrorProtocol : ErrorProtocol {
-    init(_ error:ErrorProtocol)
+public protocol AnyErrorProtocol : Error {
+    init(_ error:Error)
     
-    var error:ErrorProtocol {get}
+    var error:Error {get}
 }
 
 public struct AnyError : AnyErrorProtocol {
-    public let error:ErrorProtocol
+    public let error:Error
     
-    public init(_ error:ErrorProtocol) {
+    public init(_ error:Error) {
         self.error = error
     }
 }
 
-public protocol ErrorWithCodeType : ErrorProtocol {
+public protocol ErrorWithCodeType : Error {
     init(code:Int32)
     
     static func isError(_ code:Int32) -> Bool
@@ -142,7 +137,7 @@ public func ccall<Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:@noe
     }
 }
 
-public func ccall<Value, Error: ErrorWithCodeType>(_ fun:@noescape (inout code:Int32)->Value) -> Result<Value, Error> {
+public func ccall<Value, Error: ErrorWithCodeType>(_ fun:@noescape (code:inout Int32)->Value) -> Result<Value, Error> {
     var code:Int32 = 0
     let result = fun(code: &code)
     if Error.isError(code) {
@@ -152,7 +147,7 @@ public func ccall<Value, Error: ErrorWithCodeType>(_ fun:@noescape (inout code:I
     }
 }
 
-public func ccall<Value, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:@noescape (inout code:Int32)->Value) throws -> Value {
+public func ccall<Value, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:@noescape (code:inout Int32)->Value) throws -> Value {
     let result:Result<Value, Error> = ccall(fun)
     return try result.dematerialize()
 }
