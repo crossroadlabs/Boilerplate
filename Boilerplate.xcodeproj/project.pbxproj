@@ -392,7 +392,7 @@
 				651643DC1D148EBE00C5E389 /* NullTests.swift */,
 			);
 			name = BoilerplateTestSuite;
-			path = Boilerplate;
+			path = BoilerplateTests;
 			sourceTree = "<group>";
 		};
 		92F15AD91D5C9DE800CDF148 /* Sources */ = {
@@ -943,7 +943,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -960,7 +960,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1080,7 +1080,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1097,7 +1097,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1256,7 +1256,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1271,7 +1271,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
