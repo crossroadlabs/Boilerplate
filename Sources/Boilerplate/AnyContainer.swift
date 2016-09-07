@@ -17,7 +17,7 @@
 import Foundation
 
 //useful for C-interoperability when you need to pass non-AnyObject inside C
-public class AnyContainer<T> : ContainerType {
+open class AnyContainer<T> : ContainerType {
     public typealias Value = T
     
     internal (set) public var content:T
@@ -31,7 +31,7 @@ public class AnyContainer<T> : ContainerType {
     }
 }
 
-public class MutableAnyContainer<T> : AnyContainer<T> {
+open class MutableAnyContainer<T> : AnyContainer<T> {
     public override var content:T {
         get {
             return super.content
