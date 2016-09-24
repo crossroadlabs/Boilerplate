@@ -100,6 +100,9 @@
 		65A99BF11CA308B400477B40 /* ShimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A99BF01CA308B400477B40 /* ShimTests.swift */; };
 		65A99BF21CA308B400477B40 /* ShimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A99BF01CA308B400477B40 /* ShimTests.swift */; };
 		65A99BF31CA308B400477B40 /* ShimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A99BF01CA308B400477B40 /* ShimTests.swift */; };
+		65D2191B1D970495006BBDCA /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2191A1D970495006BBDCA /* TaskTests.swift */; };
+		65D2191C1D970495006BBDCA /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2191A1D970495006BBDCA /* TaskTests.swift */; };
+		65D2191D1D970495006BBDCA /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2191A1D970495006BBDCA /* TaskTests.swift */; };
 		65E267001C8AE09800E0DD70 /* Boilerplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E266F51C8AE09800E0DD70 /* Boilerplate.framework */; };
 		65E267101C8AE0CB00E0DD70 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2670F1C8AE0CB00E0DD70 /* Optional.swift */; };
 		65E267121C8AE4A200E0DD70 /* NSBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267111C8AE4A200E0DD70 /* NSBridging.swift */; };
@@ -207,6 +210,7 @@
 		658C316D1C8DD164009CCC7A /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
 		65A973D41CA41A53000EDB75 /* C.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C.swift; sourceTree = "<group>"; };
 		65A99BF01CA308B400477B40 /* ShimTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimTests.swift; sourceTree = "<group>"; };
+		65D2191A1D970495006BBDCA /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
 		65E266F51C8AE09800E0DD70 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E266FA1C8AE09800E0DD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65E266FF1C8AE09800E0DD70 /* BoilerplateTests-OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BoilerplateTests-OSX.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -388,6 +392,7 @@
 				921CB4711CA43F6600D6B223 /* ThreadTests.swift */,
 				921CB4751CA4477E00D6B223 /* TimeTests.swift */,
 				65A99BF01CA308B400477B40 /* ShimTests.swift */,
+				65D2191A1D970495006BBDCA /* TaskTests.swift */,
 				65E267061C8AE09800E0DD70 /* Info.plist */,
 				651643DC1D148EBE00C5E389 /* NullTests.swift */,
 			);
@@ -751,6 +756,7 @@
 				921CB47B1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				65148F021CA2D7DE0098D557 /* CollectionsTests.swift in Sources */,
 				65A99BF21CA308B400477B40 /* ShimTests.swift in Sources */,
+				65D2191C1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4731CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65148EFF1CA2D7DE0098D557 /* NSBridgingTests.swift in Sources */,
 				65148EFE1CA2D7DE0098D557 /* OptionalTests.swift in Sources */,
@@ -815,6 +821,7 @@
 				921CB47C1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				65148F701CA2DB760098D557 /* CollectionsTests.swift in Sources */,
 				65A99BF31CA308B400477B40 /* ShimTests.swift in Sources */,
+				65D2191D1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4741CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65148F6D1CA2DB760098D557 /* NSBridgingTests.swift in Sources */,
 				65148F6C1CA2DB760098D557 /* OptionalTests.swift in Sources */,
@@ -856,6 +863,7 @@
 				921CB47A1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				6520A0251C8C5771002E0842 /* CollectionsTests.swift in Sources */,
 				65A99BF11CA308B400477B40 /* ShimTests.swift in Sources */,
+				65D2191B1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4721CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65465E581C8B42A70080BAAE /* AnyContainerTests.swift in Sources */,
 				65E267161C8B00DA00E0DD70 /* OptionalTests.swift in Sources */,

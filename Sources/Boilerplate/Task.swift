@@ -16,8 +16,8 @@
 
 import Foundation
 
-public typealias Task = @escaping () throws -> Void
-public typealias SafeTask = @escaping () -> Void
+public typealias Task = () throws -> Void
+public typealias SafeTask = () -> Void
 
-public typealias SafeTaskWithResult<R> = @escaping () -> R
-public typealias TaskWithResult<R> = @escaping () throws -> R
+public typealias SafeTaskWithResult<R> = () -> R
+public typealias TaskWithResult<R> = () throws -> R
