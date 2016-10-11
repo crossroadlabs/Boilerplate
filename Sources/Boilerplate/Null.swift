@@ -20,14 +20,14 @@ public enum Null {
     case null
 }
 
-extension Null : NilLiteralConvertible {
+extension Null : ExpressibleByNilLiteral {
     public init(nilLiteral: ()) {
         self = .null
     }
 }
 
 public protocol NullEquatable {
-    func ==(lhs: Self, rhs: Null) -> Bool
+    static func ==(lhs: Self, rhs: Null) -> Bool
 }
 
 public func !=<NC : NullEquatable>(lhs: NC, rhs: Null) -> Bool {
@@ -44,11 +44,11 @@ public func !=<T : NullEquatable>(lhs: Optional<T>, rhs: Null) -> Bool {
     return !(lhs == rhs)
 }
 
-public func ==<T>(lhs: Optional<T>, rhs: Null) -> Bool {
+public func ==<T>(lhs: T?, rhs: Null) -> Bool {
     return lhs == nil
 }
 
-public func !=<T>(lhs: Optional<T>, rhs: Null) -> Bool {
+public func !=<T>(lhs: T?, rhs: Null) -> Bool {
     return lhs != nil
 }
 

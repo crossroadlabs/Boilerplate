@@ -18,7 +18,7 @@ import PackageDescription
 
 let package = Package(
     name: "Boilerplate",
-    targets: [Target(name: "Boilerplate")],
-    dependencies: [.Package(url: "https://github.com/antitypical/Result.git", Version(3, 0, 0, prereleaseIdentifiers: ["alpha", "1"]))],
-    exclude: ["Carthage"]
+    dependencies: [
+        .Package(url: "https://github.com/antitypical/Result.git", Version(3, 0, 0, prereleaseIdentifiers: ["alpha", "2"]))
+    ]
 )

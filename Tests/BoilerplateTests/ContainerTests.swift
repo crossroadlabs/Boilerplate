@@ -12,12 +12,12 @@ import Result
 
 @testable import Boilerplate
 
-enum MockError : ErrorProtocol {
+enum MockError : Error {
     case Error1
     case Error2
 }
 
-class CantainerWithParticularError<V, E: ErrorProtocol> : ContainerWithErrorType {
+class CantainerWithParticularError<V, E: Error> : ContainerWithErrorType {
     typealias Value = V
     typealias Error = E
     

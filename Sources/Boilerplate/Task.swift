@@ -18,3 +18,6 @@ import Foundation
 
 public typealias Task = () throws -> Void
 public typealias SafeTask = () -> Void
+
+public typealias SafeTaskWithResult<R> = () -> R
+public typealias TaskWithResult<R> = () throws -> R

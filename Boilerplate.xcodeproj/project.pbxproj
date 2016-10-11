@@ -100,6 +100,9 @@
 		65A99BF11CA308B400477B40 /* ShimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A99BF01CA308B400477B40 /* ShimTests.swift */; };
 		65A99BF21CA308B400477B40 /* ShimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A99BF01CA308B400477B40 /* ShimTests.swift */; };
 		65A99BF31CA308B400477B40 /* ShimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A99BF01CA308B400477B40 /* ShimTests.swift */; };
+		65D2191B1D970495006BBDCA /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2191A1D970495006BBDCA /* TaskTests.swift */; };
+		65D2191C1D970495006BBDCA /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2191A1D970495006BBDCA /* TaskTests.swift */; };
+		65D2191D1D970495006BBDCA /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2191A1D970495006BBDCA /* TaskTests.swift */; };
 		65E267001C8AE09800E0DD70 /* Boilerplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E266F51C8AE09800E0DD70 /* Boilerplate.framework */; };
 		65E267101C8AE0CB00E0DD70 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2670F1C8AE0CB00E0DD70 /* Optional.swift */; };
 		65E267121C8AE4A200E0DD70 /* NSBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267111C8AE4A200E0DD70 /* NSBridging.swift */; };
@@ -207,6 +210,7 @@
 		658C316D1C8DD164009CCC7A /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
 		65A973D41CA41A53000EDB75 /* C.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C.swift; sourceTree = "<group>"; };
 		65A99BF01CA308B400477B40 /* ShimTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimTests.swift; sourceTree = "<group>"; };
+		65D2191A1D970495006BBDCA /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
 		65E266F51C8AE09800E0DD70 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E266FA1C8AE09800E0DD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65E266FF1C8AE09800E0DD70 /* BoilerplateTests-OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BoilerplateTests-OSX.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -330,9 +334,9 @@
 		65E266EB1C8AE09800E0DD70 = {
 			isa = PBXGroup;
 			children = (
+				92F15AD91D5C9DE800CDF148 /* Sources */,
+				92F15ADA1D5C9E0F00CDF148 /* Tests */,
 				65148F111CA2D8B00098D557 /* Frameworks */,
-				65E266F71C8AE09800E0DD70 /* Boilerplate */,
-				65E267031C8AE09800E0DD70 /* BoilerplateTests */,
 				65E266F61C8AE09800E0DD70 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -375,7 +379,7 @@
 			path = Boilerplate;
 			sourceTree = "<group>";
 		};
-		65E267031C8AE09800E0DD70 /* BoilerplateTests */ = {
+		65E267031C8AE09800E0DD70 /* BoilerplateTestSuite */ = {
 			isa = PBXGroup;
 			children = (
 				65E267151C8B00DA00E0DD70 /* OptionalTests.swift */,
@@ -388,11 +392,28 @@
 				921CB4711CA43F6600D6B223 /* ThreadTests.swift */,
 				921CB4751CA4477E00D6B223 /* TimeTests.swift */,
 				65A99BF01CA308B400477B40 /* ShimTests.swift */,
+				65D2191A1D970495006BBDCA /* TaskTests.swift */,
 				65E267061C8AE09800E0DD70 /* Info.plist */,
 				651643DC1D148EBE00C5E389 /* NullTests.swift */,
 			);
-			name = BoilerplateTests;
-			path = Tests/Boilerplate;
+			name = BoilerplateTestSuite;
+			path = BoilerplateTests;
+			sourceTree = "<group>";
+		};
+		92F15AD91D5C9DE800CDF148 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				65E266F71C8AE09800E0DD70 /* Boilerplate */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		92F15ADA1D5C9E0F00CDF148 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				65E267031C8AE09800E0DD70 /* BoilerplateTestSuite */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -455,6 +476,7 @@
 				65148EED1CA2D7850098D557 /* Frameworks */,
 				65148EEE1CA2D7850098D557 /* Resources */,
 				65148F261CA2D9A10098D557 /* Copy Frameworks */,
+				92A5EA511D5A1D3400771BF4 /* Fix Xcode 8 Beta Swift Copying Problem */,
 			);
 			buildRules = (
 			);
@@ -510,6 +532,7 @@
 				65148F4E1CA2DB310098D557 /* Frameworks */,
 				65148F4F1CA2DB310098D557 /* Resources */,
 				65148F741CA2DC020098D557 /* Copy Frameworks */,
+				92A5EA521D5A1D8800771BF4 /* Fix Xcode 8 Beta Swift Copying Problem */,
 			);
 			buildRules = (
 			);
@@ -666,6 +689,37 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		92A5EA511D5A1D3400771BF4 /* Fix Xcode 8 Beta Swift Copying Problem */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fix Xcode 8 Beta Swift Copying Problem";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# VERSION 1.0.4\n# Author: @madhavajay\n# This currently works for iOS and watchOS in the Simulator and Devices\n\n# Changes\n# Using ${TOOLCHAIN} in two places now\n# Added double quotes \" around paths\n# Fixed watchOS Issues\n\n# Instructions iOS\n# 1. Copy this into a new Build Phase Script for your App Target\n# 2. Add all the Frameworks you need as Input Files, internal and external\n# 3. Reset your iOS and watchOS simulators (seriously)\n\n# Screenshot: http://i.imgur.com/3dTjVcW.png\n\n# Instructions watchOS\n# 1. Same as above only you need to add the Build Phase Script and its\n#    Framework Input Files to both the Watch App and the Watch Extension.\n#    You can only add the Extension one in Xcode. So Add the Extension one,\n#    then open the .xcodeproj in a Text Editor and find the Entry you just added.\n#    Its a lot easier with Git. There will be two, changes, one like this:\n#\n#    28F65CA91D3FDC7D00043613 /* Fix Xcode 8 Beta 3 */\n#\n#    Under the WatchKit Extension buildPhases, and a second with the actual\n#    script and inputs.\n# 2. Cut and Paste the Line like above, linking the Script from the Extension\n# \t Build Phase to the WatchKit App buildPhases.\n# 3. Make a new one for the WatchKit Extension Again, either in Xcode or\n#    Text Editor.\n# 4. Reset your iOS and watchOS simulators (seriously)\n# 5. Clean deriveddata, spin around in your chair, build and shazam!\n\n# Whats happening here is the same Copy Swift standard libraries step is performed\n# on both the App and the Extension Targets. I was able to get the app running\n# with only one of these but i'm skeptical its correct as you can see Xcode\n# attempts the Copy Swift standard libraries on both Targets by default so there\n# must be a need for it.\n\n# Note, you should use the Beta 3 Toolchain, so make sure $TOOLCHAIN_DIR is resolving to:\n# /Applications/{YOUR BETA}.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain\n\n# Trouble Shooting\n# Check the Build Logs and you should see the New Step you add for each target.\n# If its working you can see the files like libswiftCore.dylib appear in the\n# Framework folders of your .app and .appex files.\n# If its not working, try putting `set` on a new line of your Build Phase Script\n# This will echo out all the Environment Variables used below and you can compare them\n# with the expected output that Xcode uses in the normal Build Step.\n# Be careful the Path Spaces are escaped by using double \" around the paths below\n# or the build paths for watchOS wont work, because they have spaces in their\n# folder names like: APPNAME WatchKit Extension and APPNAME WatchKit App\n\n# Include Frameworks\nfor i in `seq 1 ${SCRIPT_INPUT_FILE_COUNT}`; do\nNUM=`expr $i - 1`\nNEXT_FOLDER_ARG=SCRIPT_INPUT_FILE_$NUM\nINCLUDE_FRAMEWORK_FOLDER_ARGS=\"${INCLUDE_FRAMEWORK_FOLDER_ARGS} --scan-folder ${!NEXT_FOLDER_ARG}\"\ndone\n\n# Run the correct tool 🤗\n${TOOLCHAIN_DIR}/usr/bin/swift-stdlib-tool \\\n--copy --verbose --sign ${EXPANDED_CODE_SIGN_IDENTITY} \\\n--scan-executable \"${TARGET_BUILD_DIR}/${EXECUTABLE_PATH}\" \\\n--scan-folder \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\" \\\n--scan-folder \"${TARGET_BUILD_DIR}/${PLUGINS_FOLDER_PATH}\" \\\n--platform ${PLATFORM_NAME} \\\n--toolchain ${TOOLCHAIN_DIR} \\\n--destination \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\" \\\n--strip-bitcode --resource-destination \"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}\" \\\n--resource-library libswiftRemoteMirror.dylib \\\n${INCLUDE_FRAMEWORK_FOLDER_ARGS}";
+		};
+		92A5EA521D5A1D8800771BF4 /* Fix Xcode 8 Beta Swift Copying Problem */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fix Xcode 8 Beta Swift Copying Problem";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# VERSION 1.0.4\n# Author: @madhavajay\n# This currently works for iOS and watchOS in the Simulator and Devices\n\n# Changes\n# Using ${TOOLCHAIN} in two places now\n# Added double quotes \" around paths\n# Fixed watchOS Issues\n\n# Instructions iOS\n# 1. Copy this into a new Build Phase Script for your App Target\n# 2. Add all the Frameworks you need as Input Files, internal and external\n# 3. Reset your iOS and watchOS simulators (seriously)\n\n# Screenshot: http://i.imgur.com/3dTjVcW.png\n\n# Instructions watchOS\n# 1. Same as above only you need to add the Build Phase Script and its\n#    Framework Input Files to both the Watch App and the Watch Extension.\n#    You can only add the Extension one in Xcode. So Add the Extension one,\n#    then open the .xcodeproj in a Text Editor and find the Entry you just added.\n#    Its a lot easier with Git. There will be two, changes, one like this:\n#\n#    28F65CA91D3FDC7D00043613 /* Fix Xcode 8 Beta 3 */\n#\n#    Under the WatchKit Extension buildPhases, and a second with the actual\n#    script and inputs.\n# 2. Cut and Paste the Line like above, linking the Script from the Extension\n# \t Build Phase to the WatchKit App buildPhases.\n# 3. Make a new one for the WatchKit Extension Again, either in Xcode or\n#    Text Editor.\n# 4. Reset your iOS and watchOS simulators (seriously)\n# 5. Clean deriveddata, spin around in your chair, build and shazam!\n\n# Whats happening here is the same Copy Swift standard libraries step is performed\n# on both the App and the Extension Targets. I was able to get the app running\n# with only one of these but i'm skeptical its correct as you can see Xcode\n# attempts the Copy Swift standard libraries on both Targets by default so there\n# must be a need for it.\n\n# Note, you should use the Beta 3 Toolchain, so make sure $TOOLCHAIN_DIR is resolving to:\n# /Applications/{YOUR BETA}.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain\n\n# Trouble Shooting\n# Check the Build Logs and you should see the New Step you add for each target.\n# If its working you can see the files like libswiftCore.dylib appear in the\n# Framework folders of your .app and .appex files.\n# If its not working, try putting `set` on a new line of your Build Phase Script\n# This will echo out all the Environment Variables used below and you can compare them\n# with the expected output that Xcode uses in the normal Build Step.\n# Be careful the Path Spaces are escaped by using double \" around the paths below\n# or the build paths for watchOS wont work, because they have spaces in their\n# folder names like: APPNAME WatchKit Extension and APPNAME WatchKit App\n\n# Include Frameworks\nfor i in `seq 1 ${SCRIPT_INPUT_FILE_COUNT}`; do\nNUM=`expr $i - 1`\nNEXT_FOLDER_ARG=SCRIPT_INPUT_FILE_$NUM\nINCLUDE_FRAMEWORK_FOLDER_ARGS=\"${INCLUDE_FRAMEWORK_FOLDER_ARGS} --scan-folder ${!NEXT_FOLDER_ARG}\"\ndone\n\n# Run the correct tool 🤗\n${TOOLCHAIN_DIR}/usr/bin/swift-stdlib-tool \\\n--copy --verbose --sign ${EXPANDED_CODE_SIGN_IDENTITY} \\\n--scan-executable \"${TARGET_BUILD_DIR}/${EXECUTABLE_PATH}\" \\\n--scan-folder \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\" \\\n--scan-folder \"${TARGET_BUILD_DIR}/${PLUGINS_FOLDER_PATH}\" \\\n--platform ${PLATFORM_NAME} \\\n--toolchain ${TOOLCHAIN_DIR} \\\n--destination \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\" \\\n--strip-bitcode --resource-destination \"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}\" \\\n--resource-library libswiftRemoteMirror.dylib \\\n${INCLUDE_FRAMEWORK_FOLDER_ARGS}";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		65148EE21CA2D7850098D557 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -702,6 +756,7 @@
 				921CB47B1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				65148F021CA2D7DE0098D557 /* CollectionsTests.swift in Sources */,
 				65A99BF21CA308B400477B40 /* ShimTests.swift in Sources */,
+				65D2191C1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4731CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65148EFF1CA2D7DE0098D557 /* NSBridgingTests.swift in Sources */,
 				65148EFE1CA2D7DE0098D557 /* OptionalTests.swift in Sources */,
@@ -766,6 +821,7 @@
 				921CB47C1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				65148F701CA2DB760098D557 /* CollectionsTests.swift in Sources */,
 				65A99BF31CA308B400477B40 /* ShimTests.swift in Sources */,
+				65D2191D1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4741CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65148F6D1CA2DB760098D557 /* NSBridgingTests.swift in Sources */,
 				65148F6C1CA2DB760098D557 /* OptionalTests.swift in Sources */,
@@ -807,6 +863,7 @@
 				921CB47A1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				6520A0251C8C5771002E0842 /* CollectionsTests.swift in Sources */,
 				65A99BF11CA308B400477B40 /* ShimTests.swift in Sources */,
+				65D2191B1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4721CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65465E581C8B42A70080BAAE /* AnyContainerTests.swift in Sources */,
 				65E267161C8B00DA00E0DD70 /* OptionalTests.swift in Sources */,
@@ -847,13 +904,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
 				PRODUCT_NAME = "${PROJECT_NAME}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -871,7 +929,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -893,7 +951,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -910,7 +968,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -933,7 +991,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -958,7 +1016,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -984,7 +1042,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -1008,7 +1066,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -1030,7 +1088,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1047,7 +1105,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1162,7 +1220,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -1187,7 +1245,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -1206,7 +1264,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1221,7 +1279,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

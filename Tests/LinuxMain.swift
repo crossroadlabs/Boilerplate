@@ -1,6 +1,6 @@
 import XCTest
 
-@testable import BoilerplateTestSuite
+import BoilerplateTests
 
 XCTMain([
 	testCase(AnyContainerTests.allTests),

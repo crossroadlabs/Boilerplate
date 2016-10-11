@@ -339,7 +339,7 @@ import Foundation
 
 public protocol CopyableCollectionType : Collection {
     #if swift(>=3.0)
-    init<C : Sequence where C.Iterator.Element == Iterator.Element>(_ s:C)
+    init<C : Sequence>(_ s:C) where C.Iterator.Element == Iterator.Element
     #else
     init<C : Sequence where C.Generator.Element == Generator.Element>(_ s:C)
     #endif
@@ -364,7 +364,7 @@ public extension CopyableCollectionType {
     }
 }
 
-public class ZippedSequence<A, B where A : IteratorProtocol, B : IteratorProtocol> : Sequence {
+public class ZippedSequence<A, B> : Sequence where A : IteratorProtocol, B : IteratorProtocol {
     #if swift(>=3.0)
     public typealias Iterator = AnyIterator<(A.Element, B.Element)>
     #else
@@ -416,10 +416,10 @@ public class ZippedSequence<A, B where A : IteratorProtocol, B : IteratorProtoco
     }
 #endif
 
-postfix operator ^ {}
+postfix operator ^
 
 #if swift(>=3.0)
-    public func toMap<K : Hashable, V, S : Sequence where S.Iterator.Element == (K, V)>(_ seq:S) -> Dictionary<K, V> {
+    public func toMap<K : Hashable, V, S : Sequence>(_ seq:S) -> Dictionary<K, V> where S.Iterator.Element == (K, V) {
         var dict = Dictionary<K, V>()
         for (k, v) in seq {
             dict[k] = v
@@ -428,7 +428,7 @@ postfix operator ^ {}
     }
     
     //Frankly, I would prefer to avoid operator syntax here and implement it as an extension, but can not find a solution. If somebody has - feel free to submit, please.
-    public postfix func ^<K : Hashable, V, S : Sequence where S.Iterator.Element == (K, V)>(seq:S) -> Dictionary<K, V> {
+    public postfix func ^<K : Hashable, V, S : Sequence>(seq:S) -> Dictionary<K, V> where S.Iterator.Element == (K, V) {
         return toMap(seq)
     }
 #else
