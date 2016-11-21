@@ -35,7 +35,7 @@ public extension NSBridging {
             #if os(Linux)
                 return self.bridge() as! NSBridgeTo
             #else
-                return self as! AnyObject as! NSBridgeTo
+                return self as! NSBridgeTo
             #endif
         }
     }
@@ -58,7 +58,7 @@ public func isNoBridge<NSType : NSObject>(_ any:Any, type:NSType.Type) -> Bool {
         //yes, otherwise we have a compiler crash
         return (any as? AnyObject).map {$0 is NSType} ?? false
     #else
-        let anyType = any.dynamicType
+        let anyType = type(of: any)
         
         #if swift(>=3.0)
             switch anyType {
@@ -76,7 +76,7 @@ public func isNoBridge<NSType : NSObject>(_ any:Any, type:NSType.Type) -> Bool {
 
 public func asNoBridge<NSType : NSObject>(_ any:Any, type:NSType.Type) -> NSType? {
     if isNoBridge(any, type: type) {
-        return (any as? AnyObject).flatMap{$0 as? NSType}
+        return any as? NSType
     } else {
         return nil
     }

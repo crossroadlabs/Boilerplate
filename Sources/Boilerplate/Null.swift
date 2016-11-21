@@ -44,11 +44,11 @@ public func !=<T : NullEquatable>(lhs: Optional<T>, rhs: Null) -> Bool {
     return !(lhs == rhs)
 }
 
-public func ==<T>(lhs: Optional<T>, rhs: Null) -> Bool {
+public func ==<T>(lhs: T?, rhs: Null) -> Bool {
     return lhs == nil
 }
 
-public func !=<T>(lhs: Optional<T>, rhs: Null) -> Bool {
+public func !=<T>(lhs: T?, rhs: Null) -> Bool {
     return lhs != nil
 }
 

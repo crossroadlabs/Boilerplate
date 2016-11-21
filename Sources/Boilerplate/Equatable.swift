@@ -47,7 +47,7 @@ extension NonStrictEquatableCollection {
 
 #if swift(>=3.0)
     
-    public func ==<T : Collection where T.Iterator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
+    public func ==<T : Collection>(lhs: T, rhs: T) -> Bool where T.Iterator.Element == NonStrictEquatable {
         if lhs.count != rhs.count {
             return false
         }
@@ -64,7 +64,7 @@ extension NonStrictEquatableCollection {
     }
     
     /// rewritten because can return early
-    public func !=<T : Collection where T.Iterator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
+    public func !=<T : Collection>(lhs: T, rhs: T) -> Bool where T.Iterator.Element == NonStrictEquatable {
         if lhs.count != rhs.count {
             return true
         }
