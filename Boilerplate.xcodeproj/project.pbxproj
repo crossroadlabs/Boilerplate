@@ -110,6 +110,13 @@
 		65E267161C8B00DA00E0DD70 /* OptionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267151C8B00DA00E0DD70 /* OptionalTests.swift */; };
 		65E267181C8B036A00E0DD70 /* NSBridgingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267171C8B036A00E0DD70 /* NSBridgingTests.swift */; };
 		65F444F31CA2DF4100BB7E26 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 65148F181CA2D8B00098D557 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65F621AD1DF20F4A000F7846 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621AC1DF20F4A000F7846 /* Signature.swift */; };
+		65F621AE1DF20F4A000F7846 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621AC1DF20F4A000F7846 /* Signature.swift */; };
+		65F621AF1DF20F4A000F7846 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621AC1DF20F4A000F7846 /* Signature.swift */; };
+		65F621B01DF20F4A000F7846 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621AC1DF20F4A000F7846 /* Signature.swift */; };
+		65F621B21DF21078000F7846 /* SignatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621B11DF21078000F7846 /* SignatureTests.swift */; };
+		65F621B31DF21078000F7846 /* SignatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621B11DF21078000F7846 /* SignatureTests.swift */; };
+		65F621B41DF21078000F7846 /* SignatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621B11DF21078000F7846 /* SignatureTests.swift */; };
 		921CB4721CA43F6600D6B223 /* ThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921CB4711CA43F6600D6B223 /* ThreadTests.swift */; };
 		921CB4731CA43F6600D6B223 /* ThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921CB4711CA43F6600D6B223 /* ThreadTests.swift */; };
 		921CB4741CA43F6600D6B223 /* ThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921CB4711CA43F6600D6B223 /* ThreadTests.swift */; };
@@ -220,6 +227,8 @@
 		65E267131C8AE64F00E0DD70 /* CFBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFBridging.swift; sourceTree = "<group>"; };
 		65E267151C8B00DA00E0DD70 /* OptionalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalTests.swift; sourceTree = "<group>"; };
 		65E267171C8B036A00E0DD70 /* NSBridgingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBridgingTests.swift; sourceTree = "<group>"; };
+		65F621AC1DF20F4A000F7846 /* Signature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signature.swift; sourceTree = "<group>"; };
+		65F621B11DF21078000F7846 /* SignatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureTests.swift; sourceTree = "<group>"; };
 		921CB4711CA43F6600D6B223 /* ThreadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadTests.swift; sourceTree = "<group>"; };
 		921CB4751CA4477E00D6B223 /* TimeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTests.swift; sourceTree = "<group>"; };
 		921CB4791CA45DBF00D6B223 /* CFBridgingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFBridgingTests.swift; sourceTree = "<group>"; };
@@ -375,6 +384,7 @@
 				653291631D00699B00C0A8A2 /* InvalidationToken.swift */,
 				65A973D41CA41A53000EDB75 /* C.swift */,
 				651643D71D148B7100C5E389 /* Null.swift */,
+				65F621AC1DF20F4A000F7846 /* Signature.swift */,
 			);
 			path = Boilerplate;
 			sourceTree = "<group>";
@@ -395,6 +405,7 @@
 				65D2191A1D970495006BBDCA /* TaskTests.swift */,
 				65E267061C8AE09800E0DD70 /* Info.plist */,
 				651643DC1D148EBE00C5E389 /* NullTests.swift */,
+				65F621B11DF21078000F7846 /* SignatureTests.swift */,
 			);
 			name = BoilerplateTestSuite;
 			path = BoilerplateTests;
@@ -736,6 +747,7 @@
 				65148F0A1CA2D7E70098D557 /* Result+.swift in Sources */,
 				65148F0C1CA2D7E70098D557 /* Equatable.swift in Sources */,
 				65148F0B1CA2D7E70098D557 /* Collections.swift in Sources */,
+				65F621AE1DF20F4A000F7846 /* Signature.swift in Sources */,
 				653291651D00699B00C0A8A2 /* InvalidationToken.swift in Sources */,
 				65148F041CA2D7E70098D557 /* Optional.swift in Sources */,
 				65148F061CA2D7E70098D557 /* CFBridging.swift in Sources */,
@@ -759,6 +771,7 @@
 				65D2191C1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4731CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65148EFF1CA2D7DE0098D557 /* NSBridgingTests.swift in Sources */,
+				65F621B31DF21078000F7846 /* SignatureTests.swift in Sources */,
 				65148EFE1CA2D7DE0098D557 /* OptionalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -778,6 +791,7 @@
 				65148F3C1CA2DA9A0098D557 /* Result+.swift in Sources */,
 				65148F3E1CA2DA9A0098D557 /* Equatable.swift in Sources */,
 				65148F3D1CA2DA9A0098D557 /* Collections.swift in Sources */,
+				65F621AF1DF20F4A000F7846 /* Signature.swift in Sources */,
 				653291661D00699B00C0A8A2 /* InvalidationToken.swift in Sources */,
 				65148F361CA2DA9A0098D557 /* Optional.swift in Sources */,
 				65148F381CA2DA9A0098D557 /* CFBridging.swift in Sources */,
@@ -801,6 +815,7 @@
 				65148F651CA2DB6E0098D557 /* Result+.swift in Sources */,
 				65148F671CA2DB6E0098D557 /* Equatable.swift in Sources */,
 				65148F661CA2DB6E0098D557 /* Collections.swift in Sources */,
+				65F621B01DF20F4A000F7846 /* Signature.swift in Sources */,
 				653291671D00699B00C0A8A2 /* InvalidationToken.swift in Sources */,
 				65148F5F1CA2DB6E0098D557 /* Optional.swift in Sources */,
 				65148F611CA2DB6E0098D557 /* CFBridging.swift in Sources */,
@@ -824,6 +839,7 @@
 				65D2191D1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4741CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65148F6D1CA2DB760098D557 /* NSBridgingTests.swift in Sources */,
+				65F621B41DF21078000F7846 /* SignatureTests.swift in Sources */,
 				65148F6C1CA2DB760098D557 /* OptionalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -843,6 +859,7 @@
 				65465E631C8B57B10080BAAE /* Result+.swift in Sources */,
 				6520A0271C8C6253002E0842 /* Equatable.swift in Sources */,
 				6520A0231C8C511F002E0842 /* Collections.swift in Sources */,
+				65F621AD1DF20F4A000F7846 /* Signature.swift in Sources */,
 				653291641D00699B00C0A8A2 /* InvalidationToken.swift in Sources */,
 				65465E5A1C8B48820080BAAE /* Container.swift in Sources */,
 				65465E611C8B56AF0080BAAE /* Error.swift in Sources */,
@@ -866,6 +883,7 @@
 				65D2191B1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4721CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65465E581C8B42A70080BAAE /* AnyContainerTests.swift in Sources */,
+				65F621B21DF21078000F7846 /* SignatureTests.swift in Sources */,
 				65E267161C8B00DA00E0DD70 /* OptionalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
