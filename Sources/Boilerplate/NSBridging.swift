@@ -32,7 +32,11 @@ public protocol NSBridging : _ObjectTypeBridgeable {
 public extension NSBridging {
     public var ns:NSBridgeTo {
         get {
-            return self as! NSBridgeTo
+            #if os(Linux)
+                return self._bridgeToObjectiveC() as! NSBridgeTo
+            #else
+                return self as! NSBridgeTo
+            #endif
         }
     }
 }
