@@ -17,11 +17,11 @@
 import Foundation
 
 #if !os(Linux)
-    public protocol Bridgeable {
+    public protocol _ObjectTypeBridgeable {
     }
 #endif
 
-public protocol NSBridging : Bridgeable {
+public protocol NSBridging : _ObjectTypeBridgeable {
     #if os(Linux)
         associatedtype NSBridgeTo = BridgeType
     #else
@@ -32,11 +32,7 @@ public protocol NSBridging : Bridgeable {
 public extension NSBridging {
     public var ns:NSBridgeTo {
         get {
-            #if os(Linux)
-                return self.bridge() as! NSBridgeTo
-            #else
-                return self as! NSBridgeTo
-            #endif
+            return self as! NSBridgeTo
         }
     }
 }
