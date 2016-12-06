@@ -23,7 +23,7 @@ import Foundation
 
 public protocol NSBridging : _ObjectTypeBridgeable {
     #if os(Linux)
-        associatedtype NSBridgeTo = BridgeType
+        associatedtype NSBridgeTo = _ObjectType
     #else
         associatedtype NSBridgeTo : NSObject
     #endif
