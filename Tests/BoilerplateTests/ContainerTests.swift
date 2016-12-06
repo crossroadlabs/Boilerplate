@@ -34,7 +34,7 @@ class CantainerWithParticularError<V, E: Error> : ContainerWithErrorType {
 
 class CantainerWithAnyError<V> : ContainerWithErrorType {
     typealias Value = V
-    typealias Error = AnyError
+    typealias Error = Boilerplate.AnyError
     
     init(_ content: V) {
     }
@@ -89,9 +89,9 @@ class ContainerTests: XCTestCase {
         
         XCTAssertNil(container^)
         
-        let _ = container^%.analysis(ifSuccess: { value -> Result<String, AnyError> in
+        let _ = container^%.analysis(ifSuccess: { value -> Result<String, Boilerplate.AnyError> in
             XCTFail("Can not be with success")
-            return Result<String, AnyError>(value: value)
+            return Result<String, Boilerplate.AnyError>(value: value)
         }, ifFailure: { error in
             switch error.error {
             case MockError.Error1:
@@ -99,7 +99,7 @@ class ContainerTests: XCTestCase {
             default:
                 XCTFail("Wrong error thrown")
             }
-            return Result<String, AnyError>(error: error)
+            return Result<String, Boilerplate.AnyError>(error: error)
         })
     }
 }

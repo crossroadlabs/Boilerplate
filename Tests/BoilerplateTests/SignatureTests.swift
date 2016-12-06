@@ -42,3 +42,14 @@ class SignatureTests: XCTestCase {
         XCTAssertEqual(count, set.count)
     }
 }
+
+#if os(Linux)
+extension SignatureTests {
+	static var allTests : [(String, (SignatureTests) -> () throws -> Void)] {
+		return [
+			("testSignature", testSignature),
+			("testSignatureUniqueness", testSignatureUniqueness),
+		]
+	}
+}
+#endif

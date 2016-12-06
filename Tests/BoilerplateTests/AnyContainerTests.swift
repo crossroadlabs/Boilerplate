@@ -38,12 +38,12 @@ class AnyContainerTests: XCTestCase {
         
         XCTAssertEqual((container^)?.substring(from: _string.index(before: _string.endIndex)) ?? "wtf", "g")
         
-        let _ = container^%.analysis(ifSuccess: { value -> Result<String, AnyError> in
+        let _ = container^%.analysis(ifSuccess: { value -> Result<String, Boilerplate.AnyError> in
             XCTAssertEqual("string", value)
-            return Result<String, AnyError>(value: value)
+            return Result<String, Boilerplate.AnyError>(value: value)
         }, ifFailure: { error in
             XCTFail("Can not fail")
-            return Result<String, AnyError>(error: error)
+            return Result<String, Boilerplate.AnyError>(error: error)
         })
     }
     
