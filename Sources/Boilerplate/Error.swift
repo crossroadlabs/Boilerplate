@@ -84,20 +84,6 @@ public enum CommonRuntimeError : RuntimeErrorType {
     }
 }
 
-public protocol AnyErrorProtocol : Error {
-    init(_ error:Error)
-    
-    var error:Error {get}
-}
-
-public struct AnyError : AnyErrorProtocol {
-    public let error:Error
-    
-    public init(_ error:Error) {
-        self.error = error
-    }
-}
-
 public protocol ErrorWithCodeType : Error {
     init(code:Int32)
     

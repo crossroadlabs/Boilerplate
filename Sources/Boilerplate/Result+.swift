@@ -17,6 +17,14 @@
 import Foundation
 import Result
 
+public protocol AnyErrorProtocol : Error {
+    init(_ error: Error)
+    
+    var error:Error {get}
+}
+
+extension AnyError : AnyErrorProtocol {}
+
 public func materializeAny<T>(_ f:() throws -> T) -> Result<T, AnyError> {
     return materializeAny(try f())
 }

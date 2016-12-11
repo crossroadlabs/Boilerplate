@@ -17,13 +17,13 @@
 import Foundation
 
 #if !os(Linux)
-    public protocol Bridgeable {
+    public protocol _ObjectTypeBridgeable {
     }
 #endif
 
-public protocol NSBridging : Bridgeable {
+public protocol NSBridging : _ObjectTypeBridgeable {
     #if os(Linux)
-        associatedtype NSBridgeTo = BridgeType
+        associatedtype NSBridgeTo = _ObjectType
     #else
         associatedtype NSBridgeTo : NSObject
     #endif
@@ -33,7 +33,7 @@ public extension NSBridging {
     public var ns:NSBridgeTo {
         get {
             #if os(Linux)
-                return self.bridge() as! NSBridgeTo
+                return self._bridgeToObjectiveC() as! NSBridgeTo
             #else
                 return self as! NSBridgeTo
             #endif

@@ -46,3 +46,14 @@ class TaskTests: XCTestCase {
         self.waitForExpectations(timeout: 0, handler: nil)
     }
 }
+
+#if os(Linux)
+extension TaskTests {
+	static var allTests : [(String, (TaskTests) -> () throws -> Void)] {
+		return [
+			("testEscapingTasks", testEscapingTasks),
+			("testNonEscapingTasks", testNonEscapingTasks),
+		]
+	}
+}
+#endif
