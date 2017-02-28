@@ -15,6 +15,28 @@ func fthree(b:Bool, i:Int, d:Double) -> String {
     return String(b) + "_" + String(i) + "_" + String(d)
 }
 
+private class Decay {
+    private let _e:XCTestExpectation
+    
+    init(e:XCTestExpectation) {
+        _e = e
+    }
+    
+    deinit {
+        _e.fulfill()
+    }
+}
+
+private extension Decay {
+    func intToString(i:Int) -> String {
+        return String(i)
+    }
+    
+    func fullfill(e:XCTestExpectation) {
+        e.fulfill()
+    }
+}
+
 class FunctionalTests: XCTestCase {
     //TODO: add more of test coverage
     func testApply() {
@@ -34,5 +56,27 @@ class FunctionalTests: XCTestCase {
         XCTAssertEqual(cthree(false)(0)(1.0), "false_0_1.0")
         XCTAssertEqual(0.0 |> (false, 0) |> uthree, "false_0_0.0")
         XCTAssertEqual((false, 0, 0.0) |> u2three, "false_0_0.0")
+    }
+    
+    func testWeakApply() {
+        let e = self.expectation(description: "main")
+        var decay:Decay! = Decay(e: e)
+        
+        let iToS = decay ~> Decay.intToString
+        let ff = decay ~> Decay.fullfill
+        
+        ff(self.expectation(description: "inner"))
+        
+        
+        let s1 = iToS(5)
+        XCTAssertNotNil(s1)
+        XCTAssertEqual("5", s1!)
+        
+        decay = nil
+        
+        self.waitForExpectations(timeout: 0, handler: nil)
+        
+        let s2 = iToS(6)
+        XCTAssertNil(s2)
     }
 }

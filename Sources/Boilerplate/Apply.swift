@@ -130,3 +130,44 @@ public func apply<A,B,C,Z>(args:(A, Void, Void), to f:@escaping (A, B, C)->Z) ->
 public func |><A,B,C,Z>(args:(A, Void, Void), f:@escaping (A, B, C)->Z) -> (B, C)->Z {
     return apply(args: args, to: f)
 }
+
+//WEAK
+public func weakapply<T : AnyObject, A>(arg:T, to f:@escaping (T)->(A)->()) -> (A)->() {
+    weak var arg = arg
+    return { a in
+        if let arg = arg {
+            f(arg)(a)
+        }
+    }
+}
+
+public func ~><T : AnyObject, A>(arg:T, f:@escaping (T)->(A)->()) -> (A)->() {
+    return weakapply(arg: arg, to: f)
+}
+
+public func weakapply<T : AnyObject, A, Z>(arg:T, to f:@escaping (T)->(A)->Z) -> (A)->Z? {
+    weak var arg = arg
+    return { a in
+        arg.map(f).map {$0(a)}
+    }
+}
+
+public func ~><T : AnyObject, A, Z>(arg:T, _ f:@escaping (T)->(A)->Z) -> (A)->Z? {
+    return weakapply(arg: arg, to: f)
+}
+
+public func weakapply<T : AnyObject, A>(arg:T, to f:@escaping (T, A)->()) -> (A)->() {
+    return weakapply(arg: arg, to: curry(f))
+}
+
+public func ~><T : AnyObject, A>(arg:T, f:@escaping (T, A)->()) -> (A)->() {
+    return weakapply(arg: arg, to: f)
+}
+
+public func weakapply<T : AnyObject, A, Z>(arg:T, to f:@escaping (T, A)->Z) -> (A)->Z? {
+    return weakapply(arg: arg, to: curry(f))
+}
+
+public func ~><T : AnyObject, A, Z>(arg:T, f:@escaping (T, A)->Z) -> (A)->Z? {
+    return weakapply(arg: arg, to: f)
+}
