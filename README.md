@@ -99,6 +99,54 @@ let utwo = uncurry(ctwo)
 print(utwo(false, 0)) //uncurried back works as expected
 ```
 
+#### Apply
+
+Allows to partieally or fully apply a function with tuple:
+
+```
+func fthree(b:Bool, i:Int, d:Double) -> String {
+    return String(b) + "_" + String(i) + "_" + String(d)
+}
+
+let fbi = (__, __, 1.0) |> fthree //operator way, __ stands for an argument
+//you don't want to apply right now.
+let fi = (true, __, 1.0) |> fthree //operator way
+let fd = apply(args: (true, 1, _), to: fthree) //function way
+
+print(fbi(false, 0)) //prints "false_0_1.0"
+print(fi(0)) //prints "true_0_1.0"
+print(fd(0.0)) //prints "true_1_0.0"
+print((false, 0, 0.0) |> fthree) //full apply, prints "false_0_0.0"
+```
+
+#### Weak Apply
+
+Works like apply, though weakly. I.e. the argument passed is not retained. For now works with single argument only. Is a lot useful within `UIViewController` to avoid retension of `self`:
+
+```
+//func inside UIViewController
+
+//just imagine it does something very important
+func mymagicfunc(s:String) {
+	print(self, s)
+}
+
+//your very advanced int formatting dependent on self
+func myintformat(i:Int) -> String {
+	return self._formatWith(self._format, i)
+}
+
+//you can safely do that and self is not retained
+//any calls to self._myprocstored will just do nothing if self isn't there anymore
+self._myprocstored = self ~> ViewController.mymagicfunc
+
+//format now has a signature of `(Int)->String?`; ? is not a mistake
+let format = self ~> ViewController.myintformat
+
+```
+
+format is a special function here. Which will return a value is `self` exists and `nil` if doesn't. The return value is changed to `Optional`.
+
 ### Further
 
 Examples above are just a quick intro to what Boilerplate can bring you. Take a look inside and see yourself. It handles __NS Bridging__ and exact type comparison in case you want to avoid __Automatic Bridging__, some __Funtional__ extensions, __CF Bridging__, __Error Handling__ including low level __C APIs Error Handling__, __Collections Routines__ i.e. __Collections Zipping__, __Crossplatform Threads__ and much more.
