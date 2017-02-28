@@ -7,11 +7,11 @@
 [![Build Status](https://travis-ci.org/crossroadlabs/Boilerplate.svg?branch=master)](https://travis-ci.org/crossroadlabs/Boilerplate)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
 ![Platform OS X | iOS | tvOS | watchOS | Linux](https://img.shields.io/badge/platform-OS X | iOS | tvOS | watchOS | Linux-orange.svg)
-![Swift version](https://img.shields.io/badge/Swift-2.2 | 3.0-blue.svg)
+![Swift version](https://img.shields.io/badge/Swift-3.0-blue.svg)
 [![GitHub license](https://img.shields.io/badge/license-Apache 2.0-lightgrey.svg)](https://raw.githubusercontent.com/crossroadlabs/Regex/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/crossroadlabs/Boilerplate.svg)](https://github.com/crossroadlabs/Boilerplate/releases)
 
-## Swift boilerplate code library with tons of useful stuff, including Swift 3.0 and Linux compatibility layers
+## Swift boilerplate code library with tons of useful stuff, including Linux compatibility layers and functional compositions
 
 ## Goals
 
@@ -82,6 +82,21 @@ to.timeSinceNow()
 
 //convert to dispatch_time_t
 to.dispatchTime
+```
+
+#### Curry/Uncurry
+
+The idea behind is to transform `(A, B, C...)->Z` to `(A)->(B)->(C)->...->Z`, which is called __currying__ und __uncurrying__ respectively.
+
+```swift
+func ftwo(b:Bool, i:Int) -> String {
+    return String(b) + "_" + String(i)
+}
+
+let ctwo = curry(ftwo)
+print(ctwo(true)(1)) //call curried function
+let utwo = uncurry(ctwo)
+print(utwo(false, 0)) //uncurried back works as expected
 ```
 
 ### Further
