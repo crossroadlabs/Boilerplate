@@ -147,6 +147,28 @@ let format = self ~> ViewController.myintformat
 
 format is a special function here. Which will return a value is `self` exists and `nil` if doesn't. The return value is changed to `Optional`.
 
+#### Tuple flattening
+
+OK, you have a tuple of like `((A, B), C)`, but you need (A, B, C)? This is called tuple flattening and can be done with:
+
+```swift
+let t = ((true, 1), 1.0)
+flatten(t) //here you get: (true, 1, 1.0)
+```
+
+#### Function tuplification
+
+Unfortunately it's no longer possible in Swift to apply tuple to a function with several argumens. You can do it with boilerplate `apply` (`|>` operator form) or tuplify a function:
+
+```swift
+func fthree(b:Bool, i:Int, d:Double) -> String {
+    return String(b) + "_" + String(i) + "_" + String(d)
+}
+
+let tuple = (false, 1, 0.0)
+print(tuplify(fthree)(tuple)) //prints "false_1_0.0"
+```
+
 ### Further
 
 Examples above are just a quick intro to what Boilerplate can bring you. Take a look inside and see yourself. It handles __NS Bridging__ and exact type comparison in case you want to avoid __Automatic Bridging__, some __Funtional__ extensions, __CF Bridging__, __Error Handling__ including low level __C APIs Error Handling__, __Collections Routines__ i.e. __Collections Zipping__, __Crossplatform Threads__ and much more.
