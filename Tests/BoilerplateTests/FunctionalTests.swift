@@ -92,5 +92,6 @@ class FunctionalTests: XCTestCase {
         
         XCTAssertEqual("false_1_0.0", tuple |> tthree)
         XCTAssertEqual("false_1_0.0", tthree(tuple))
+        XCTAssertEqual("false_1_0.0", tuplify(fthree)(tuple))
     }
 }
