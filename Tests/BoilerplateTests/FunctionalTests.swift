@@ -79,4 +79,18 @@ class FunctionalTests: XCTestCase {
         let s2 = iToS(6)
         XCTAssertNil(s2)
     }
+    
+    func testTupleFlatten() {
+        let three = ((true, 1), 0.0)
+        
+        XCTAssertEqual("true_1_0.0", flatten(three) |> fthree)
+    }
+    
+    func testTuplify() {
+        let tthree = tuplify(fthree)
+        let tuple = (false, 1, 0.0)
+        
+        XCTAssertEqual("false_1_0.0", tuple |> tthree)
+        XCTAssertEqual("false_1_0.0", tthree(tuple))
+    }
 }
