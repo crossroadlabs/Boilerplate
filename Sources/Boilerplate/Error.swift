@@ -92,6 +92,8 @@ public protocol AnyErrorProtocol : Error {
 
 extension AnyError: AnyErrorProtocol {}
 
+@_exported import struct Result.AnyError
+
 public protocol ErrorWithCodeType : Error {
     init(code:Int32)
     
