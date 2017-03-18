@@ -158,3 +158,16 @@ extension Timeout : ExpressibleByIntegerLiteral {
         self.init(timeout: Double(value))
     }
 }
+
+public extension Timeout {
+    public func toMillis() -> Double {
+        switch self {
+        case .Immediate:
+            return 0
+        case .Infinity:
+            return Double.infinity
+        case .In(timeout: let seconds):
+            return seconds * 1000
+        }
+    }
+}
