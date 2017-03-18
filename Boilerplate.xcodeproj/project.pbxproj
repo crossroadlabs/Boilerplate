@@ -93,6 +93,10 @@
 		6542D1131E7DB5720030E092 /* Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6542D1111E7DB5720030E092 /* Named.swift */; };
 		6542D1141E7DB5720030E092 /* Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6542D1111E7DB5720030E092 /* Named.swift */; };
 		6542D1151E7DB5720030E092 /* Named.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6542D1111E7DB5720030E092 /* Named.swift */; };
+		6542D1171E7DB8120030E092 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6542D1161E7DB8120030E092 /* Resource.swift */; };
+		6542D1181E7DB8120030E092 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6542D1161E7DB8120030E092 /* Resource.swift */; };
+		6542D1191E7DB8120030E092 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6542D1161E7DB8120030E092 /* Resource.swift */; };
+		6542D11A1E7DB8120030E092 /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6542D1161E7DB8120030E092 /* Resource.swift */; };
 		65465E551C8B3AC00080BAAE /* AnyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E541C8B3AC00080BAAE /* AnyContainer.swift */; };
 		65465E581C8B42A70080BAAE /* AnyContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E561C8B427C0080BAAE /* AnyContainerTests.swift */; };
 		65465E5A1C8B48820080BAAE /* Container.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E591C8B48820080BAAE /* Container.swift */; };
@@ -236,6 +240,7 @@
 		653FF6DC1C8EF40900A3BF90 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		6542D10C1E7DB48C0030E092 /* Zeroable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Zeroable.swift; sourceTree = "<group>"; };
 		6542D1111E7DB5720030E092 /* Named.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Named.swift; sourceTree = "<group>"; };
+		6542D1161E7DB8120030E092 /* Resource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		65465E541C8B3AC00080BAAE /* AnyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyContainer.swift; sourceTree = "<group>"; };
 		65465E561C8B427C0080BAAE /* AnyContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyContainerTests.swift; sourceTree = "<group>"; };
 		65465E591C8B48820080BAAE /* Container.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Container.swift; sourceTree = "<group>"; };
@@ -425,6 +430,7 @@
 				65B3CE431E675C11003C5F0E /* Tuple.swift */,
 				6542D10C1E7DB48C0030E092 /* Zeroable.swift */,
 				6542D1111E7DB5720030E092 /* Named.swift */,
+				6542D1161E7DB8120030E092 /* Resource.swift */,
 			);
 			path = Boilerplate;
 			sourceTree = "<group>";
@@ -786,6 +792,7 @@
 				65A973D61CA41A53000EDB75 /* C.swift in Sources */,
 				65148F0F1CA2D7E70098D557 /* Task.swift in Sources */,
 				65A7575F1E660B390084D3EF /* Curry.swift in Sources */,
+				6542D1181E7DB8120030E092 /* Resource.swift in Sources */,
 				65148F0A1CA2D7E70098D557 /* Result+.swift in Sources */,
 				65148F0C1CA2D7E70098D557 /* Equatable.swift in Sources */,
 				65B3CE451E675C11003C5F0E /* Tuple.swift in Sources */,
@@ -837,6 +844,7 @@
 				65A973D71CA41A53000EDB75 /* C.swift in Sources */,
 				65148F411CA2DA9A0098D557 /* Task.swift in Sources */,
 				65A757601E660B390084D3EF /* Curry.swift in Sources */,
+				6542D1191E7DB8120030E092 /* Resource.swift in Sources */,
 				65148F3C1CA2DA9A0098D557 /* Result+.swift in Sources */,
 				65148F3E1CA2DA9A0098D557 /* Equatable.swift in Sources */,
 				65B3CE461E675C11003C5F0E /* Tuple.swift in Sources */,
@@ -867,6 +875,7 @@
 				65A973D81CA41A53000EDB75 /* C.swift in Sources */,
 				65148F6A1CA2DB6E0098D557 /* Task.swift in Sources */,
 				65A757611E660B390084D3EF /* Curry.swift in Sources */,
+				6542D11A1E7DB8120030E092 /* Resource.swift in Sources */,
 				65148F651CA2DB6E0098D557 /* Result+.swift in Sources */,
 				65148F671CA2DB6E0098D557 /* Equatable.swift in Sources */,
 				65B3CE471E675C11003C5F0E /* Tuple.swift in Sources */,
@@ -918,6 +927,7 @@
 				65A973D51CA41A53000EDB75 /* C.swift in Sources */,
 				653FF6DD1C8EF40900A3BF90 /* Task.swift in Sources */,
 				65A7575E1E660B390084D3EF /* Curry.swift in Sources */,
+				6542D1171E7DB8120030E092 /* Resource.swift in Sources */,
 				65465E631C8B57B10080BAAE /* Result+.swift in Sources */,
 				6520A0271C8C6253002E0842 /* Equatable.swift in Sources */,
 				65B3CE441E675C11003C5F0E /* Tuple.swift in Sources */,
