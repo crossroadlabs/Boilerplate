@@ -119,7 +119,7 @@ public class Thread : Equatable {
         let unmanaged = Unmanaged.passRetained(AnyContainer(task))
         let arg = UnsafeMutableRawPointer(unmanaged.toOpaque())
         do {
-            self.thread = try ccall(CError.self) { code in
+            self.thread = try ccall(CError.self) { (code:inout Int32) in
                 #if os(Linux)
                     var thread:pthread_t = 0
                 #else
@@ -178,7 +178,7 @@ public class Thread : Equatable {
     
     private static func _sleep(timeout:Timeout) -> Timeout? {
         var time = timeout.timespec
-        return try! ccall(CError.self) { code in
+        return try! ccall(CError.self) { (code:inout Int32) in
             var rem:timespec = timespec()
             let ret = nanosleep(&time, &rem)
             if ret == CError.INTR {

@@ -69,15 +69,15 @@ public extension RuntimeErrorType {
 }
 
 public enum CommonRuntimeError : RuntimeErrorType {
-    case NotImplemented(what:String)
-    case PreconditionFailed(description:String)
+    case notImplemented(what:String)
+    case preconditionFailed(description:String)
     
     public var customRepresentation:String {
         get {
             switch self {
-            case .NotImplemented(let what):
+            case .notImplemented(let what):
                 return "Not implemented: \(what)"
-            case .PreconditionFailed(let description):
+            case .preconditionFailed(let description):
                 return "Precondition error: \(description)"
             }
         }
@@ -94,22 +94,26 @@ extension AnyError : AnyErrorProtocol {
 }
 
 public protocol ErrorWithCodeType : Error {
-    init(code:Int32)
+    associatedtype Code
     
-    static func isError(_ code:Int32) -> Bool
+    init(code:Code)
+    
+    static func isError(_ code:Code) -> Bool
 }
 
 public enum CError : RuntimeErrorType {
-    case Unknown
-    case Code(code:Int32)
+    case unknown
+    case code(code:Int32)
 }
 
 extension CError : ErrorWithCodeType {
-    public init(code:Int32) {
-        self = .Code(code: code)
+    public typealias Code = Int32
+    
+    public init(code:Code) {
+        self = .code(code: code)
     }
     
-    public static func isError(_ code:Int32) -> Bool {
+    public static func isError(_ code:Code) -> Bool {
         return code != 0
     }
 }
@@ -120,19 +124,19 @@ public extension CError {
     public static let INVAL = EINVAL
 }
 
-public func ccall<Error: ErrorWithCodeType>(_ fun:()->Int32) -> Error? {
+public func ccall<Code, Error: ErrorWithCodeType>(_ fun:()->Code) -> Error? where Error.Code == Code {
     let result = fun()
     return Error.isError(result) ? Error(code: result) : nil
 }
 
-public func ccall<Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:()->Int32) throws {
+public func ccall<Code, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:()->Code) throws where Error.Code == Code {
     if let error:Error = ccall(fun) {
         throw error
     }
 }
 
-public func ccall<Value, Error: ErrorWithCodeType>(_ fun:(inout Int32)->Value) -> Result<Value, Error> {
-    var code:Int32 = 0
+public func ccall<Value, Code, Error: ErrorWithCodeType>(_ fun:(inout Code)->Value) -> Result<Value, Error> where Code : Zeroable, Error.Code == Code {
+    var code:Code = .zero
     let result = fun(&code)
     if Error.isError(code) {
         return Result(error: Error(code: code))
@@ -141,7 +145,7 @@ public func ccall<Value, Error: ErrorWithCodeType>(_ fun:(inout Int32)->Value) -
     }
 }
 
-public func ccall<Value, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:(inout Int32)->Value) throws -> Value {
+public func ccall<Value, Code, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:(inout Code)->Value) throws -> Value where Code : Zeroable, Error.Code == Code {
     let result:Result<Value, Error> = ccall(fun)
     return try result.dematerialize()
 }
