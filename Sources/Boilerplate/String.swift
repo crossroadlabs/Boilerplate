@@ -16,7 +16,7 @@
 
 import Foundation
 
-#if swift(>=3.0) && !os(Linux)
+#if swift(>=3.0)
 #else
     public extension String {
         public func substring(from index: Index) -> String {
@@ -75,7 +75,7 @@ import Foundation
         ///
         /// - Precondition: `cString != nil`
         public init?(validatingUTF8 cString: UnsafePointer<CChar>) {
-            if cString == nil {
+            if cString == .null {
                 CommonRuntimeError.PreconditionFailed(description: "cString is nil").panic()
             } else {
                 guard let string = String.fromCString(cString) else {
@@ -94,6 +94,95 @@ import Foundation
         /*public static func decodeCString<Encoding : UnicodeCodec>(cString: UnsafePointer<Encoding.CodeUnit>, as encoding: Encoding.Type, repairingInvalidCodeUnits isRepairing: Bool = false) -> (result: String, repairsMade: Bool)? {
         //Too much work for now
         }*/
+    }
+    
+    extension String {
+        public mutating func append<S : Sequence where S.Generator.Element == Character>(contentsOf newElements: S) {
+            self.appendContentsOf(newElements)
+        }
+        
+        public mutating func append(string: String) {
+            self.appendContentsOf(string)
+        }
+    }
+    
+    extension String {
+        /// Insert `newElement` at position `i`.
+        ///
+        /// Invalidates all indices with respect to `self`.
+        ///
+        /// - Complexity: O(`self.count`).
+        public mutating func insert(newElement: Character, at i: Index) {
+            self.insert(newElement, atIndex: i)
+        }
+        
+        /// Insert `newElements` at position `i`.
+        ///
+        /// Invalidates all indices with respect to `self`.
+        ///
+        /// - Complexity: O(`self.count + newElements.count`).
+        public mutating func insert<S : Collection where S.Generator.Element == Character>(contentsOf newElements: S, at i: Index) {
+            self.insertContentsOf(newElements, at: i)
+        }
+        
+        /// Remove and return the `Character` at position `i`.
+        ///
+        /// Invalidates all indices with respect to `self`.
+        ///
+        /// - Complexity: O(`self.count`).
+        public mutating func remove(at i: Index) -> Character {
+            return self.removeAtIndex(i)
+        }
+        
+        /// Replace `self` with the empty string.
+        ///
+        /// Invalidates all indices with respect to `self`.
+        ///
+        /// - parameter keepCapacity: If `true`, prevents the release of
+        ///   allocated storage, which can be a useful optimization
+        ///   when `self` is going to be grown again.
+        public mutating func removeAll(keepingCapacity keepCapacity: Bool = true) {
+            self.removeAll(keepCapacity: keepCapacity)
+        }
+    }
+    
+    public typealias UnicodeCodec = UnicodeCodecType
+    
+    public extension UnicodeCodec {
+        /// Encode a `UnicodeScalar` as a series of `CodeUnit`s by
+        /// calling `output` on each `CodeUnit`.
+        public static func encode(input: UnicodeScalar, sendingOutputTo processCodeUnit: (CodeUnit) -> Swift.Void) {
+            self.encode(input, output: processCodeUnit)
+        }
+    }
+    
+    public extension String {
+        /// A type used to represent the number of steps between two `String.Index`
+        /// values, where one value is reachable from the other.
+        ///
+        /// In Swift, *reachability* refers to the ability to produce one value from
+        /// the other through zero or more applications of `index(after:)`.
+        public typealias IndexDistance = Int
+        
+        public func index(after i: Index) -> Index {
+            return i.successor()
+        }
+        
+        public func index(before i: Index) -> Index {
+            return i.predecessor()
+        }
+        
+        public func index(i: Index, offsetBy n: IndexDistance) -> Index {
+            return i.advanced(by: n)
+        }
+        
+        public func index(i: Index, offsetBy n: IndexDistance, limitedBy limit: Index) -> Index? {
+            return i.advancedBy(n, limit: limit)
+        }
+        
+        public func distance(from start: Index, to end: Index) -> IndexDistance {
+            return start.distance(to: end)
+        }
     }
     
 #endif

@@ -17,25 +17,23 @@
 import Foundation
 
 public protocol NonStrictEquatable {
-    func isEqualTo(other:NonStrictEquatable) -> Bool
+    func isEqual(to other:NonStrictEquatable) -> Bool
 }
 
 public func ==<A : NonStrictEquatable, B : NonStrictEquatable>(lhs:A, rhs:B) -> Bool {
-    return lhs.isEqualTo(rhs)
+    return lhs.isEqual(to: rhs)
 }
 
 public func !=<A : NonStrictEquatable, B : NonStrictEquatable>(lhs:A, rhs:B) -> Bool {
-    return !lhs.isEqualTo(rhs)
+    return !lhs.isEqual(to: rhs)
 }
 
-@warn_unused_result
-public func ==<T : protocol<Equatable, NonStrictEquatable>>(lhs: T, rhs: T) -> Bool {
-    return lhs.isEqualTo(rhs)
+public func ==<T : Equatable & NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
+    return lhs.isEqual(to: rhs)
 }
 
-@warn_unused_result
-public func !=<T : protocol<Equatable, NonStrictEquatable>>(lhs: T, rhs: T) -> Bool {
-    return !lhs.isEqualTo(rhs)
+public func !=<T : Equatable & NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
+    return !lhs.isEqual(to: rhs)
 }
 
 //I would as well add protocol Equatable to collections, but unfortunately it's not possible in current Swift (2.1 at the moment of writing)
@@ -49,16 +47,15 @@ extension NonStrictEquatableCollection {
 
 #if swift(>=3.0)
     
-    @warn_unused_result
-    public func ==<T : Collection where T.Iterator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
+    public func ==<T : Collection>(lhs: T, rhs: T) -> Bool where T.Iterator.Element == NonStrictEquatable {
         if lhs.count != rhs.count {
             return false
         }
         
-        let zip = lhs.zip(rhs)
+        let zip = lhs.zipWith(other: rhs)
         
         for (lhsv, rhsv) in zip {
-            if !lhsv.isEqualTo(rhsv) {
+            if !lhsv.isEqual(to: rhsv) {
                 return false
             }
         }
@@ -67,16 +64,15 @@ extension NonStrictEquatableCollection {
     }
     
     /// rewritten because can return early
-    @warn_unused_result
-    public func !=<T : Collection where T.Iterator.Element == NonStrictEquatable>(lhs: T, rhs: T) -> Bool {
+    public func !=<T : Collection>(lhs: T, rhs: T) -> Bool where T.Iterator.Element == NonStrictEquatable {
         if lhs.count != rhs.count {
             return true
         }
         
-        let zip = lhs.zip(rhs)
+        let zip = lhs.zipWith(other: rhs)
         
         for (lhsv, rhsv) in zip {
-            if lhsv.isEqualTo(rhsv) {
+            if lhsv.isEqual(to: rhsv) {
                 return false
             }
         }
@@ -92,10 +88,10 @@ extension NonStrictEquatableCollection {
             return false
         }
     
-        let zip = lhs.zip(rhs)
+        let zip = lhs.zipWith(other: rhs)
     
         for (lhsv, rhsv) in zip {
-            if !lhsv.isEqualTo(rhsv) {
+            if !lhsv.isEqual(to: rhsv) {
                 return false
             }
         }
@@ -110,10 +106,10 @@ extension NonStrictEquatableCollection {
             return true
         }
     
-        let zip = lhs.zip(rhs)
+        let zip = lhs.zipWith(other: rhs)
     
         for (lhsv, rhsv) in zip {
-            if lhsv.isEqualTo(rhsv) {
+            if lhsv.isEqual(to: rhsv) {
                 return false
             }
         }

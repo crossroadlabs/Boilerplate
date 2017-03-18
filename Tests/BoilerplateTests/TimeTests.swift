@@ -40,7 +40,8 @@ class TimeTests : XCTestCase {
     
     func testTimeoutDate() {
         let to1 = Timeout.Infinity
-        XCTAssertEqual(to1.timeSinceNow(), NSDate.distantFuture())
+
+        XCTAssertEqual(to1.timeSinceNow(), Date.distantFuture)
         
         let to2 = Timeout.Immediate
         let tI = to2.timeSinceNow().timeIntervalSinceNow
@@ -55,7 +56,7 @@ class TimeTests : XCTestCase {
 
 #if os(Linux)
 extension TimeTests {
-	static var allTests : [(String, TimeTests -> () throws -> Void)] {
+	static var allTests : [(String, (TimeTests) -> () throws -> Void)] {
 		return [
 			("testTimeoutDouble", testTimeoutDouble),
 			("testTimeoutDate", testTimeoutDate),

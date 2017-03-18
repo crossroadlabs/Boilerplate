@@ -17,30 +17,30 @@
 import Foundation
 import Result
 
-public func materializeAny<T>(@noescape f: () throws -> T) -> Result<T, AnyError> {
+public func materializeAny<T>(_ f:() throws -> T) -> Result<T, AnyError> {
     return materializeAny(try f())
 }
 
-public func materializeAny<T>(@autoclosure f: () throws -> T) -> Result<T, AnyError> {
+public func materializeAny<T>(_ f:@autoclosure () throws -> T) -> Result<T, AnyError> {
     do {
-        return .Success(try f())
+        return .success(try f())
     } catch let e as AnyError {
-        return .Failure(e)
+        return .failure(e)
     } catch let e {
-        return .Failure(AnyError(e))
+        return .failure(AnyError(e))
     }
 }
 
 public extension Result where Error : AnyErrorProtocol {
-    public init(error: ErrorProtocol) {
+    public init(error: Swift.Error) {
         self.init(error: Error(error))
     }
     
     public func dematerializeAny() throws -> T {
         switch self {
-        case let .Success(value):
+        case let .success(value):
             return value
-        case let .Failure(error):
+        case let .failure(error):
             throw error.error
         }
     }

@@ -25,16 +25,15 @@ class ShimTests: XCTestCase {
         let start = array.startIndex
         let one = start.advanced(by: 1)
         let two = start.advanced(by: 2)
-        let twoWithLimit = start.advanced(by:3, limit: 2)
         
         XCTAssertEqual(one, 1)
         XCTAssertEqual(two, 2)
-        XCTAssertEqual(twoWithLimit, two)
+    }
+    
+    func testDistanceTo() {
+        let array = ["a", "b", "c"]
         
-        let string = "string"
-        
-        let withLimit = string.startIndex.advanced(by:10, limit: string.endIndex)
-        XCTAssertEqual(withLimit, string.endIndex)
+        XCTAssertEqual(array.startIndex.distance(to: array.endIndex), 3)
     }
     
     func testArrayMutation() {
@@ -104,9 +103,10 @@ class ShimTests: XCTestCase {
     
     func testStringSubstring() {
         let hello = "Hello, World!"
-        XCTAssertEqual(hello.substring(with:hello.startIndex.advanced(by:3)..<hello.endIndex.advanced(by:-3)), "lo, Wor")
-        XCTAssertEqual(hello.substring(from:hello.startIndex.advanced(by:3)), "lo, World!")
-        XCTAssertEqual(hello.substring(to:hello.endIndex.advanced(by:-3)), "Hello, Wor")
+        
+        XCTAssertEqual(hello.substring(with:hello.index(hello.startIndex, offsetBy: 3)..<hello.index(hello.endIndex, offsetBy: -3)), "lo, Wor")
+        XCTAssertEqual(hello.substring(from:hello.index(hello.startIndex, offsetBy: 3)), "lo, World!")
+        XCTAssertEqual(hello.substring(to:hello.index(hello.endIndex, offsetBy: -3)), "Hello, Wor")
     }
     
     func testStringByteArray() {
@@ -122,19 +122,48 @@ class ShimTests: XCTestCase {
         XCTAssertEqual(String(validatingUTF8: badUTF8), nil)
         XCTAssertEqual(String(validatingUTF8: goodUTF8), "012345©")
     }
+    
+    func testStringAppend() {
+        var string = "begin"
+        let end = "end"
+        let mid:[Character] = ["m", "i", "d"]
+        
+        string.append(contentsOf: mid)
+        
+        XCTAssertEqual("beginmid", string)
+        
+        string.append(end)
+        
+        XCTAssertEqual("beginmidend", string)
+    }
+    
+    func testStringEncoding() {
+
+        let expectation = self.expectation(description: "desc")
+
+        UTF8.encode("A", into: { unit in
+            XCTAssertEqual(unit, 65)
+            expectation.fulfill()
+        })
+
+        self.waitForExpectations(timeout: 0, handler: nil)
+    }
 }
 
 #if os(Linux)
 extension ShimTests {
-	static var allTests : [(String, ShimTests -> () throws -> Void)] {
+	static var allTests : [(String, (ShimTests) -> () throws -> Void)] {
 		return [
 			("testSequenseJoin", testSequenseJoin),
 			("testAdvancedBy", testAdvancedBy),
+			("testDistanceTo", testDistanceTo),
 			("testArrayMutation", testArrayMutation),
 			("testCollectionPrefixes", testCollectionPrefixes),
 			("testStringCase", testStringCase),
 			("testStringSubstring", testStringSubstring),
 			("testStringByteArray", testStringByteArray),
+			("testStringAppend", testStringAppend),
+			("testStringEncoding", testStringEncoding),
 		]
 	}
 }

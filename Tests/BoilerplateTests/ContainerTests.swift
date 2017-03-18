@@ -12,12 +12,12 @@ import Result
 
 @testable import Boilerplate
 
-enum MockError : ErrorProtocol {
+enum MockError : Error {
     case Error1
     case Error2
 }
 
-class CantainerWithParticularError<V, E: ErrorProtocol> : ContainerWithErrorType {
+class CantainerWithParticularError<V, E: Error> : ContainerWithErrorType {
     typealias Value = V
     typealias Error = E
     
@@ -50,7 +50,7 @@ class ContainerTests: XCTestCase {
         let container = CantainerWithParticularError("string", error: MockError.Error1)
         
         do {
-            try container^!
+            let _ = try container^!
             XCTFail("Must have thrown")
         } catch let e {
             switch e {
@@ -63,7 +63,7 @@ class ContainerTests: XCTestCase {
         
         XCTAssertNil(container^)
         
-        container^%.analysis(ifSuccess: { value -> Result<String, MockError> in
+        let _ = container^%.analysis(ifSuccess: { value -> Result<String, MockError> in
             XCTFail("Can not be with success")
             return Result<String, MockError>(value: value)
         }, ifFailure: { error in
@@ -76,7 +76,7 @@ class ContainerTests: XCTestCase {
         let container = CantainerWithAnyError("string")
         
         do {
-            try container^!
+            let _ = try container^!
             XCTFail("Must have thrown")
         } catch let e {
             switch e {
@@ -89,7 +89,7 @@ class ContainerTests: XCTestCase {
         
         XCTAssertNil(container^)
         
-        container^%.analysis(ifSuccess: { value -> Result<String, AnyError> in
+        let _ = container^%.analysis(ifSuccess: { value -> Result<String, AnyError> in
             XCTFail("Can not be with success")
             return Result<String, AnyError>(value: value)
         }, ifFailure: { error in
@@ -106,7 +106,7 @@ class ContainerTests: XCTestCase {
 
 #if os(Linux)
 extension ContainerTests {
-	static var allTests : [(String, ContainerTests -> () throws -> Void)] {
+	static var allTests : [(String, (ContainerTests) -> () throws -> Void)] {
 		return [
 			("testParticularError", testParticularError),
 			("testAnyError", testAnyError),

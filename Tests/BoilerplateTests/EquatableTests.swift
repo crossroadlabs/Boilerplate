@@ -19,7 +19,7 @@ private struct NonStrictEquatableMock : NonStrictEquatable, Equatable {
         self.val = val
     }
     
-    func isEqualTo(other: NonStrictEquatable) -> Bool {
+    func isEqual(to other: NonStrictEquatable) -> Bool {
         return (other as? NonStrictEquatableMock)?.val == self.val
     }
 }
@@ -54,7 +54,7 @@ class EquatableTests: XCTestCase {
 
 #if os(Linux)
 extension EquatableTests {
-	static var allTests : [(String, EquatableTests -> () throws -> Void)] {
+	static var allTests : [(String, (EquatableTests) -> () throws -> Void)] {
 		return [
 			("testNonStrictEquatable", testNonStrictEquatable),
 			("testNonStrictEquatableArrays", testNonStrictEquatableArrays),

@@ -69,10 +69,21 @@
 		65148F721CA2DBB80098D557 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65148F1C1CA2D8B00098D557 /* Result.framework */; };
 		65148F731CA2DBBD0098D557 /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65148F1C1CA2D8B00098D557 /* Result.framework */; };
 		65148F751CA2DC140098D557 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 65148F1C1CA2D8B00098D557 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		651643D81D148B7100C5E389 /* Null.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643D71D148B7100C5E389 /* Null.swift */; };
+		651643D91D148B7100C5E389 /* Null.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643D71D148B7100C5E389 /* Null.swift */; };
+		651643DA1D148B7100C5E389 /* Null.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643D71D148B7100C5E389 /* Null.swift */; };
+		651643DD1D148EBE00C5E389 /* NullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643DC1D148EBE00C5E389 /* NullTests.swift */; };
+		651643DE1D148EBE00C5E389 /* NullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643DC1D148EBE00C5E389 /* NullTests.swift */; };
+		651643DF1D148EBE00C5E389 /* NullTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643DC1D148EBE00C5E389 /* NullTests.swift */; };
+		651643E01D148EC500C5E389 /* Null.swift in Sources */ = {isa = PBXBuildFile; fileRef = 651643D71D148B7100C5E389 /* Null.swift */; };
 		6520A0231C8C511F002E0842 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520A0221C8C511F002E0842 /* Collections.swift */; };
 		6520A0251C8C5771002E0842 /* CollectionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520A0241C8C5771002E0842 /* CollectionsTests.swift */; };
 		6520A0271C8C6253002E0842 /* Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520A0261C8C6253002E0842 /* Equatable.swift */; };
 		6520A02A1C8C6422002E0842 /* EquatableTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6520A0281C8C62FE002E0842 /* EquatableTests.swift */; };
+		653291641D00699B00C0A8A2 /* InvalidationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653291631D00699B00C0A8A2 /* InvalidationToken.swift */; };
+		653291651D00699B00C0A8A2 /* InvalidationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653291631D00699B00C0A8A2 /* InvalidationToken.swift */; };
+		653291661D00699B00C0A8A2 /* InvalidationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653291631D00699B00C0A8A2 /* InvalidationToken.swift */; };
+		653291671D00699B00C0A8A2 /* InvalidationToken.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653291631D00699B00C0A8A2 /* InvalidationToken.swift */; };
 		653FF6DD1C8EF40900A3BF90 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = 653FF6DC1C8EF40900A3BF90 /* Task.swift */; };
 		65465E551C8B3AC00080BAAE /* AnyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E541C8B3AC00080BAAE /* AnyContainer.swift */; };
 		65465E581C8B42A70080BAAE /* AnyContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E561C8B427C0080BAAE /* AnyContainerTests.swift */; };
@@ -82,6 +93,21 @@
 		65465E661C8B5DDE0080BAAE /* ContainerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65465E651C8B5DDE0080BAAE /* ContainerTests.swift */; };
 		658C31681C8DAFA8009CCC7A /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C31671C8DAFA8009CCC7A /* Time.swift */; };
 		658C316E1C8DD164009CCC7A /* Thread.swift in Sources */ = {isa = PBXBuildFile; fileRef = 658C316D1C8DD164009CCC7A /* Thread.swift */; };
+		65A436831E662271005F1B5B /* FunctionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A436821E662271005F1B5B /* FunctionalTests.swift */; };
+		65A436841E662271005F1B5B /* FunctionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A436821E662271005F1B5B /* FunctionalTests.swift */; };
+		65A436851E662271005F1B5B /* FunctionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A436821E662271005F1B5B /* FunctionalTests.swift */; };
+		65A757591E660B1B0084D3EF /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A757581E660B1B0084D3EF /* Apply.swift */; };
+		65A7575A1E660B1B0084D3EF /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A757581E660B1B0084D3EF /* Apply.swift */; };
+		65A7575B1E660B1B0084D3EF /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A757581E660B1B0084D3EF /* Apply.swift */; };
+		65A7575C1E660B1B0084D3EF /* Apply.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A757581E660B1B0084D3EF /* Apply.swift */; };
+		65A7575E1E660B390084D3EF /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A7575D1E660B390084D3EF /* Curry.swift */; };
+		65A7575F1E660B390084D3EF /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A7575D1E660B390084D3EF /* Curry.swift */; };
+		65A757601E660B390084D3EF /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A7575D1E660B390084D3EF /* Curry.swift */; };
+		65A757611E660B390084D3EF /* Curry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A7575D1E660B390084D3EF /* Curry.swift */; };
+		65A757631E660FCA0084D3EF /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A757621E660FCA0084D3EF /* Placeholder.swift */; };
+		65A757641E660FCA0084D3EF /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A757621E660FCA0084D3EF /* Placeholder.swift */; };
+		65A757651E660FCA0084D3EF /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A757621E660FCA0084D3EF /* Placeholder.swift */; };
+		65A757661E660FCA0084D3EF /* Placeholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A757621E660FCA0084D3EF /* Placeholder.swift */; };
 		65A973D51CA41A53000EDB75 /* C.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A973D41CA41A53000EDB75 /* C.swift */; };
 		65A973D61CA41A53000EDB75 /* C.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A973D41CA41A53000EDB75 /* C.swift */; };
 		65A973D71CA41A53000EDB75 /* C.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A973D41CA41A53000EDB75 /* C.swift */; };
@@ -89,6 +115,13 @@
 		65A99BF11CA308B400477B40 /* ShimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A99BF01CA308B400477B40 /* ShimTests.swift */; };
 		65A99BF21CA308B400477B40 /* ShimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A99BF01CA308B400477B40 /* ShimTests.swift */; };
 		65A99BF31CA308B400477B40 /* ShimTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A99BF01CA308B400477B40 /* ShimTests.swift */; };
+		65B3CE441E675C11003C5F0E /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3CE431E675C11003C5F0E /* Tuple.swift */; };
+		65B3CE451E675C11003C5F0E /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3CE431E675C11003C5F0E /* Tuple.swift */; };
+		65B3CE461E675C11003C5F0E /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3CE431E675C11003C5F0E /* Tuple.swift */; };
+		65B3CE471E675C11003C5F0E /* Tuple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B3CE431E675C11003C5F0E /* Tuple.swift */; };
+		65D2191B1D970495006BBDCA /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2191A1D970495006BBDCA /* TaskTests.swift */; };
+		65D2191C1D970495006BBDCA /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2191A1D970495006BBDCA /* TaskTests.swift */; };
+		65D2191D1D970495006BBDCA /* TaskTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D2191A1D970495006BBDCA /* TaskTests.swift */; };
 		65E267001C8AE09800E0DD70 /* Boilerplate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65E266F51C8AE09800E0DD70 /* Boilerplate.framework */; };
 		65E267101C8AE0CB00E0DD70 /* Optional.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E2670F1C8AE0CB00E0DD70 /* Optional.swift */; };
 		65E267121C8AE4A200E0DD70 /* NSBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267111C8AE4A200E0DD70 /* NSBridging.swift */; };
@@ -96,6 +129,13 @@
 		65E267161C8B00DA00E0DD70 /* OptionalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267151C8B00DA00E0DD70 /* OptionalTests.swift */; };
 		65E267181C8B036A00E0DD70 /* NSBridgingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E267171C8B036A00E0DD70 /* NSBridgingTests.swift */; };
 		65F444F31CA2DF4100BB7E26 /* Result.framework in Copy Frameworks */ = {isa = PBXBuildFile; fileRef = 65148F181CA2D8B00098D557 /* Result.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65F621AD1DF20F4A000F7846 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621AC1DF20F4A000F7846 /* Signature.swift */; };
+		65F621AE1DF20F4A000F7846 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621AC1DF20F4A000F7846 /* Signature.swift */; };
+		65F621AF1DF20F4A000F7846 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621AC1DF20F4A000F7846 /* Signature.swift */; };
+		65F621B01DF20F4A000F7846 /* Signature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621AC1DF20F4A000F7846 /* Signature.swift */; };
+		65F621B21DF21078000F7846 /* SignatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621B11DF21078000F7846 /* SignatureTests.swift */; };
+		65F621B31DF21078000F7846 /* SignatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621B11DF21078000F7846 /* SignatureTests.swift */; };
+		65F621B41DF21078000F7846 /* SignatureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F621B11DF21078000F7846 /* SignatureTests.swift */; };
 		921CB4721CA43F6600D6B223 /* ThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921CB4711CA43F6600D6B223 /* ThreadTests.swift */; };
 		921CB4731CA43F6600D6B223 /* ThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921CB4711CA43F6600D6B223 /* ThreadTests.swift */; };
 		921CB4741CA43F6600D6B223 /* ThreadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 921CB4711CA43F6600D6B223 /* ThreadTests.swift */; };
@@ -178,10 +218,13 @@
 		65148F2D1CA2DA2D0098D557 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65148F481CA2DB310098D557 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65148F511CA2DB310098D557 /* BoilerplateTests-tvOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BoilerplateTests-tvOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		651643D71D148B7100C5E389 /* Null.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Null.swift; sourceTree = "<group>"; };
+		651643DC1D148EBE00C5E389 /* NullTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NullTests.swift; sourceTree = "<group>"; };
 		6520A0221C8C511F002E0842 /* Collections.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
 		6520A0241C8C5771002E0842 /* CollectionsTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionsTests.swift; sourceTree = "<group>"; };
 		6520A0261C8C6253002E0842 /* Equatable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Equatable.swift; sourceTree = "<group>"; };
 		6520A0281C8C62FE002E0842 /* EquatableTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EquatableTests.swift; sourceTree = "<group>"; };
+		653291631D00699B00C0A8A2 /* InvalidationToken.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvalidationToken.swift; sourceTree = "<group>"; };
 		653FF6DC1C8EF40900A3BF90 /* Task.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		65465E541C8B3AC00080BAAE /* AnyContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyContainer.swift; sourceTree = "<group>"; };
 		65465E561C8B427C0080BAAE /* AnyContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyContainerTests.swift; sourceTree = "<group>"; };
@@ -191,8 +234,14 @@
 		65465E651C8B5DDE0080BAAE /* ContainerTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerTests.swift; sourceTree = "<group>"; };
 		658C31671C8DAFA8009CCC7A /* Time.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		658C316D1C8DD164009CCC7A /* Thread.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Thread.swift; sourceTree = "<group>"; };
+		65A436821E662271005F1B5B /* FunctionalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FunctionalTests.swift; sourceTree = "<group>"; };
+		65A757581E660B1B0084D3EF /* Apply.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Apply.swift; sourceTree = "<group>"; };
+		65A7575D1E660B390084D3EF /* Curry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Curry.swift; sourceTree = "<group>"; };
+		65A757621E660FCA0084D3EF /* Placeholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Placeholder.swift; sourceTree = "<group>"; };
 		65A973D41CA41A53000EDB75 /* C.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = C.swift; sourceTree = "<group>"; };
 		65A99BF01CA308B400477B40 /* ShimTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimTests.swift; sourceTree = "<group>"; };
+		65B3CE431E675C11003C5F0E /* Tuple.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tuple.swift; sourceTree = "<group>"; };
+		65D2191A1D970495006BBDCA /* TaskTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTests.swift; sourceTree = "<group>"; };
 		65E266F51C8AE09800E0DD70 /* Boilerplate.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Boilerplate.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		65E266FA1C8AE09800E0DD70 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65E266FF1C8AE09800E0DD70 /* BoilerplateTests-OSX.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "BoilerplateTests-OSX.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -202,6 +251,8 @@
 		65E267131C8AE64F00E0DD70 /* CFBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFBridging.swift; sourceTree = "<group>"; };
 		65E267151C8B00DA00E0DD70 /* OptionalTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalTests.swift; sourceTree = "<group>"; };
 		65E267171C8B036A00E0DD70 /* NSBridgingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSBridgingTests.swift; sourceTree = "<group>"; };
+		65F621AC1DF20F4A000F7846 /* Signature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signature.swift; sourceTree = "<group>"; };
+		65F621B11DF21078000F7846 /* SignatureTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignatureTests.swift; sourceTree = "<group>"; };
 		921CB4711CA43F6600D6B223 /* ThreadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreadTests.swift; sourceTree = "<group>"; };
 		921CB4751CA4477E00D6B223 /* TimeTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimeTests.swift; sourceTree = "<group>"; };
 		921CB4791CA45DBF00D6B223 /* CFBridgingTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CFBridgingTests.swift; sourceTree = "<group>"; };
@@ -316,9 +367,9 @@
 		65E266EB1C8AE09800E0DD70 = {
 			isa = PBXGroup;
 			children = (
+				92F15AD91D5C9DE800CDF148 /* Sources */,
+				92F15ADA1D5C9E0F00CDF148 /* Tests */,
 				65148F111CA2D8B00098D557 /* Frameworks */,
-				65E266F71C8AE09800E0DD70 /* Boilerplate */,
-				65E267031C8AE09800E0DD70 /* BoilerplateTests */,
 				65E266F61C8AE09800E0DD70 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -354,12 +405,19 @@
 				658C316D1C8DD164009CCC7A /* Thread.swift */,
 				653FF6DC1C8EF40900A3BF90 /* Task.swift */,
 				65147C0E1CA2D50D0085C575 /* String.swift */,
+				653291631D00699B00C0A8A2 /* InvalidationToken.swift */,
 				65A973D41CA41A53000EDB75 /* C.swift */,
+				651643D71D148B7100C5E389 /* Null.swift */,
+				65F621AC1DF20F4A000F7846 /* Signature.swift */,
+				65A757621E660FCA0084D3EF /* Placeholder.swift */,
+				65A757581E660B1B0084D3EF /* Apply.swift */,
+				65A7575D1E660B390084D3EF /* Curry.swift */,
+				65B3CE431E675C11003C5F0E /* Tuple.swift */,
 			);
 			path = Boilerplate;
 			sourceTree = "<group>";
 		};
-		65E267031C8AE09800E0DD70 /* BoilerplateTests */ = {
+		65E267031C8AE09800E0DD70 /* BoilerplateTestSuite */ = {
 			isa = PBXGroup;
 			children = (
 				65E267151C8B00DA00E0DD70 /* OptionalTests.swift */,
@@ -372,10 +430,30 @@
 				921CB4711CA43F6600D6B223 /* ThreadTests.swift */,
 				921CB4751CA4477E00D6B223 /* TimeTests.swift */,
 				65A99BF01CA308B400477B40 /* ShimTests.swift */,
+				65D2191A1D970495006BBDCA /* TaskTests.swift */,
 				65E267061C8AE09800E0DD70 /* Info.plist */,
+				651643DC1D148EBE00C5E389 /* NullTests.swift */,
+				65F621B11DF21078000F7846 /* SignatureTests.swift */,
+				65A436821E662271005F1B5B /* FunctionalTests.swift */,
 			);
-			name = BoilerplateTests;
-			path = Tests/Boilerplate;
+			name = BoilerplateTestSuite;
+			path = BoilerplateTests;
+			sourceTree = "<group>";
+		};
+		92F15AD91D5C9DE800CDF148 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				65E266F71C8AE09800E0DD70 /* Boilerplate */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		92F15ADA1D5C9E0F00CDF148 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				65E267031C8AE09800E0DD70 /* BoilerplateTestSuite */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -438,6 +516,7 @@
 				65148EED1CA2D7850098D557 /* Frameworks */,
 				65148EEE1CA2D7850098D557 /* Resources */,
 				65148F261CA2D9A10098D557 /* Copy Frameworks */,
+				92A5EA511D5A1D3400771BF4 /* Fix Xcode 8 Beta Swift Copying Problem */,
 			);
 			buildRules = (
 			);
@@ -493,6 +572,7 @@
 				65148F4E1CA2DB310098D557 /* Frameworks */,
 				65148F4F1CA2DB310098D557 /* Resources */,
 				65148F741CA2DC020098D557 /* Copy Frameworks */,
+				92A5EA521D5A1D8800771BF4 /* Fix Xcode 8 Beta Swift Copying Problem */,
 			);
 			buildRules = (
 			);
@@ -548,7 +628,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0720;
+				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Crossroad Labs, LTD.";
 				TargetAttributes = {
 					65148EE61CA2D7850098D557 = {
@@ -649,11 +729,43 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		92A5EA511D5A1D3400771BF4 /* Fix Xcode 8 Beta Swift Copying Problem */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fix Xcode 8 Beta Swift Copying Problem";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# VERSION 1.0.4\n# Author: @madhavajay\n# This currently works for iOS and watchOS in the Simulator and Devices\n\n# Changes\n# Using ${TOOLCHAIN} in two places now\n# Added double quotes \" around paths\n# Fixed watchOS Issues\n\n# Instructions iOS\n# 1. Copy this into a new Build Phase Script for your App Target\n# 2. Add all the Frameworks you need as Input Files, internal and external\n# 3. Reset your iOS and watchOS simulators (seriously)\n\n# Screenshot: http://i.imgur.com/3dTjVcW.png\n\n# Instructions watchOS\n# 1. Same as above only you need to add the Build Phase Script and its\n#    Framework Input Files to both the Watch App and the Watch Extension.\n#    You can only add the Extension one in Xcode. So Add the Extension one,\n#    then open the .xcodeproj in a Text Editor and find the Entry you just added.\n#    Its a lot easier with Git. There will be two, changes, one like this:\n#\n#    28F65CA91D3FDC7D00043613 /* Fix Xcode 8 Beta 3 */\n#\n#    Under the WatchKit Extension buildPhases, and a second with the actual\n#    script and inputs.\n# 2. Cut and Paste the Line like above, linking the Script from the Extension\n# \t Build Phase to the WatchKit App buildPhases.\n# 3. Make a new one for the WatchKit Extension Again, either in Xcode or\n#    Text Editor.\n# 4. Reset your iOS and watchOS simulators (seriously)\n# 5. Clean deriveddata, spin around in your chair, build and shazam!\n\n# Whats happening here is the same Copy Swift standard libraries step is performed\n# on both the App and the Extension Targets. I was able to get the app running\n# with only one of these but i'm skeptical its correct as you can see Xcode\n# attempts the Copy Swift standard libraries on both Targets by default so there\n# must be a need for it.\n\n# Note, you should use the Beta 3 Toolchain, so make sure $TOOLCHAIN_DIR is resolving to:\n# /Applications/{YOUR BETA}.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain\n\n# Trouble Shooting\n# Check the Build Logs and you should see the New Step you add for each target.\n# If its working you can see the files like libswiftCore.dylib appear in the\n# Framework folders of your .app and .appex files.\n# If its not working, try putting `set` on a new line of your Build Phase Script\n# This will echo out all the Environment Variables used below and you can compare them\n# with the expected output that Xcode uses in the normal Build Step.\n# Be careful the Path Spaces are escaped by using double \" around the paths below\n# or the build paths for watchOS wont work, because they have spaces in their\n# folder names like: APPNAME WatchKit Extension and APPNAME WatchKit App\n\n# Include Frameworks\nfor i in `seq 1 ${SCRIPT_INPUT_FILE_COUNT}`; do\nNUM=`expr $i - 1`\nNEXT_FOLDER_ARG=SCRIPT_INPUT_FILE_$NUM\nINCLUDE_FRAMEWORK_FOLDER_ARGS=\"${INCLUDE_FRAMEWORK_FOLDER_ARGS} --scan-folder ${!NEXT_FOLDER_ARG}\"\ndone\n\n# Run the correct tool 🤗\n${TOOLCHAIN_DIR}/usr/bin/swift-stdlib-tool \\\n--copy --verbose --sign ${EXPANDED_CODE_SIGN_IDENTITY} \\\n--scan-executable \"${TARGET_BUILD_DIR}/${EXECUTABLE_PATH}\" \\\n--scan-folder \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\" \\\n--scan-folder \"${TARGET_BUILD_DIR}/${PLUGINS_FOLDER_PATH}\" \\\n--platform ${PLATFORM_NAME} \\\n--toolchain ${TOOLCHAIN_DIR} \\\n--destination \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\" \\\n--strip-bitcode --resource-destination \"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}\" \\\n--resource-library libswiftRemoteMirror.dylib \\\n${INCLUDE_FRAMEWORK_FOLDER_ARGS}";
+		};
+		92A5EA521D5A1D8800771BF4 /* Fix Xcode 8 Beta Swift Copying Problem */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Fix Xcode 8 Beta Swift Copying Problem";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# VERSION 1.0.4\n# Author: @madhavajay\n# This currently works for iOS and watchOS in the Simulator and Devices\n\n# Changes\n# Using ${TOOLCHAIN} in two places now\n# Added double quotes \" around paths\n# Fixed watchOS Issues\n\n# Instructions iOS\n# 1. Copy this into a new Build Phase Script for your App Target\n# 2. Add all the Frameworks you need as Input Files, internal and external\n# 3. Reset your iOS and watchOS simulators (seriously)\n\n# Screenshot: http://i.imgur.com/3dTjVcW.png\n\n# Instructions watchOS\n# 1. Same as above only you need to add the Build Phase Script and its\n#    Framework Input Files to both the Watch App and the Watch Extension.\n#    You can only add the Extension one in Xcode. So Add the Extension one,\n#    then open the .xcodeproj in a Text Editor and find the Entry you just added.\n#    Its a lot easier with Git. There will be two, changes, one like this:\n#\n#    28F65CA91D3FDC7D00043613 /* Fix Xcode 8 Beta 3 */\n#\n#    Under the WatchKit Extension buildPhases, and a second with the actual\n#    script and inputs.\n# 2. Cut and Paste the Line like above, linking the Script from the Extension\n# \t Build Phase to the WatchKit App buildPhases.\n# 3. Make a new one for the WatchKit Extension Again, either in Xcode or\n#    Text Editor.\n# 4. Reset your iOS and watchOS simulators (seriously)\n# 5. Clean deriveddata, spin around in your chair, build and shazam!\n\n# Whats happening here is the same Copy Swift standard libraries step is performed\n# on both the App and the Extension Targets. I was able to get the app running\n# with only one of these but i'm skeptical its correct as you can see Xcode\n# attempts the Copy Swift standard libraries on both Targets by default so there\n# must be a need for it.\n\n# Note, you should use the Beta 3 Toolchain, so make sure $TOOLCHAIN_DIR is resolving to:\n# /Applications/{YOUR BETA}.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain\n\n# Trouble Shooting\n# Check the Build Logs and you should see the New Step you add for each target.\n# If its working you can see the files like libswiftCore.dylib appear in the\n# Framework folders of your .app and .appex files.\n# If its not working, try putting `set` on a new line of your Build Phase Script\n# This will echo out all the Environment Variables used below and you can compare them\n# with the expected output that Xcode uses in the normal Build Step.\n# Be careful the Path Spaces are escaped by using double \" around the paths below\n# or the build paths for watchOS wont work, because they have spaces in their\n# folder names like: APPNAME WatchKit Extension and APPNAME WatchKit App\n\n# Include Frameworks\nfor i in `seq 1 ${SCRIPT_INPUT_FILE_COUNT}`; do\nNUM=`expr $i - 1`\nNEXT_FOLDER_ARG=SCRIPT_INPUT_FILE_$NUM\nINCLUDE_FRAMEWORK_FOLDER_ARGS=\"${INCLUDE_FRAMEWORK_FOLDER_ARGS} --scan-folder ${!NEXT_FOLDER_ARG}\"\ndone\n\n# Run the correct tool 🤗\n${TOOLCHAIN_DIR}/usr/bin/swift-stdlib-tool \\\n--copy --verbose --sign ${EXPANDED_CODE_SIGN_IDENTITY} \\\n--scan-executable \"${TARGET_BUILD_DIR}/${EXECUTABLE_PATH}\" \\\n--scan-folder \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\" \\\n--scan-folder \"${TARGET_BUILD_DIR}/${PLUGINS_FOLDER_PATH}\" \\\n--platform ${PLATFORM_NAME} \\\n--toolchain ${TOOLCHAIN_DIR} \\\n--destination \"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}\" \\\n--strip-bitcode --resource-destination \"${TARGET_BUILD_DIR}/${FULL_PRODUCT_NAME}\" \\\n--resource-library libswiftRemoteMirror.dylib \\\n${INCLUDE_FRAMEWORK_FOLDER_ARGS}";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		65148EE21CA2D7850098D557 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651643D91D148B7100C5E389 /* Null.swift in Sources */,
 				65148F051CA2D7E70098D557 /* NSBridging.swift in Sources */,
 				65148F101CA2D7E70098D557 /* String.swift in Sources */,
 				65148F071CA2D7E70098D557 /* Container.swift in Sources */,
@@ -661,12 +773,18 @@
 				65148F0D1CA2D7E70098D557 /* Time.swift in Sources */,
 				65A973D61CA41A53000EDB75 /* C.swift in Sources */,
 				65148F0F1CA2D7E70098D557 /* Task.swift in Sources */,
+				65A7575F1E660B390084D3EF /* Curry.swift in Sources */,
 				65148F0A1CA2D7E70098D557 /* Result+.swift in Sources */,
 				65148F0C1CA2D7E70098D557 /* Equatable.swift in Sources */,
+				65B3CE451E675C11003C5F0E /* Tuple.swift in Sources */,
+				65A757641E660FCA0084D3EF /* Placeholder.swift in Sources */,
 				65148F0B1CA2D7E70098D557 /* Collections.swift in Sources */,
+				65F621AE1DF20F4A000F7846 /* Signature.swift in Sources */,
+				653291651D00699B00C0A8A2 /* InvalidationToken.swift in Sources */,
 				65148F041CA2D7E70098D557 /* Optional.swift in Sources */,
 				65148F061CA2D7E70098D557 /* CFBridging.swift in Sources */,
 				65148F091CA2D7E70098D557 /* Error.swift in Sources */,
+				65A7575A1E660B1B0084D3EF /* Apply.swift in Sources */,
 				65148F081CA2D7E70098D557 /* AnyContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -678,12 +796,16 @@
 				65148F011CA2D7DE0098D557 /* AnyContainerTests.swift in Sources */,
 				65148F001CA2D7DE0098D557 /* ContainerTests.swift in Sources */,
 				65148F031CA2D7DE0098D557 /* EquatableTests.swift in Sources */,
+				651643DE1D148EBE00C5E389 /* NullTests.swift in Sources */,
 				921CB4771CA4477E00D6B223 /* TimeTests.swift in Sources */,
 				921CB47B1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				65148F021CA2D7DE0098D557 /* CollectionsTests.swift in Sources */,
 				65A99BF21CA308B400477B40 /* ShimTests.swift in Sources */,
+				65D2191C1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4731CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65148EFF1CA2D7DE0098D557 /* NSBridgingTests.swift in Sources */,
+				65F621B31DF21078000F7846 /* SignatureTests.swift in Sources */,
+				65A436841E662271005F1B5B /* FunctionalTests.swift in Sources */,
 				65148EFE1CA2D7DE0098D557 /* OptionalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -692,6 +814,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651643DA1D148B7100C5E389 /* Null.swift in Sources */,
 				65148F371CA2DA9A0098D557 /* NSBridging.swift in Sources */,
 				65148F421CA2DA9A0098D557 /* String.swift in Sources */,
 				65148F391CA2DA9A0098D557 /* Container.swift in Sources */,
@@ -699,12 +822,18 @@
 				65148F3F1CA2DA9A0098D557 /* Time.swift in Sources */,
 				65A973D71CA41A53000EDB75 /* C.swift in Sources */,
 				65148F411CA2DA9A0098D557 /* Task.swift in Sources */,
+				65A757601E660B390084D3EF /* Curry.swift in Sources */,
 				65148F3C1CA2DA9A0098D557 /* Result+.swift in Sources */,
 				65148F3E1CA2DA9A0098D557 /* Equatable.swift in Sources */,
+				65B3CE461E675C11003C5F0E /* Tuple.swift in Sources */,
+				65A757651E660FCA0084D3EF /* Placeholder.swift in Sources */,
 				65148F3D1CA2DA9A0098D557 /* Collections.swift in Sources */,
+				65F621AF1DF20F4A000F7846 /* Signature.swift in Sources */,
+				653291661D00699B00C0A8A2 /* InvalidationToken.swift in Sources */,
 				65148F361CA2DA9A0098D557 /* Optional.swift in Sources */,
 				65148F381CA2DA9A0098D557 /* CFBridging.swift in Sources */,
 				65148F3B1CA2DA9A0098D557 /* Error.swift in Sources */,
+				65A7575B1E660B1B0084D3EF /* Apply.swift in Sources */,
 				65148F3A1CA2DA9A0098D557 /* AnyContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -713,6 +842,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651643E01D148EC500C5E389 /* Null.swift in Sources */,
 				65148F601CA2DB6E0098D557 /* NSBridging.swift in Sources */,
 				65148F6B1CA2DB6E0098D557 /* String.swift in Sources */,
 				65148F621CA2DB6E0098D557 /* Container.swift in Sources */,
@@ -720,12 +850,18 @@
 				65148F681CA2DB6E0098D557 /* Time.swift in Sources */,
 				65A973D81CA41A53000EDB75 /* C.swift in Sources */,
 				65148F6A1CA2DB6E0098D557 /* Task.swift in Sources */,
+				65A757611E660B390084D3EF /* Curry.swift in Sources */,
 				65148F651CA2DB6E0098D557 /* Result+.swift in Sources */,
 				65148F671CA2DB6E0098D557 /* Equatable.swift in Sources */,
+				65B3CE471E675C11003C5F0E /* Tuple.swift in Sources */,
+				65A757661E660FCA0084D3EF /* Placeholder.swift in Sources */,
 				65148F661CA2DB6E0098D557 /* Collections.swift in Sources */,
+				65F621B01DF20F4A000F7846 /* Signature.swift in Sources */,
+				653291671D00699B00C0A8A2 /* InvalidationToken.swift in Sources */,
 				65148F5F1CA2DB6E0098D557 /* Optional.swift in Sources */,
 				65148F611CA2DB6E0098D557 /* CFBridging.swift in Sources */,
 				65148F641CA2DB6E0098D557 /* Error.swift in Sources */,
+				65A7575C1E660B1B0084D3EF /* Apply.swift in Sources */,
 				65148F631CA2DB6E0098D557 /* AnyContainer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -734,6 +870,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651643DF1D148EBE00C5E389 /* NullTests.swift in Sources */,
 				65148F6F1CA2DB760098D557 /* AnyContainerTests.swift in Sources */,
 				65148F6E1CA2DB760098D557 /* ContainerTests.swift in Sources */,
 				65148F711CA2DB760098D557 /* EquatableTests.swift in Sources */,
@@ -741,8 +878,11 @@
 				921CB47C1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				65148F701CA2DB760098D557 /* CollectionsTests.swift in Sources */,
 				65A99BF31CA308B400477B40 /* ShimTests.swift in Sources */,
+				65D2191D1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4741CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65148F6D1CA2DB760098D557 /* NSBridgingTests.swift in Sources */,
+				65F621B41DF21078000F7846 /* SignatureTests.swift in Sources */,
+				65A436851E662271005F1B5B /* FunctionalTests.swift in Sources */,
 				65148F6C1CA2DB760098D557 /* OptionalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -751,6 +891,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				651643D81D148B7100C5E389 /* Null.swift in Sources */,
 				65465E551C8B3AC00080BAAE /* AnyContainer.swift in Sources */,
 				65147C0F1CA2D50D0085C575 /* String.swift in Sources */,
 				65E267121C8AE4A200E0DD70 /* NSBridging.swift in Sources */,
@@ -758,12 +899,18 @@
 				658C31681C8DAFA8009CCC7A /* Time.swift in Sources */,
 				65A973D51CA41A53000EDB75 /* C.swift in Sources */,
 				653FF6DD1C8EF40900A3BF90 /* Task.swift in Sources */,
+				65A7575E1E660B390084D3EF /* Curry.swift in Sources */,
 				65465E631C8B57B10080BAAE /* Result+.swift in Sources */,
 				6520A0271C8C6253002E0842 /* Equatable.swift in Sources */,
+				65B3CE441E675C11003C5F0E /* Tuple.swift in Sources */,
+				65A757631E660FCA0084D3EF /* Placeholder.swift in Sources */,
 				6520A0231C8C511F002E0842 /* Collections.swift in Sources */,
+				65F621AD1DF20F4A000F7846 /* Signature.swift in Sources */,
+				653291641D00699B00C0A8A2 /* InvalidationToken.swift in Sources */,
 				65465E5A1C8B48820080BAAE /* Container.swift in Sources */,
 				65465E611C8B56AF0080BAAE /* Error.swift in Sources */,
 				65E267101C8AE0CB00E0DD70 /* Optional.swift in Sources */,
+				65A757591E660B1B0084D3EF /* Apply.swift in Sources */,
 				65E267141C8AE64F00E0DD70 /* CFBridging.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -775,12 +922,16 @@
 				6520A02A1C8C6422002E0842 /* EquatableTests.swift in Sources */,
 				65E267181C8B036A00E0DD70 /* NSBridgingTests.swift in Sources */,
 				65465E661C8B5DDE0080BAAE /* ContainerTests.swift in Sources */,
+				651643DD1D148EBE00C5E389 /* NullTests.swift in Sources */,
 				921CB4761CA4477E00D6B223 /* TimeTests.swift in Sources */,
 				921CB47A1CA45DBF00D6B223 /* CFBridgingTests.swift in Sources */,
 				6520A0251C8C5771002E0842 /* CollectionsTests.swift in Sources */,
 				65A99BF11CA308B400477B40 /* ShimTests.swift in Sources */,
+				65D2191B1D970495006BBDCA /* TaskTests.swift in Sources */,
 				921CB4721CA43F6600D6B223 /* ThreadTests.swift in Sources */,
 				65465E581C8B42A70080BAAE /* AnyContainerTests.swift in Sources */,
+				65F621B21DF21078000F7846 /* SignatureTests.swift in Sources */,
+				65A436831E662271005F1B5B /* FunctionalTests.swift in Sources */,
 				65E267161C8B00DA00E0DD70 /* OptionalTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -810,7 +961,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -819,14 +970,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
 				PRODUCT_NAME = "${PROJECT_NAME}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -835,7 +986,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ANALYZER_NONNULL = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				DEFINES_MODULE = YES;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
@@ -844,14 +995,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
 				PRODUCT_NAME = "${PROJECT_NAME}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
@@ -866,8 +1017,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -884,12 +1034,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -907,7 +1057,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -932,13 +1082,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/watchOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
 				PRODUCT_NAME = "${PROJECT_NAME}";
 				SDKROOT = watchos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 4;
 				VALIDATE_PRODUCT = YES;
 				WATCHOS_DEPLOYMENT_TARGET = 2.0;
@@ -957,7 +1108,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
@@ -981,13 +1132,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
 				PRODUCT_NAME = "${PROJECT_NAME}";
 				SDKROOT = appletvos;
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = 3;
 				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
@@ -1002,12 +1154,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 			};
 			name = Debug;
 		};
@@ -1019,12 +1171,13 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/tvOS",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TVOS_DEPLOYMENT_TARGET = 9.2;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TVOS_DEPLOYMENT_TARGET = 9.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -1042,8 +1195,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -1066,11 +1221,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1089,8 +1246,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -1107,9 +1266,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
 			};
@@ -1129,7 +1290,7 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
@@ -1154,13 +1315,14 @@
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				FRAMEWORK_VERSION = A;
-				INFOPLIST_FILE = Boilerplate/Info.plist;
+				INFOPLIST_FILE = Sources/Boilerplate/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/Frameworks";
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.Boilerplate;
 				PRODUCT_NAME = "${PROJECT_NAME}";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -1172,7 +1334,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1187,10 +1349,11 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
-				INFOPLIST_FILE = Tests/Boilerplate/Info.plist;
+				INFOPLIST_FILE = Tests/BoilerplateTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xyz.crossroadlabs.BoilerplateTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};

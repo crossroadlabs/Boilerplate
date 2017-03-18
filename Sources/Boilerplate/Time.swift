@@ -32,6 +32,7 @@ public enum Timeout {
     case In(timeout:Double)
 }
 
+
 /// NSAdditions
 public extension Timeout {
     public init(timeout:Double) {
@@ -45,11 +46,11 @@ public extension Timeout {
         }
     }
     
-    public init(until:NSDate) {
+    public init(until:Date) {
         self.init(timeout: until.timeIntervalSinceNow)
     }
     
-    public var timeInterval:NSTimeInterval {
+    public var timeInterval:TimeInterval {
         get {
             switch self {
             case .Immediate:
@@ -62,29 +63,25 @@ public extension Timeout {
         }
     }
     
-    public func timeSince(date:NSDate) -> NSDate {
+    public func time(since date:Date) -> Date {
         switch self {
         case .Immediate:
             return date
         case .Infinity:
-            return NSDate.distantFuture()
+            return Date.distantFuture
         case .In(let interval):
-            #if swift(>=3.0) && !os(Linux)
-                return NSDate(timeInterval: interval, since: date)
-            #else
-                return NSDate(timeInterval: interval, sinceDate: date)
-            #endif
+            return Date(timeInterval: interval, since: date)
         }
     }
     
-    public func timeSinceNow() -> NSDate {
+    public func timeSinceNow() -> Date {
         switch self {
         case .Immediate:
-            return NSDate()
+            return Date()
         case .Infinity:
-            return NSDate.distantFuture()
+            return Date.distantFuture
         case .In(let interval):
-            return NSDate(timeIntervalSinceNow: interval)
+            return Date(timeIntervalSinceNow: interval)
         }
     }
 }
@@ -94,17 +91,36 @@ public extension Timeout {
     import Dispatch
     
     public extension Timeout {
-        /// Returns the `dispatch_time_t` representation of this interval
-        public var dispatchTime: dispatch_time_t {
-            switch self {
-            case .Immediate:
-                return DISPATCH_TIME_NOW
-            case .Infinity:
-                return DISPATCH_TIME_FOREVER
-            case .In(let interval):
-                return dispatch_time(DISPATCH_TIME_NOW, Int64(interval * Double(NSEC_PER_SEC)))
-            }
+        #if swift(>=3.0)
+            /// Returns the `DispatchTime` representation of this interval
+            public var dispatchTime: DispatchTime {
+                switch self {
+                case .Immediate:
+                    return DispatchTime.now()
+                case .Infinity:
+                    return DispatchTime.distantFuture
+                case .In(let interval):
+                    let sec = Int(interval)
+                    let nsec = Int((interval - Double(sec)) * Double(NSEC_PER_SEC))
+                    let now = DispatchTime.now()
+                    let secshifted = now + .seconds(sec)
+                    let nsecshifted = secshifted + .nanoseconds(nsec)
+                    return nsecshifted
+                }
         }
+        #else
+            /// Returns the `dispatch_time_t` representation of this interval
+            public var dispatchTime: dispatch_time_t {
+                switch self {
+                    case .Immediate:
+                        return DISPATCH_TIME_NOW
+                    case .Infinity:
+                        return DISPATCH_TIME_FOREVER
+                    case .In(let interval):
+                        return dispatch_time(DISPATCH_TIME_NOW, Int64(interval * Double(NSEC_PER_SEC)))
+                }
+            }
+        #endif
     }
 #endif
 
@@ -125,19 +141,19 @@ public extension Timeout {
     }
 }
 
-extension Timeout : FloatLiteralConvertible {
+extension Timeout : ExpressibleByFloatLiteral {
     public init(floatLiteral value: FloatLiteralType) {
         self.init(timeout: value)
     }
 }
 
-extension Timeout : NilLiteralConvertible {
+extension Timeout : ExpressibleByNilLiteral {
     public init(nilLiteral: ()) {
         self = .Immediate
     }
 }
 
-extension Timeout : IntegerLiteralConvertible {
+extension Timeout : ExpressibleByIntegerLiteral {
     public init(integerLiteral value: IntegerLiteralType) {
         self.init(timeout: Double(value))
     }

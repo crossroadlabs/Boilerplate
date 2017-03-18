@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name = 'Boilerplate'
-  s.version = '0.1.1'
+  s.version = '1.0.2'
   s.license = { :type => 'Apache 2.0', :file => 'LICENSE' }
   s.summary = 'Swift boilerplate code library with tons of useful stuff, including Linux compatibility layers'
   s.homepage = 'https://github.com/crossroadlabs/Boilerplate'
@@ -13,9 +13,9 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '9.0'
   s.watchos.deployment_target = '2.0'
 
-  s.source_files = 'Boilerplate/*.swift'
+  s.source_files = 'Sources/Boilerplate/*.swift'
   
-  s.dependency 'Result', '~> 2.0'
+  s.dependency 'Result', '~> 3.0'
 
   s.requires_arc = true
 end

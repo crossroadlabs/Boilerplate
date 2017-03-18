@@ -17,12 +17,7 @@
 import Foundation
 import Result
 
-#if swift(>=3.0)
-#else
-    public typealias ErrorProtocol = ErrorType
-#endif
-
-public protocol RuntimeErrorType : ErrorProtocol, CustomStringConvertible {
+public protocol RuntimeErrorType : Error, CustomStringConvertible {
     var customRepresentation:String {get}
 }
 
@@ -31,8 +26,7 @@ public extension RuntimeErrorType {
         throw self
     }
     
-    @noreturn
-    func panic() {
+    func panic() -> Never  {
         try! selfThrow()
         while true {}
     }
@@ -40,7 +34,11 @@ public extension RuntimeErrorType {
     var stack:[String] {
         get {
             #if !os(Linux)
-                return NSThread.callStackSymbols()
+                #if swift(>=3.0)
+                    return Foundation.Thread.callStackSymbols
+                #else
+                    return NSThread.callStackSymbols()
+                #endif
             #else
                 return ["Runtime error stack trace is not currently supported on Linux"]
             #endif
@@ -53,13 +51,13 @@ public extension RuntimeErrorType {
         }
     }
     
-    func formatDescription(custom:Any) -> String {
+    func formatDescription(_ custom:Any) -> String {
         return "\(custom)\n\(stackTrace)"
     }
     
     var customRepresentation:String {
         get {
-            return "\(self.dynamicType)"
+            return "\(type(of: self))"
         }
     }
     
@@ -86,24 +84,24 @@ public enum CommonRuntimeError : RuntimeErrorType {
     }
 }
 
-public protocol AnyErrorProtocol : ErrorProtocol {
-    init(_ error:ErrorProtocol)
+public protocol AnyErrorProtocol : Error {
+    init(_ error:Error)
     
-    var error:ErrorProtocol {get}
+    var error:Error {get}
 }
 
 public struct AnyError : AnyErrorProtocol {
-    public let error:ErrorProtocol
+    public let error:Error
     
-    public init(_ error:ErrorProtocol) {
+    public init(_ error:Error) {
         self.error = error
     }
 }
 
-public protocol ErrorWithCodeType : ErrorProtocol {
+public protocol ErrorWithCodeType : Error {
     init(code:Int32)
     
-    static func isError(code:Int32) -> Bool
+    static func isError(_ code:Int32) -> Bool
 }
 
 public enum CError : RuntimeErrorType {
@@ -116,7 +114,7 @@ extension CError : ErrorWithCodeType {
         self = .Code(code: code)
     }
     
-    public static func isError(code:Int32) -> Bool {
+    public static func isError(_ code:Int32) -> Bool {
         return code != 0
     }
 }
@@ -127,20 +125,20 @@ public extension CError {
     public static let INVAL = EINVAL
 }
 
-public func ccall<Error: ErrorWithCodeType>(@noescape fun:()->Int32) -> Error? {
+public func ccall<Error: ErrorWithCodeType>(_ fun:()->Int32) -> Error? {
     let result = fun()
     return Error.isError(result) ? Error(code: result) : nil
 }
 
-public func ccall<Error: ErrorWithCodeType>(_: Error.Type, @noescape fun:()->Int32) throws {
+public func ccall<Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:()->Int32) throws {
     if let error:Error = ccall(fun) {
         throw error
     }
 }
 
-public func ccall<Value, Error: ErrorWithCodeType>(@noescape fun:(inout code:Int32)->Value) -> Result<Value, Error> {
+public func ccall<Value, Error: ErrorWithCodeType>(_ fun:(inout Int32)->Value) -> Result<Value, Error> {
     var code:Int32 = 0
-    let result = fun(code: &code)
+    let result = fun(&code)
     if Error.isError(code) {
         return Result(error: Error(code: code))
     } else {
@@ -148,7 +146,7 @@ public func ccall<Value, Error: ErrorWithCodeType>(@noescape fun:(inout code:Int
     }
 }
 
-public func ccall<Value, Error: ErrorWithCodeType>(_: Error.Type, @noescape fun:(inout code:Int32)->Value) throws -> Value {
+public func ccall<Value, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:(inout Int32)->Value) throws -> Value {
     let result:Result<Value, Error> = ccall(fun)
     return try result.dematerialize()
 }

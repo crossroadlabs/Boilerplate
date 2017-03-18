@@ -1,4 +1,4 @@
-//===--- Package.swift -----------------------------------------------------===//
+//===--- Signature.swift ------------------------------------------------------===//
 //Copyright (c) 2016 Daniel Leping (dileping)
 //
 //Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +14,20 @@
 //limitations under the License.
 //===----------------------------------------------------------------------===//
 
-import PackageDescription
+import Foundation
 
-let package = Package(
-    name: "Boilerplate",
-    dependencies: [
-        .Package(url: "https://github.com/antitypical/Result.git", Version(3, 0, 0, prereleaseIdentifiers: ["alpha", "2"]))
-    ]
-)
+fileprivate func _signature<T: AnyObject>(_ o: T) -> Int {
+    return unsafeBitCast(o, to: Int.self)
+}
+
+public protocol SignatureProvider : AnyObject {
+    var signature:Int {get}
+}
+
+public extension SignatureProvider {
+    public var signature:Int {
+        get {
+            return _signature(self)
+        }
+    }
+}

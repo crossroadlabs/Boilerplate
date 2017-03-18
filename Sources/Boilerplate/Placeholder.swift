@@ -1,4 +1,4 @@
-//===--- Package.swift -----------------------------------------------------===//
+//===--- Placeholder.swift ------------------------------------------------------===//
 //Copyright (c) 2016 Daniel Leping (dileping)
 //
 //Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +14,5 @@
 //limitations under the License.
 //===----------------------------------------------------------------------===//
 
-import PackageDescription
+public let __:Void = ()
 
-let package = Package(
-    name: "Boilerplate",
-    dependencies: [
-        .Package(url: "https://github.com/antitypical/Result.git", Version(3, 0, 0, prereleaseIdentifiers: ["alpha", "2"]))
-    ]
-)

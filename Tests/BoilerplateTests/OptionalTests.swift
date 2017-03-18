@@ -16,15 +16,15 @@ class OptionalTests: XCTestCase {
     func testGetOrElse() {
         let existingString:String? = "exists"
         
-        XCTAssertEqual(existingString.getOrElse("else"), "exists")
+        XCTAssertEqual(existingString.getOr(else: "else"), "exists")
         
         let nilString:String? = nil
         
         XCTAssertNil(nilString)
         
-        XCTAssertEqual(nilString.getOrElse("else"), "else")
+        XCTAssertEqual(nilString.getOr(else: "else"), "else")
         
-        let noAutoclosure = nilString.getOrElse {
+        let noAutoclosure = nilString.getOr {
             "else"
         }
         
@@ -35,21 +35,21 @@ class OptionalTests: XCTestCase {
         let existingString:String? = "exists"
         
         XCTAssertNotNil(existingString)
-        XCTAssertNotNil(existingString.orElse(nil))
+        XCTAssertNotNil(existingString.or(else: nil))
         
         let nilString:String? = nil
         
         XCTAssertNil(nilString)
-        XCTAssertNil(nilString.orElse(nil))
-        XCTAssertNotNil(nilString.orElse(existingString))
+        XCTAssertNil(nilString.or(else: nil))
+        XCTAssertNotNil(nilString.or(else: existingString))
         
-        let noAutoclosureNil = nilString.orElse {
+        let noAutoclosureNil = nilString.or {
             nil
         }
         
         XCTAssertNil(noAutoclosureNil)
         
-        let noAutoclosure = nilString.orElse {
+        let noAutoclosure = nilString.or {
             existingString
         }
         
@@ -59,7 +59,7 @@ class OptionalTests: XCTestCase {
 
 #if os(Linux)
 extension OptionalTests {
-	static var allTests : [(String, OptionalTests -> () throws -> Void)] {
+	static var allTests : [(String, (OptionalTests) -> () throws -> Void)] {
 		return [
 			("testGetOrElse", testGetOrElse),
 			("testOrElse", testOrElse),

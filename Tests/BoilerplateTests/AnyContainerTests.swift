@@ -13,30 +13,32 @@ import Result
 @testable import Boilerplate
 
 class AnyContainerTests: XCTestCase {
+    let _string = "string"
+    
     
     func testInitAndGet() {
-        let container = AnyContainer("string")
+        let container = AnyContainer(_string)
         
-        XCTAssertEqual(container.content, "string")
+        XCTAssertEqual(container.content, _string)
         do {
-            let string = try container^!.substring(to: "string".startIndex.successor())
+            let string = try container^!.substring(to: _string.index(after: _string.startIndex))
             XCTAssertEqual(string, "s")
         } catch {
             XCTFail("Can not throw really")
         }
         
-        XCTAssertEqual((container^)!.substring(from: "string".startIndex.successor()), "tring")
+        XCTAssertEqual((container^)!.substring(from: _string.index(after: _string.startIndex)), "tring")
         
-        XCTAssertEqual((container^)!.substring(from: "string".startIndex.successor()), "tring")
-        XCTAssertEqual(container^!!.substring(from: "string".startIndex.successor()), "tring")
+        XCTAssertEqual((container^)!.substring(from: _string.index(after: _string.startIndex)), "tring")
+        XCTAssertEqual(container^!!.substring(from: _string.index(after: _string.startIndex)), "tring")
         
         XCTAssertNotNil(container^)
         
-        XCTAssertEqual(container^.map{$0.substring(to: "string".endIndex.predecessor())} ?? "wtf", "strin")
+        XCTAssertEqual(container^.map{$0.substring(to: _string.index(before: _string.endIndex))} ?? "wtf", "strin")
         
-        XCTAssertEqual((container^)?.substring(from: "string".endIndex.predecessor()) ?? "wtf", "g")
+        XCTAssertEqual((container^)?.substring(from: _string.index(before: _string.endIndex)) ?? "wtf", "g")
         
-        container^%.analysis(ifSuccess: { value -> Result<String, AnyError> in
+        let _ = container^%.analysis(ifSuccess: { value -> Result<String, AnyError> in
             XCTAssertEqual("string", value)
             return Result<String, AnyError>(value: value)
         }, ifFailure: { error in
@@ -62,7 +64,7 @@ class AnyContainerTests: XCTestCase {
 
 #if os(Linux)
 extension AnyContainerTests {
-	static var allTests : [(String, AnyContainerTests -> () throws -> Void)] {
+	static var allTests : [(String, (AnyContainerTests) -> () throws -> Void)] {
 		return [
 			("testInitAndGet", testInitAndGet),
 			("testContentMutation", testContentMutation),

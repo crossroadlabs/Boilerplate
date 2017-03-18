@@ -1,4 +1,4 @@
-//===--- Optional.swift ------------------------------------------------------===//
+//===--- Task.swift ------------------------------------------------------===//
 //Copyright (c) 2016 Daniel Leping (dileping)
 //
 //Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,20 +16,8 @@
 
 import Foundation
 
-public extension Optional {
-    func getOrElse(@autoclosure el:() throws -> Wrapped) rethrows -> Wrapped {
-        return try self ?? el()
-    }
-    
-    func getOrElse(el:() throws -> Wrapped) rethrows -> Wrapped {
-        return try self ?? el()
-    }
-    
-    func orElse(@autoclosure el:() throws -> Wrapped?) rethrows -> Wrapped? {
-        return try self ?? el()
-    }
-    
-    func orElse(el:() throws -> Wrapped?) rethrows -> Wrapped? {
-        return try self ?? el()
-    }
-}
+public typealias Task = () throws -> Void
+public typealias SafeTask = () -> Void
+
+public typealias SafeTaskWithResult<R> = () -> R
+public typealias TaskWithResult<R> = () throws -> R
