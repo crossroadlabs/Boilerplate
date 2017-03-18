@@ -42,7 +42,7 @@ public postfix func ^<A, T : ContainerType>(container:T) -> A? where T.Value == 
 }
 
 public postfix func ^%<A, T : ContainerType>(container:T) -> Result<A, AnyError> where T.Value == A {
-    return materializeAny {
+    return materialize {
         try container.withdraw()
     }
 }

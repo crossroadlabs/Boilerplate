@@ -17,20 +17,6 @@
 import Foundation
 import Result
 
-public func materializeAny<T>(_ f:() throws -> T) -> Result<T, AnyError> {
-    return materializeAny(try f())
-}
-
-public func materializeAny<T>(_ f:@autoclosure () throws -> T) -> Result<T, AnyError> {
-    do {
-        return .success(try f())
-    } catch let e as AnyError {
-        return .failure(e)
-    } catch let e {
-        return .failure(AnyError(e))
-    }
-}
-
 public extension Result where Error : AnyErrorProtocol {
     public init(error: Swift.Error) {
         self.init(error: Error(error))
