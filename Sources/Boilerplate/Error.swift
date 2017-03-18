@@ -98,7 +98,41 @@ public protocol ErrorWithCodeType : Error {
     
     init(code:Code)
     
-    static func isError(_ code:Code) -> Bool
+    static func isError(code:Code) -> Bool
+}
+
+public protocol ErrorSource {
+    associatedtype Error : ErrorWithCodeType
+    typealias Code = Error.Code
+    
+    static var ok:Code {get}
+    
+    func error(code:Code) -> Error
+}
+
+public protocol CObject {
+    associatedtype Object
+    
+    func with<R>(_ f:(Object) throws -> R) rethrows -> R
+}
+
+public extension ErrorSource {
+    public func error() -> Error {
+        return error(code: Self.ok)
+    }
+}
+
+public extension CObject where Self : ErrorSource {
+    public func calle(_ f:(Object)->Code) -> Self.Error? {
+        let result:Code = with(f)
+        return Error.isError(code: result) ? error(code: result) : nil
+    }
+    
+    public func call(_ f:(Object)->Code) throws -> Void {
+        if let error = calle(f) {
+            throw error
+        }
+    }
 }
 
 public enum CError : RuntimeErrorType {
@@ -113,7 +147,7 @@ extension CError : ErrorWithCodeType {
         self = .code(code: code)
     }
     
-    public static func isError(_ code:Code) -> Bool {
+    public static func isError(code:Code) -> Bool {
         return code != 0
     }
 }
@@ -126,7 +160,7 @@ public extension CError {
 
 public func ccall<Code, Error: ErrorWithCodeType>(_ fun:()->Code) -> Error? where Error.Code == Code {
     let result = fun()
-    return Error.isError(result) ? Error(code: result) : nil
+    return Error.isError(code: result) ? Error(code: result) : nil
 }
 
 public func ccall<Code, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fun:()->Code) throws where Error.Code == Code {
@@ -138,7 +172,7 @@ public func ccall<Code, Error: ErrorWithCodeType>(_: Error.Type = Error.self, fu
 public func ccall<Value, Code, Error: ErrorWithCodeType>(_ fun:(inout Code)->Value) -> Result<Value, Error> where Code : Zeroable, Error.Code == Code {
     var code:Code = .zero
     let result = fun(&code)
-    if Error.isError(code) {
+    if Error.isError(code: code) {
         return Result(error: Error(code: code))
     } else {
         return Result(value: result)
