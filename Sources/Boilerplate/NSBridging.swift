@@ -49,16 +49,16 @@ public protocol NSBridging {
 #endif
 
 #if !os(Linux)
-    public extension NSBridging where Self : String {
+    public extension String {
         public typealias NSBridgeTo = NSString
     }
 
-    public extension NSBridging where Self : Array {
-        public typealias NSBridgeTo = NSString
+    public extension Array {
+        public typealias NSBridgeTo = NSArray
     }
 
-    public extension NSBridging where Self : Dictionary {
-        public typealias NSBridgeTo = NSString
+    public extension Dictionary {
+        public typealias NSBridgeTo = NSDictionary
     }
 #endif
 
