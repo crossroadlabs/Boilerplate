@@ -12,7 +12,7 @@ import CoreFoundation
 
 @testable import Boilerplate
 
-class CFBridgingTests: XCTestCase {
+public class CFBridgingTests: XCTestCase {
     
     #if os(Linux)
     func testCFString() {
@@ -51,7 +51,7 @@ class CFBridgingTests: XCTestCase {
 
 #if os(Linux)
 extension CFBridgingTests {
-	static var allTests : [(String, (CFBridgingTests) -> () throws -> Void)] {
+	public static var allTests : [(String, (CFBridgingTests) -> () throws -> Void)] {
 		return [
 			("testCFString", testCFString),
 		]

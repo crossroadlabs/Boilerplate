@@ -11,7 +11,7 @@ import Foundation
 
 @testable import Boilerplate
 
-class NSBridgingTests: XCTestCase {
+public class NSBridgingTests: XCTestCase {
     
     func testIsNoBridge() {
         XCTAssertFalse(isNoBridge("string", type: NSString.self))
@@ -45,7 +45,7 @@ class NSBridgingTests: XCTestCase {
 
 #if os(Linux)
 extension NSBridgingTests {
-	static var allTests : [(String, (NSBridgingTests) -> () throws -> Void)] {
+	public static var allTests : [(String, (NSBridgingTests) -> () throws -> Void)] {
 		return [
 			("testIsNoBridge", testIsNoBridge),
 			("testAsNoBridge", testAsNoBridge),

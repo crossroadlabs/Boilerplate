@@ -16,41 +16,59 @@
 
 import Foundation
 
-#if !os(Linux)
-    public protocol Bridgeable {
+#if os(Linux)
+
+public protocol NSBridging : _ObjectTypeBridgeable {
+    typealias NSBridgeTo = _ObjectType
+    
+    var ns:NSBridgeTo {get}
+}
+
+#else
+
+public protocol NSBridging {
+    associatedtype NSBridgeTo
+
+    var ns:NSBridgeTo {get}
+}
+
+#endif
+
+#if os(Linux)
+    public extension NSBridging {
+        public var ns:NSBridgeTo {
+            return _bridgeToObjectiveC()
+        }
+    }
+#else
+    public extension NSBridging {
+        public var ns:NSBridgeTo {
+            return self as! NSBridgeTo
+        }
     }
 #endif
 
-public protocol NSBridging : Bridgeable {
-    #if os(Linux)
-        associatedtype NSBridgeTo = BridgeType
-    #else
-        associatedtype NSBridgeTo : NSObject
-    #endif
-}
-
-public extension NSBridging {
-    public var ns:NSBridgeTo {
-        get {
-            #if os(Linux)
-                return self.bridge() as! NSBridgeTo
-            #else
-                return self as! NSBridgeTo
-            #endif
-        }
+#if !os(Linux)
+    public extension NSBridging where Self : String {
+        public typealias NSBridgeTo = NSString
     }
-}
+
+    public extension NSBridging where Self : Array {
+        public typealias NSBridgeTo = NSString
+    }
+
+    public extension NSBridging where Self : Dictionary {
+        public typealias NSBridgeTo = NSString
+    }
+#endif
 
 extension String : NSBridging {
-    public typealias NSBridgeTo = NSString
 }
 
 extension Array : NSBridging {
-    public typealias NSBridgeTo = NSArray
 }
 
 extension Dictionary : NSBridging {
-    public typealias NSBridgeTo = NSDictionary
 }
 
 public func isNoBridge<NSType : NSObject>(_ any:Any, type:NSType.Type) -> Bool {
