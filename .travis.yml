@@ -6,9 +6,9 @@ matrix:
     - script:
         - xcodebuild test -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME-OSX
         #disabled platform specific tests due to https://github.com/travis-ci/travis-ci/issues/7031
-        - xcodebuild build -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME-iOS -sdk iphonesimulator -destination 'platform=iOS Simulator,name=iPhone 7'
-        - xcodebuild build -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME-tvOS -sdk appletvsimulator -destination 'platform=tvOS Simulator,name=Apple TV 1080p'
-        - xcodebuild build -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME-watchOS -sdk watchsimulator -destination 'platform=watchOS Simulator,name=Apple Watch - 42mm'
+        - xcodebuild build -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME-iOS -sdk iphonesimulator #-destination 'platform=iOS Simulator,name=iPhone 7'
+        - xcodebuild build -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME-tvOS -sdk appletvsimulator #-destination 'platform=tvOS Simulator,name=Apple TV 1080p'
+        - xcodebuild build -project $MODULE_NAME.xcodeproj -scheme $MODULE_NAME-watchOS -sdk watchsimulator #-destination 'platform=watchOS Simulator,name=Apple Watch - 42mm'
       os: osx
       osx_image: xcode8.2
       language: objective-c
