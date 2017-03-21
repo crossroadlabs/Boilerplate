@@ -10,7 +10,7 @@ import XCTest
 import Foundation
 import Result
 
-@testable import Boilerplate
+import Boilerplate
 
 enum Nullable {
     case yesnull
@@ -35,6 +35,8 @@ class NullTests: XCTestCase {
     let nonull:Nullable? = .nonull
     let somemore:Nullable? = .somemore
     let actualnil:Nullable? = nil
+    let snil:String? = nil
+    let snnil:String? = ""
     
     func testNull() {
         XCTAssert(Nullable.yesnull == .null)
@@ -54,6 +56,18 @@ class NullTests: XCTestCase {
         XCTAssert(Nullable.nonull != nil)
         XCTAssert(Nullable.somemore != .null)
         XCTAssert(Nullable.somemore != nil)
+    }
+    
+    func testOptional() {
+        XCTAssert(snil == nil)
+        XCTAssert(snil == .null)
+        XCTAssert(snnil != nil)
+        XCTAssert(snnil != .null)
+        
+        XCTAssertFalse(snil != nil)
+        XCTAssertFalse(snil != .null)
+        XCTAssertFalse(snnil == nil)
+        XCTAssertFalse(snnil == .null)
     }
     
     func testOptionalNull() {

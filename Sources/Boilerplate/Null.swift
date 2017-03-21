@@ -45,16 +45,16 @@ public func !=<T : NullEquatable>(lhs: Optional<T>, rhs: Null) -> Bool {
 }
 
 public func ==<T>(lhs: T?, rhs: Null) -> Bool {
-    return lhs == nil
+    return lhs.map{_ in false} ?? true
 }
 
 public func !=<T>(lhs: T?, rhs: Null) -> Bool {
-    return lhs != nil
+    return lhs.map{_ in true} ?? false
 }
 
 extension Null : NullEquatable {
 }
 
 public func ==(lhs: Null, rhs: Null) -> Bool {
-    return lhs == rhs
+    return true
 }
