@@ -5,7 +5,7 @@
 ![🐧 linux: ready](https://img.shields.io/badge/%F0%9F%90%A7%20linux-ready-red.svg)
 [![Build Status](https://travis-ci.org/crossroadlabs/Boilerplate.svg?branch=master)](https://travis-ci.org/crossroadlabs/Boilerplate)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-![Platform%20OS%20X%20| iOS | tvOS | watchOS | Linux](https://img.shields.io/badge/platform-OS X | iOS | tvOS | watchOS | Linux-orange.svg)
+![Platform OS X | iOS | tvOS | watchOS | Linux](https://img.shields.io/badge/platform-OS X | iOS | tvOS | watchOS | Linux-orange.svg)
 ![Swift version](https://img.shields.io/badge/Swift-3.2-blue.svg)
 [![GitHub license](https://img.shields.io/badge/license-Apache 2.0-lightgrey.svg)](https://raw.githubusercontent.com/crossroadlabs/Regex/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/crossroadlabs/Boilerplate.svg)](https://github.com/crossroadlabs/Boilerplate/releases)
