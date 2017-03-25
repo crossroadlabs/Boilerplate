@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
 
   s.source_files = 'Sources/Boilerplate/*.swift'
   
-  s.dependency 'Result', '3.0.0'
+  s.dependency 'Result', '~> 3.2'
 
   s.requires_arc = true
 end
