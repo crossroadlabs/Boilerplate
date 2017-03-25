@@ -446,3 +446,9 @@ postfix operator ^
     }
 #endif
 
+public extension Sequence where Iterator.Element : Tuple2Protocol, Iterator.Element.A : Hashable, Iterator.Element.Wrapped == (Iterator.Element.A, Iterator.Element.B) {
+    var dictionary:[Iterator.Element.A: Iterator.Element.B] {
+        return toMap(self.map {$0.tuple})
+    }
+}
+

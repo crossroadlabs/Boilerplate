@@ -68,6 +68,14 @@ class CollectionsTests: XCTestCase {
         
         XCTAssertEqual(map1, reference1)
         XCTAssertEqual(map2, reference2)
+        
+        let dict1 = tuples.map(Tuple2.init(tuple:)).dictionary
+        let dict2 = dict1.map { (k, v) in
+            (k, v*v)
+        }.map(Tuple2.init(tuple:)).dictionary
+        
+        XCTAssertEqual(dict1, reference2)
+        XCTAssertEqual(dict2, reference1)
     }
 }
 
