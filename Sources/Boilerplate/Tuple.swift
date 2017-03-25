@@ -90,7 +90,16 @@ public struct Tuple2<AI, BI> : Tuple2Protocol {
 
 //======================================= TUPLE3 =======================================
 
-public struct Tuple3<A, B, C> : Tuple {
+public protocol Tuple3Protocol : Tuple {
+    associatedtype A
+    associatedtype B
+    associatedtype C
+}
+
+public struct Tuple3<AI, BI, CI> : Tuple3Protocol {
+    public typealias A = AI
+    public typealias B = BI
+    public typealias C = CI
     public typealias Wrapped = (A, B, C)
     
     public let tuple: Wrapped
@@ -114,7 +123,18 @@ public struct Tuple3<A, B, C> : Tuple {
 
 //======================================= TUPLE4 =======================================
 
-public struct Tuple4<A, B, C, D> : Tuple {
+public protocol Tuple4Protocol : Tuple {
+    associatedtype A
+    associatedtype B
+    associatedtype C
+    associatedtype D
+}
+
+public struct Tuple4<AI, BI, CI, DI> : Tuple4Protocol {
+    public typealias A = AI
+    public typealias B = BI
+    public typealias C = CI
+    public typealias D = DI
     public typealias Wrapped = (A, B, C, D)
     
     public let tuple: Wrapped
@@ -138,7 +158,20 @@ public struct Tuple4<A, B, C, D> : Tuple {
 
 //======================================= TUPLE5 =======================================
 
-public struct Tuple5<A, B, C, D, E> : Tuple {
+public protocol Tuple5Protocol : Tuple {
+    associatedtype A
+    associatedtype B
+    associatedtype C
+    associatedtype D
+    associatedtype E
+}
+
+public struct Tuple5<AI, BI, CI, DI, EI> : Tuple5Protocol {
+    public typealias A = AI
+    public typealias B = BI
+    public typealias C = CI
+    public typealias D = DI
+    public typealias E = EI
     public typealias Wrapped = (A, B, C, D, E)
     
     public let tuple: Wrapped
@@ -162,7 +195,22 @@ public struct Tuple5<A, B, C, D, E> : Tuple {
 
 //======================================= TUPLE6 =======================================
 
-public struct Tuple6<A, B, C, D, E, F> : Tuple {
+public protocol Tuple6Protocol : Tuple {
+    associatedtype A
+    associatedtype B
+    associatedtype C
+    associatedtype D
+    associatedtype E
+    associatedtype F
+}
+
+public struct Tuple6<AI, BI, CI, DI, EI, FI> : Tuple6Protocol {
+    public typealias A = AI
+    public typealias B = BI
+    public typealias C = CI
+    public typealias D = DI
+    public typealias E = EI
+    public typealias F = FI
     public typealias Wrapped = (A, B, C, D, E, F)
     
     public let tuple: Wrapped
@@ -186,7 +234,24 @@ public struct Tuple6<A, B, C, D, E, F> : Tuple {
 
 //======================================= TUPLE7 =======================================
 
-public struct Tuple7<A, B, C, D, E, F, G> : Tuple {
+public protocol Tuple7Protocol : Tuple {
+    associatedtype A
+    associatedtype B
+    associatedtype C
+    associatedtype D
+    associatedtype E
+    associatedtype F
+    associatedtype G
+}
+
+public struct Tuple7<AI, BI, CI, DI, EI, FI, GI> : Tuple7Protocol {
+    public typealias A = AI
+    public typealias B = BI
+    public typealias C = CI
+    public typealias D = DI
+    public typealias E = EI
+    public typealias F = FI
+    public typealias G = GI
     public typealias Wrapped = (A, B, C, D, E, F, G)
     
     public let tuple: Wrapped
@@ -216,7 +281,26 @@ public struct Tuple7<A, B, C, D, E, F, G> : Tuple {
 
 //======================================= TUPLE8 =======================================
 
-public struct Tuple8<A, B, C, D, E, F, G, H> : Tuple {
+public protocol Tuple8Protocol : Tuple {
+    associatedtype A
+    associatedtype B
+    associatedtype C
+    associatedtype D
+    associatedtype E
+    associatedtype F
+    associatedtype G
+    associatedtype H
+}
+
+public struct Tuple8<AI, BI, CI, DI, EI, FI, GI, HI> : Tuple8Protocol {
+    public typealias A = AI
+    public typealias B = BI
+    public typealias C = CI
+    public typealias D = DI
+    public typealias E = EI
+    public typealias F = FI
+    public typealias G = GI
+    public typealias H = HI
     public typealias Wrapped = (A, B, C, D, E, F, G, H)
     
     public let tuple: Wrapped
@@ -247,7 +331,28 @@ public struct Tuple8<A, B, C, D, E, F, G, H> : Tuple {
 
 //======================================= TUPLE9 =======================================
 
-public struct Tuple9<A, B, C, D, E, F, G, H, I> : Tuple {
+public protocol Tuple9Protocol : Tuple {
+    associatedtype A
+    associatedtype B
+    associatedtype C
+    associatedtype D
+    associatedtype E
+    associatedtype F
+    associatedtype G
+    associatedtype H
+    associatedtype I
+}
+
+public struct Tuple9<AI, BI, CI, DI, EI, FI, GI, HI, II> : Tuple9Protocol {
+    public typealias A = AI
+    public typealias B = BI
+    public typealias C = CI
+    public typealias D = DI
+    public typealias E = EI
+    public typealias F = FI
+    public typealias G = GI
+    public typealias H = HI
+    public typealias I = II
     public typealias Wrapped = (A, B, C, D, E, F, G, H, I)
     
     public let tuple: Wrapped
@@ -279,7 +384,30 @@ public struct Tuple9<A, B, C, D, E, F, G, H, I> : Tuple {
 
 //======================================= TUPLE10 =======================================
 
-public struct Tuple10<A, B, C, D, E, F, G, H, I, J> : Tuple {
+public protocol Tuple10Protocol : Tuple {
+    associatedtype A
+    associatedtype B
+    associatedtype C
+    associatedtype D
+    associatedtype E
+    associatedtype F
+    associatedtype G
+    associatedtype H
+    associatedtype I
+    associatedtype J
+}
+
+public struct Tuple10<AI, BI, CI, DI, EI, FI, GI, HI, II, JI> : Tuple {
+    public typealias A = AI
+    public typealias B = BI
+    public typealias C = CI
+    public typealias D = DI
+    public typealias E = EI
+    public typealias F = FI
+    public typealias G = GI
+    public typealias H = HI
+    public typealias I = II
+    public typealias J = JI
     public typealias Wrapped = (A, B, C, D, E, F, G, H, I, J)
     
     public let tuple: Wrapped
