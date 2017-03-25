@@ -57,6 +57,10 @@ public struct Tuple1<AI> : Tuple1Protocol {
     }
 }
 
+public func tuple<A>(_ a: A) -> Tuple1<A> {
+    return Tuple1(a)
+}
+
 //======================================= TUPLE2 =======================================
 
 public protocol Tuple2Protocol : Tuple {
@@ -86,6 +90,10 @@ public struct Tuple2<AI, BI> : Tuple2Protocol {
     public var stripe:[Any] {
         return [tuple.0, tuple.1]
     }
+}
+
+public func tuple<A, B>(_ a: A, _ b: B) -> Tuple2<A, B> {
+    return Tuple2(a, b)
 }
 
 //======================================= TUPLE3 =======================================
@@ -121,6 +129,10 @@ public struct Tuple3<AI, BI, CI> : Tuple3Protocol {
     }
 }
 
+public func tuple<A, B, C>(_ a: A, _ b: B, _ c: C) -> Tuple3<A, B, C> {
+    return Tuple3(a, b, c)
+}
+
 //======================================= TUPLE4 =======================================
 
 public protocol Tuple4Protocol : Tuple {
@@ -154,6 +166,10 @@ public struct Tuple4<AI, BI, CI, DI> : Tuple4Protocol {
     public var stripe:[Any] {
         return [tuple.0, tuple.1, tuple.2, tuple.3]
     }
+}
+
+public func tuple<A, B, C, D>(_ a: A, _ b: B, _ c: C, _ d: D) -> Tuple4<A, B, C, D> {
+    return Tuple4(a, b, c, d)
 }
 
 //======================================= TUPLE5 =======================================
@@ -193,6 +209,10 @@ public struct Tuple5<AI, BI, CI, DI, EI> : Tuple5Protocol {
     }
 }
 
+public func tuple<A, B, C, D, E>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E) -> Tuple5<A, B, C, D, E> {
+    return Tuple5(a, b, c, d, e)
+}
+
 //======================================= TUPLE6 =======================================
 
 public protocol Tuple6Protocol : Tuple {
@@ -230,6 +250,10 @@ public struct Tuple6<AI, BI, CI, DI, EI, FI> : Tuple6Protocol {
     public var stripe:[Any] {
         return [tuple.0, tuple.1, tuple.2, tuple.3, tuple.4, tuple.5]
     }
+}
+
+public func tuple<A, B, C, D, E, F>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F) -> Tuple6<A, B, C, D, E, F> {
+    return Tuple6(a, b, c, d, e, f)
 }
 
 //======================================= TUPLE7 =======================================
@@ -277,6 +301,10 @@ public struct Tuple7<AI, BI, CI, DI, EI, FI, GI> : Tuple7Protocol {
     public var stripe:[Any] {
         return [tuple.0, tuple.1, tuple.2, tuple.3, tuple.4, tuple.5, tuple.6]
     }
+}
+
+public func tuple<A, B, C, D, E, F, G>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G) -> Tuple7<A, B, C, D, E, F, G> {
+    return Tuple7(a, b, c, d, e, f, g)
 }
 
 //======================================= TUPLE8 =======================================
@@ -327,6 +355,10 @@ public struct Tuple8<AI, BI, CI, DI, EI, FI, GI, HI> : Tuple8Protocol {
     public var stripe:[Any] {
         return [tuple.0, tuple.1, tuple.2, tuple.3, tuple.4, tuple.5, tuple.6, tuple.7]
     }
+}
+
+public func tuple<A, B, C, D, E, F, G, H>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H) -> Tuple8<A, B, C, D, E, F, G, H> {
+    return Tuple8(a, b, c, d, e, f, g, h)
 }
 
 //======================================= TUPLE9 =======================================
@@ -380,6 +412,10 @@ public struct Tuple9<AI, BI, CI, DI, EI, FI, GI, HI, II> : Tuple9Protocol {
     public var stripe:[Any] {
         return [tuple.0, tuple.1, tuple.2, tuple.3, tuple.4, tuple.5, tuple.6, tuple.7, tuple.8]
     }
+}
+
+public func tuple<A, B, C, D, E, F, G, H, I>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I) -> Tuple9<A, B, C, D, E, F, G, H, I> {
+    return Tuple9(a, b, c, d, e, f, g, h, i)
 }
 
 //======================================= TUPLE10 =======================================
@@ -436,6 +472,10 @@ public struct Tuple10<AI, BI, CI, DI, EI, FI, GI, HI, II, JI> : Tuple {
     public var stripe:[Any] {
         return [tuple.0, tuple.1, tuple.2, tuple.3, tuple.4, tuple.5, tuple.6, tuple.7, tuple.8, tuple.9]
     }
+}
+
+public func tuple<A, B, C, D, E, F, G, H, I, J>(_ a: A, _ b: B, _ c: C, _ d: D, _ e: E, _ f: F, _ g: G, _ h: H, _ i: I, _ j: J) -> Tuple10<A, B, C, D, E, F, G, H, I, J> {
+    return Tuple10(a, b, c, d, e, f, g, h, i, j)
 }
 
 //======================================= CASE =======================================
