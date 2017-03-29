@@ -55,6 +55,15 @@ class OptionalTests: XCTestCase {
         
         XCTAssertNotNil(noAutoclosure)
     }
+    
+    func testFilter() {
+        let op:String? = "some"
+        
+        XCTAssertNil(op.filter {$0 == "other"})
+        XCTAssertNotNil(op.filter {$0 == "some"})
+        
+        XCTAssertEqual(op.filter {$0 == "some"}, "some")
+    }
 }
 
 #if os(Linux)
@@ -63,6 +72,7 @@ extension OptionalTests {
 		return [
 			("testGetOrElse", testGetOrElse),
 			("testOrElse", testOrElse),
+			("testFilter", testFilter),
 		]
 	}
 }

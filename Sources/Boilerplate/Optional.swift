@@ -33,3 +33,11 @@ public extension Optional {
         return try self ?? el()
     }
 }
+
+public extension Optional {
+    public func filter(_ f: (Wrapped)->Bool) -> Wrapped? {
+        return flatMap { value in
+            f(value) ? self : nil
+        }
+    }
+}
