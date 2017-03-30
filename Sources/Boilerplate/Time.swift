@@ -88,6 +88,8 @@ public extension Timeout {
 
 //Dispatch Additions
 #if !nodispatch
+    
+    
     import Dispatch
     
     public extension Timeout {
@@ -101,7 +103,7 @@ public extension Timeout {
                     return DispatchTime.distantFuture
                 case .In(let interval):
                     let sec = Int(interval)
-                    let nsec = Int((interval - Double(sec)) * Double(NSEC_PER_SEC))
+                    let nsec = Int((interval - Double(sec)) * Timeout.NSEC_IN_SEC)
                     let now = DispatchTime.now()
                     let secshifted = now + .seconds(sec)
                     let nsecshifted = secshifted + .nanoseconds(nsec)
@@ -117,7 +119,7 @@ public extension Timeout {
                     case .Infinity:
                         return DISPATCH_TIME_FOREVER
                     case .In(let interval):
-                        return dispatch_time(DISPATCH_TIME_NOW, Int64(interval * Double(NSEC_PER_SEC)))
+                        return dispatch_time(DISPATCH_TIME_NOW, Int64(interval * Timeout.NSEC_IN_SEC))
                 }
             }
         #endif
@@ -125,7 +127,7 @@ public extension Timeout {
 #endif //!nodispatch
 
 public extension Timeout {
-    private static let NSEC_IN_SEC:Double = 1000 * 1000 * 1000
+    fileprivate static let NSEC_IN_SEC:Double = 1000 * 1000 * 1000
     
     public init(timespec:time_spec) {
         let timeout:Double = Double(timespec.tv_sec) + Double(timespec.tv_nsec) * Timeout.NSEC_IN_SEC
