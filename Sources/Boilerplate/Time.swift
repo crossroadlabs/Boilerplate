@@ -87,7 +87,7 @@ public extension Timeout {
 }
 
 //Dispatch Additions
-#if !os(Linux) || dispatch
+#if !nodispatch
     import Dispatch
     
     public extension Timeout {
@@ -122,7 +122,7 @@ public extension Timeout {
             }
         #endif
     }
-#endif
+#endif //!nodispatch
 
 public extension Timeout {
     private static let NSEC_IN_SEC:Double = 1000 * 1000 * 1000
